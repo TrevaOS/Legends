@@ -1,0 +1,52 @@
+"use client";
+
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const links = [
+  ["Home", "/"],
+  ["About", "/about"],
+  ["Beers", "/beers"],
+  ["Menu", "/menu"],
+  ["Events", "/events"],
+  ["Gallery", "/gallery"],
+  ["Contact", "/contact"],
+] as const;
+
+export const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header className={`sticky top-0 z-50 transition-all ${scrolled ? "py-2 border-b border-[#a98f63]/45 shadow-[0_8px_30px_rgba(169,143,99,0.14)]" : "py-4"} bg-[#1a0010]/80 backdrop-blur-xl`}>
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <Link href="/" className="royal-heading text-[#a98f63] text-xl">Legends</Link>
+        <div className="hidden md:flex items-center gap-6 text-sm font-medium">
+          {links.map(([label, href]) => (<Link key={href} href={href} className="hover:text-[#a98f63] transition-colors">{label}</Link>))}
+          <Link href="/reservations" className="px-4 py-2 rounded-full bg-gradient-to-r from-[#a98f63] to-[#cbbca1] text-[#2a1200] font-bold text-xs uppercase tracking-[0.14em]">Book a Table</Link>
+        </div>
+        <button className="md:hidden" onClick={() => setOpen((v) => !v)} aria-label="toggle menu">{open ? <X /> : <Menu />}</button>
+      </nav>
+      <AnimatePresence>
+        {open ? (
+          <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.25 }} className="md:hidden fixed top-16 right-0 h-[calc(100vh-4rem)] w-72 bg-[#110f0f]/95 border-l border-[#a98f63]/35 p-6">
+            <div className="flex flex-col gap-5">
+              {links.map(([label, href]) => (
+                <Link key={href} href={href} onClick={() => setOpen(false)} className="text-lg">{label}</Link>
+              ))}
+              <Link href="/reservations" onClick={() => setOpen(false)} className="mt-2 px-4 py-3 text-center rounded-full bg-gradient-to-r from-[#a98f63] to-[#cbbca1] text-[#2a1200] font-semibold">Book a Table</Link>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </header>
+  );
+};
