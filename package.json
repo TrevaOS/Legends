@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean:build": "rm -rf .next .open-next",
     "dev": "next dev --webpack",
     "dev:turbo": "next dev --turbopack",
-    "build": "next build && npx @opennextjs/cloudflare build --skipNextBuild",
-    "build:worker": "npx @opennextjs/cloudflare build",
-    "preview": "npm run build:worker && npx @opennextjs/cloudflare preview",
-    "deploy": "npm run build:worker && npx @opennextjs/cloudflare deploy",
+    "build": "npm run clean:build && next build && npx @opennextjs/cloudflare build --skipNextBuild",
+    "build:worker": "npm run clean:build && npx @opennextjs/cloudflare build",
+    "preview": "npm run clean:build && npm run build:worker && npx @opennextjs/cloudflare preview",
+    "deploy": "npm run clean:build && npm run build:worker && npx @opennextjs/cloudflare deploy",
     "start": "next start",
     "lint": "eslint"
   },
