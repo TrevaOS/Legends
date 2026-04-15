@@ -11,7 +11,22 @@ type PageData =
 
 type TurnCommand = "display" | "size" | "destroy" | "next" | "previous";
 
+type TurnOptions = {
+  autoCenter: boolean;
+  display: "single" | "double";
+  elevation: number;
+  gradients: boolean;
+  duration: number;
+  page: number;
+  width: number;
+  height: number;
+  when: {
+    turned: (_event: unknown, page: number) => void;
+  };
+};
+
 type TurnApi = {
+  turn: (options: TurnOptions) => void;
   turn: (command: TurnCommand, ...args: unknown[]) => void;
 };
 
