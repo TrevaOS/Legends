@@ -25,10 +25,10 @@ type TurnOptions = {
   };
 };
 
-type TurnApi = {
-  turn: (options: TurnOptions) => void;
-  turn: (command: TurnCommand, ...args: unknown[]) => void;
-};
+interface TurnApi {
+  turn(options: TurnOptions): void;
+  turn(command: TurnCommand, ...args: unknown[]): void;
+}
 
 export const FlipbookMenu = () => {
   const bookRef = useRef<HTMLDivElement | null>(null);
