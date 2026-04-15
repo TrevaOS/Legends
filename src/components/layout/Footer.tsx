@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { brandAssets } from "@/lib/branding";
 
@@ -9,12 +8,10 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 py-12 text-[#e8e0d0]">
         <div className="mx-auto flex w-fit flex-col items-center">
           <div className="relative h-28 w-28 overflow-hidden rounded-full border border-[#a98f63]/30 bg-[#1d0b14] shadow-[0_0_30px_rgba(169,143,99,0.14)]">
-            <Image
+            <img
               src={brandAssets.footerLogo}
               alt="Legends footer logo"
-              fill
-              sizes="112px"
-              className="object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
           <p className="royal-heading mt-4 text-center text-2xl text-[#a98f63]">LEGENDS</p>

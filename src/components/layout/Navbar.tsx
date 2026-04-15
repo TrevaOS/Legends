@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -32,13 +31,10 @@ export const Navbar = () => {
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#a98f63]/40 bg-[#2a0d18] shadow-[0_0_20px_rgba(169,143,99,0.18)]">
-            <Image
+            <img
               src={brandAssets.mainLogo}
               alt="Legends main logo"
-              fill
-              sizes="48px"
-              className="object-cover"
-              priority
+              className="h-full w-full object-cover"
             />
           </div>
           <div className="leading-none">
@@ -58,12 +54,10 @@ export const Navbar = () => {
             <div className="flex flex-col gap-5">
               <div className="flex items-center gap-3 border-b border-[#a98f63]/20 pb-5">
                 <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#a98f63]/40">
-                  <Image
+                  <img
                     src={brandAssets.mainLogo}
                     alt="Legends main logo"
-                    fill
-                    sizes="48px"
-                    className="object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
                 <div>

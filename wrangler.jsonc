@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "legends",
-  "main": ".open-next/worker.js",
+  "main": "worker.js",
   "compatibility_date": "2026-04-10",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
@@ -9,12 +9,6 @@
   },
   "assets": {
     "binding": "ASSETS",
-    "directory": ".open-next/assets"
-  },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "legends"
-    }
-  ]
+    "directory": "out"
+  }
 }

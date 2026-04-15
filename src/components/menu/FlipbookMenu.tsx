@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Download, ExternalLink } from "lucide-react";
 import { brandAssets } from "@/lib/branding";
 
@@ -63,13 +62,10 @@ export const FlipbookMenu = () => {
           <div className="grid gap-5 sm:grid-cols-[1fr_0.8fr]">
             <div className="rounded-[1.75rem] border border-[#a98f63]/25 bg-[linear-gradient(180deg,#1a0710,#2c0816)] p-5">
               <div className="relative mx-auto aspect-square w-full max-w-[220px] overflow-hidden rounded-full border border-[#a98f63]/35 bg-[#251019] shadow-[0_0_40px_rgba(169,143,99,0.16)]">
-                <Image
+                <img
                   src={brandAssets.mainLogo}
                   alt="Legends main logo"
-                  fill
-                  sizes="220px"
-                  className="object-cover"
-                  priority
+                  className="h-full w-full object-cover"
                 />
               </div>
               <p className="mt-5 text-center text-xs uppercase tracking-[0.4em] text-[#a98f63]">
@@ -79,12 +75,10 @@ export const FlipbookMenu = () => {
 
             <div className="rounded-[1.75rem] border border-[#a98f63]/20 bg-[#f5f0e8] p-5 text-[#301317]">
               <div className="relative mx-auto aspect-square w-full max-w-[180px] overflow-hidden rounded-[1.5rem] border border-[#a98f63]/30 bg-white">
-                <Image
+                <img
                   src={brandAssets.secondaryMark}
                   alt="Legends secondary logo mark"
-                  fill
-                  sizes="180px"
-                  className="object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
               <p className="mt-4 text-center text-xs uppercase tracking-[0.35em] text-[#83043b]">

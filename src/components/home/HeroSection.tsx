@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 import { brandAssets } from "@/lib/branding";
@@ -16,13 +15,10 @@ export const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="mx-auto mb-8 relative h-28 w-28 overflow-hidden rounded-full border border-[#a98f63]/40 bg-[#210811] shadow-[0_0_40px_rgba(169,143,99,0.18)]"
         >
-          <Image
+          <img
             src={brandAssets.mainLogo}
             alt="Legends main logo"
-            fill
-            sizes="112px"
-            className="object-cover"
-            priority
+            className="h-full w-full object-cover"
           />
         </motion.div>
         <motion.p initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }} className="royal-heading text-4xl md:text-6xl">Welcome to the</motion.p>
