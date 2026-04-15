@@ -3,75 +3,44 @@ import { RoyalButton } from "@/components/ui/RoyalButton";
 import { galleryItems } from "@/lib/data";
 
 export const GalleryPreview = () => {
-  // Use all 12 gallery items for a rich layout
-  const items = galleryItems;
+  const items = galleryItems.slice(0, 5);
 
   return (
     <AnimatedSection>
-      <section className="px-6 py-24 bg-[#110f0f]">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="royal-heading text-4xl">See the Kingdom</h2>
-          <p className="text-[#cbbca1] mt-2 mb-8">A glimpse into the world of Legends</p>
-
-          {/* Creative mixed layout: large hero + grid + strips */}
-          <div className="grid gap-3">
-            {/* Row 1: 1 large + 2 medium */}
-            <div className="grid grid-cols-3 gap-3 h-72">
-              <div className="col-span-2 rounded-xl overflow-hidden border border-[#a98f63]/20 relative group">
-                <img src={items[0].image} alt="Legends ambience" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#13080a]/60 to-transparent" />
-              </div>
-              <div className="flex flex-col gap-3">
-                <div className="flex-1 rounded-xl overflow-hidden border border-[#a98f63]/20 group">
-                  <img src={items[1].image} alt="Legends food" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                </div>
-                <div className="flex-1 rounded-xl overflow-hidden border border-[#a98f63]/20 group">
-                  <img src={items[2].image} alt="Legends space" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                </div>
-              </div>
-            </div>
-
-            {/* Row 2: 3 equal squares */}
-            <div className="grid grid-cols-3 gap-3 h-52">
-              {[items[3], items[4], items[5]].map((item, i) => (
-                <div key={i} className="rounded-xl overflow-hidden border border-[#a98f63]/20 group">
-                  <img src={item.image} alt={`Gallery ${i + 4}`} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                </div>
-              ))}
-            </div>
-
-            {/* Row 3: strip style — 4 equal landscape */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 h-44">
-              {[items[6], items[7], items[8], items[9]].map((item, i) => (
-                <div key={i} className="rounded-xl overflow-hidden border border-[#a98f63]/20 group">
-                  <img src={item.image} alt={`Gallery ${i + 7}`} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                </div>
-              ))}
-            </div>
-
-            {/* Row 4: 2 medium + 1 large (mirrored first row) */}
-            <div className="grid grid-cols-3 gap-3 h-64">
-              <div className="flex flex-col gap-3">
-                <div className="flex-1 rounded-xl overflow-hidden border border-[#a98f63]/20 group">
-                  <img src={items[10].image} alt="Gallery 11" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                </div>
-                <div className="flex-1 rounded-xl overflow-hidden border border-[#a98f63]/20 group">
-                  <img src={items[11].image} alt="Gallery 12" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                </div>
-              </div>
-              <div className="col-span-2 rounded-xl overflow-hidden border border-[#a98f63]/20 relative group">
-                <img src={items[0].image} alt="Legends venue hero" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#13080a]/60 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <p className="royal-heading text-2xl text-[#f5f0e8]">The Kingdom</p>
-                  <p className="text-sm text-[#a98f63]">Legends Microbrewery</p>
-                </div>
-              </div>
+      <section className="bg-[#110f0f] px-6 py-18 md:py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end">
+          <div>
+            <p className="text-xs uppercase tracking-[0.45em] text-[#a98f63]">Gallery Preview</p>
+            <h2 className="royal-heading mt-4 text-4xl text-[#f5f0e8] md:text-5xl">
+              A lighter home gallery that feels curated.
+            </h2>
+            <p className="mt-4 max-w-xl text-base leading-7 text-[#cbbca1]">
+              The home screen now shows a compact preview instead of a tall, heavy wall of images.
+            </p>
+            <div className="mt-8">
+              <RoyalButton href="/gallery">Open Full Gallery</RoyalButton>
             </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <RoyalButton href="/gallery">See Full Gallery</RoyalButton>
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
+            <div className="col-span-2 overflow-hidden rounded-[1.5rem] border border-[#a98f63]/20">
+              <img
+                src={items[0].image}
+                alt="Legends interior preview"
+                className="h-64 w-full object-cover md:h-72"
+                loading="lazy"
+              />
+            </div>
+            {items.slice(1).map((item, index) => (
+              <div key={item.id} className="overflow-hidden rounded-[1.25rem] border border-[#a98f63]/20">
+                <img
+                  src={item.image}
+                  alt={`Legends gallery preview ${index + 2}`}
+                  className="h-32 w-full object-cover md:h-36"
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>

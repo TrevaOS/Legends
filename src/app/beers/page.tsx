@@ -7,21 +7,21 @@ import { beersData } from "@/lib/data";
 // Curated Unsplash beer images matched to each beer style
 const beerImages: Record<string, string> = {
   "Midnight Emperor":
-    "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&q=80",
+    "https://images.unsplash.com/photo-1516458461665-8d099aa2f5b2?w=900&q=80&fit=crop",
   "Sky Sovereign":
-    "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&q=80",
+    "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=900&q=80&fit=crop",
   "Kings Frontier":
-    "https://images.unsplash.com/photo-1581927692308-be9e43b4d860?w=600&q=80",
+    "https://images.unsplash.com/photo-1563379091339-03246963d29a?w=900&q=80&fit=crop",
   "Knights Wit":
-    "https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=600&q=80",
+    "https://images.unsplash.com/photo-1527169402691-feff5539e52c?w=900&q=80&fit=crop",
   "Golden Halo":
-    "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=600&q=80",
+    "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&q=80&fit=crop",
   "Orchard Queen":
-    "https://images.unsplash.com/photo-1601924582970-9238bcb495d9?w=600&q=80",
+    "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=900&q=80&fit=crop",
   "Zen Empire":
-    "https://images.unsplash.com/photo-1574793516766-af1e8c0e04e6?w=600&q=80",
+    "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=900&q=80&fit=crop",
   "Imperial Fields":
-    "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&q=80",
+    "https://images.unsplash.com/photo-1558642891-54be180ea339?w=900&q=80&fit=crop",
 };
 
 export default function BeersPage() {
