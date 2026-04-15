@@ -63,6 +63,26 @@ body {
 .masonry-grid { column-count: 3; column-gap: 16px; }
 .masonry-item { break-inside: avoid; margin-bottom: 16px; }
 
+/* Royal diamond trellis pattern — used as section backgrounds */
+.royal-pattern {
+  background-color: #13080a;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(169, 143, 99, 0.12) 0px,
+      rgba(169, 143, 99, 0.12) 1px,
+      transparent 1px,
+      transparent 28px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(169, 143, 99, 0.12) 0px,
+      rgba(169, 143, 99, 0.12) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+}
+
 @media (max-width: 1023px) { .masonry-grid { column-count: 2; } }
 @media (max-width: 767px) { .masonry-grid { column-count: 1; } }
 

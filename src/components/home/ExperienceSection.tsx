@@ -10,7 +10,7 @@ export const ExperienceSection = () => {
 
   return (
     <AnimatedSection>
-      <section className="px-6 py-24 bg-[#13362c]">
+      <section className="px-6 py-24 bg-[#13362c] royal-pattern">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
           {items.map(({ icon: Icon, title, description }) => (
             <article key={title} className="ornamental-border rounded-2xl p-6 bg-[#1f4d3f]/30 backdrop-blur-md">

@@ -13,7 +13,7 @@ const FlipCard = ({ item }: { item: typeof menuData[number] }) => (
         <div className="absolute inset-0 bg-gradient-to-t from-[#13080a]/90 via-[#13080a]/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <p className="text-xs text-[#a98f63] uppercase tracking-[0.1em]">{item.category}</p>
-          <p className="royal-heading text-2xl text-[#f5f0e8] mt-1">{item.name}</p>
+          <p className="royal-heading text-xl text-[#f5f0e8] mt-1">{item.name}</p>
         </div>
       </div>
 
@@ -24,8 +24,9 @@ const FlipCard = ({ item }: { item: typeof menuData[number] }) => (
           <p className="royal-heading text-xl text-[#f5f0e8] mt-2">{item.name}</p>
           <div className="h-px bg-[#a98f63]/40 my-3" />
           <p className="text-sm text-[#e8e0d0] leading-relaxed">{item.description}</p>
-          <p className="text-xs text-[#cbbca1] mt-3"><span className="text-[#a98f63]">From your menu PDF:</span> live dish description and ingredients</p>
-          <p className="text-xs text-[#cbbca1] mt-1"><span className="text-[#a98f63]">Ingredients:</span> {item.ingredients}</p>
+          <p className="text-xs text-[#cbbca1] mt-3">
+            <span className="text-[#a98f63]">Ingredients:</span> {item.ingredients}
+          </p>
         </div>
         <p className="royal-heading text-lg text-[#a98f63]">Legends Signature</p>
       </div>
@@ -38,8 +39,11 @@ export const MenuHighlights = () => (
     <section className="px-6 py-24 bg-[#f5f0e8] text-[#2a1310]">
       <div className="max-w-6xl mx-auto">
         <h2 className="royal-heading text-4xl text-center text-[#83043b]">Feast Like a Legend</h2>
-        <p className="text-center text-[#5a3a30] mt-3 mb-10">Real dishes now pulled from your uploaded menu PDF</p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <p className="text-center text-[#5a3a30] mt-3 mb-10">
+          Real dishes from our kitchen — hover to explore
+        </p>
+        {/* 3 columns x 2 rows */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {menuData.map((dish) => (
             <FlipCard key={dish.name} item={dish} />
           ))}
