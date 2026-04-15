@@ -1,252 +1,162 @@
 "use client";
 
-import { useState } from "react";
-import { assetFolders, menuBookPages, sourceDocuments, type MenuBookPage } from "@/lib/menu-content";
+import Image from "next/image";
+import { Download, ExternalLink } from "lucide-react";
+import { brandAssets } from "@/lib/branding";
 
-function CoverPage({ page }: { page: Extract<MenuBookPage, { type: "cover" }> }) {
-  return (
-    <div className="w-full h-full bg-[#1a0a12] flex flex-col justify-center px-12 py-10">
-      <p className="text-xs tracking-[0.4em] uppercase text-[#a98f63] mb-4">{page.eyebrow}</p>
-      <h2 className="royal-heading text-6xl xl:text-7xl leading-tight text-[#a98f63]">
-        {page.title.split(" ").slice(0, -2).join(" ")}<br />
-        {page.title.split(" ").slice(-2).join(" ")}
-      </h2>
-      <div className="mt-6 h-px w-16 bg-[#a98f63]/50" />
-      <p className="mt-6 text-xl text-[#f5f0e8]">{page.subtitle}</p>
-      <p className="mt-4 max-w-xs text-sm leading-6 text-[#cbbca1]">{page.note}</p>
-    </div>
-  );
-}
-
-function BackCoverPage({ page }: { page: Extract<MenuBookPage, { type: "backcover" }> }) {
-  return (
-    <div className="w-full h-full bg-[#1a0a12] flex flex-col justify-center px-12 py-10 text-[#f5f0e8]">
-      <h3 className="royal-heading text-4xl text-[#a98f63]">{page.title}</h3>
-      <div className="mt-6 h-px w-16 bg-[#a98f63]/50" />
-      <div className="mt-8 space-y-5 text-lg">
-        {page.lines.map((line) => (
-          <div key={line.label} className="flex justify-between gap-4">
-            <span className="text-[#cbbca1]">{line.label}</span>
-            <span className="text-right">{line.value}</span>
-          </div>
-        ))}
-      </div>
-      <p className="mt-14 text-xs tracking-[0.3em] uppercase text-[#a98f63]/70">Legends | Kingdom of Brews</p>
-    </div>
-  );
-}
-
-function ContentPage({ page, pageNum }: { page: Extract<MenuBookPage, { type: "content" }>; pageNum: number }) {
-  return (
-    <div className="w-full h-full bg-[#f5f0e8] flex flex-col justify-center px-12 py-10">
-      <p className="text-[10px] tracking-[0.3em] uppercase text-[#a98f63]/70 mb-1">Legends</p>
-      <h3 className="royal-heading text-4xl xl:text-5xl text-[#3e001c]">{page.title}</h3>
-      {page.caption ? <p className="mt-3 text-xs leading-5 text-[#7b5d43]">{page.caption}</p> : null}
-      <div className="mt-3 h-px bg-[#a98f63]/30" />
-      <div className="mt-6 space-y-5">
-        {page.items.map((item) => (
-          <div key={`${page.title}-${item.name}`} className="flex justify-between items-start gap-4">
-            <div className="text-[#2b1511] text-lg xl:text-xl">
-              <span>{item.name}</span>
-              {item.details?.length ? (
-                <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs tracking-[0.15em] uppercase text-[#a98f63]">
-                  {item.details.map((detail) => (
-                    <span key={detail}>{detail}</span>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-            <span className="text-[#a98f63] font-semibold text-lg xl:text-xl shrink-0">{item.price}</span>
-          </div>
-        ))}
-      </div>
-      <p className="mt-auto pt-6 text-[10px] tracking-widest text-[#a98f63]/40 uppercase">
-        {pageNum} / {menuBookPages.length}
-      </p>
-    </div>
-  );
-}
-
-function Page({ data, pageNum }: { data: MenuBookPage; pageNum: number }) {
-  if (data.type === "cover") return <CoverPage page={data} />;
-  if (data.type === "backcover") return <BackCoverPage page={data} />;
-  return <ContentPage page={data} pageNum={pageNum} />;
-}
+const menuFiles = [
+  {
+    title: "Food Menu 9",
+    note: "Primary visual reference for the live menu page.",
+    href: brandAssets.menuReference,
+  },
+  {
+    title: "Legends Final Food Menu",
+    note: "Detailed menu document kept as a second downloadable reference.",
+    href: brandAssets.finalFoodMenu,
+  },
+  {
+    title: "Beer Lineup",
+    note: "Beer details document for brew-specific offerings.",
+    href: "/assets/documents/beer/Beer lineup .pdf",
+  },
+] as const;
 
 export const FlipbookMenu = () => {
-  const [current, setCurrent] = useState(0);
-  const [flipping, setFlipping] = useState<"next" | "prev" | null>(null);
-
-  const goNext = () => {
-    if (current >= menuBookPages.length - 1 || flipping) return;
-    setFlipping("next");
-    setTimeout(() => {
-      setCurrent((c) => c + 1);
-      setFlipping(null);
-    }, 400);
-  };
-
-  const goPrev = () => {
-    if (current <= 0 || flipping) return;
-    setFlipping("prev");
-    setTimeout(() => {
-      setCurrent((c) => c - 1);
-      setFlipping(null);
-    }, 400);
-  };
-
-  const prev = current > 0 ? menuBookPages[current - 1] : null;
-  const curr = menuBookPages[current];
-
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{ background: "linear-gradient(130deg,#10040b,#2c0816,#13060f)" }}
-    >
-      <header className="flex flex-col items-center justify-center py-6 border-b border-[#a98f63]/25 shrink-0">
-        <p className="text-[10px] tracking-[0.5em] uppercase text-[#a98f63]">Legends</p>
-        <h1 className="royal-heading mt-1 text-3xl md:text-4xl text-[#f5f0e8] leading-tight text-center">
-          Kingdom of Brews
-        </h1>
-        <p className="mt-1 text-xs text-[#cbbca1] tracking-[0.3em] uppercase">Signature Menu</p>
-      </header>
-
-      <main className="flex-1 flex flex-col items-center justify-center px-6 py-6">
-        <section className="w-full max-w-6xl grid gap-5 lg:grid-cols-[1.3fr_0.7fr] mb-8">
-          <div className="rounded-3xl border border-[#a98f63]/25 bg-[#1a0010]/65 p-6 backdrop-blur">
-            <p className="text-xs tracking-[0.35em] uppercase text-[#a98f63]">Reference Documents</p>
-            <h2 className="royal-heading mt-3 text-3xl text-[#f5f0e8]">Source files are organized now</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-[#d7cab6]">
-              Your menu page is now driven from one content file. Replace the placeholder text in
-              <span className="mx-1 text-[#f5f0e8]">`src/lib/menu-content.ts`</span>
-              and drop final design assets into the folders shown here.
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#3e001c_0%,#18040d_42%,#0e090b_100%)]">
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-10 md:py-14">
+        <section className="grid gap-8 rounded-[2rem] border border-[#a98f63]/20 bg-[#14060d]/85 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur md:p-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="flex flex-col justify-center">
+            <p className="text-xs uppercase tracking-[0.45em] text-[#a98f63]">Food Menu</p>
+            <h1 className="royal-heading mt-4 text-4xl text-[#f5f0e8] md:text-6xl">
+              Legends menu updated from your uploaded files
+            </h1>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-[#d9ccb8] md:text-base">
+              Main branding now uses logo 0001, the browser icon uses logo 0009, the footer uses
+              logo 0020, and logo 0015 is placed here as the supporting mark beside the live menu
+              references.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              {sourceDocuments.map((document) => (
-                <a
-                  key={document.href}
-                  href={document.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full border border-[#a98f63]/35 px-4 py-2 text-sm text-[#f5f0e8] transition-colors hover:bg-[#a98f63] hover:text-[#1a0010]"
-                >
-                  {document.label}
-                </a>
-              ))}
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={brandAssets.menuReference}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#a98f63] to-[#d2c1a0] px-5 py-3 text-sm font-semibold text-[#241108]"
+              >
+                <ExternalLink className="h-4 w-4" />
+                Open Food Menu 9
+              </a>
+              <a
+                href={brandAssets.finalFoodMenu}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-[#a98f63]/45 px-5 py-3 text-sm font-semibold text-[#f5f0e8]"
+              >
+                <Download className="h-4 w-4" />
+                Download Final Food Menu
+              </a>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[#a98f63]/25 bg-[#f5f0e8] p-6 text-[#2b1511]">
-            <p className="text-xs tracking-[0.35em] uppercase text-[#83043b]">Asset Folders</p>
-            <div className="mt-4 space-y-4">
-              {assetFolders.map((folder) => (
-                <div key={folder.path}>
-                  <p className="royal-heading text-xl text-[#3e001c]">{folder.label}</p>
-                  <p className="mt-1 text-xs text-[#83043b]">{folder.path}</p>
-                  <p className="mt-1 text-sm text-[#5b4638]">{folder.note}</p>
-                </div>
-              ))}
+          <div className="grid gap-5 sm:grid-cols-[1fr_0.8fr]">
+            <div className="rounded-[1.75rem] border border-[#a98f63]/25 bg-[linear-gradient(180deg,#1a0710,#2c0816)] p-5">
+              <div className="relative mx-auto aspect-square w-full max-w-[220px] overflow-hidden rounded-full border border-[#a98f63]/35 bg-[#251019] shadow-[0_0_40px_rgba(169,143,99,0.16)]">
+                <Image
+                  src={brandAssets.mainLogo}
+                  alt="Legends main logo"
+                  fill
+                  sizes="220px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <p className="mt-5 text-center text-xs uppercase tracking-[0.4em] text-[#a98f63]">
+                Main Brand Mark
+              </p>
+            </div>
+
+            <div className="rounded-[1.75rem] border border-[#a98f63]/20 bg-[#f5f0e8] p-5 text-[#301317]">
+              <div className="relative mx-auto aspect-square w-full max-w-[180px] overflow-hidden rounded-[1.5rem] border border-[#a98f63]/30 bg-white">
+                <Image
+                  src={brandAssets.secondaryMark}
+                  alt="Legends secondary logo mark"
+                  fill
+                  sizes="180px"
+                  className="object-cover"
+                />
+              </div>
+              <p className="mt-4 text-center text-xs uppercase tracking-[0.35em] text-[#83043b]">
+                Supporting Mark 0015
+              </p>
+              <p className="mt-3 text-center text-sm leading-6 text-[#5e4337]">
+                Kept as the secondary signature mark on the menu page so it has a clear, suitable
+                placement without competing with the main logo.
+              </p>
             </div>
           </div>
         </section>
 
-        <div
-          className="relative w-full shadow-2xl"
-          style={{
-            maxWidth: "min(960px, calc(100vw - 48px))",
-            aspectRatio: "2 / 1.1",
-          }}
-        >
-          <div
-            className="absolute inset-0 rounded-lg"
-            style={{
-              boxShadow: "0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(169,143,99,0.2)",
-            }}
-          />
-
-          <div
-            className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
-            style={{
-              width: "3px",
-              background: "linear-gradient(to bottom, #a98f63, #78552a, #a98f63)",
-              boxShadow: "0 0 12px rgba(169,143,99,0.5)",
-            }}
-          />
-
-          <div
-            className="absolute inset-y-0 left-0 rounded-l-lg overflow-hidden"
-            style={{ width: "calc(50% - 1.5px)" }}
-          >
-            {prev ? (
-              <div
-                className="w-full h-full"
-                style={{
-                  transform: flipping === "prev" ? "rotateY(-10deg)" : "rotateY(0deg)",
-                  transformOrigin: "right center",
-                  transition: "transform 0.4s ease",
-                  perspective: "1200px",
-                }}
-              >
-                <Page data={prev} pageNum={current} />
+        <section className="grid gap-8 lg:grid-cols-[1.35fr_0.65fr]">
+          <div className="overflow-hidden rounded-[2rem] border border-[#a98f63]/20 bg-[#12070d] shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
+            <div className="flex items-center justify-between border-b border-[#a98f63]/15 px-5 py-4 text-sm text-[#e8e0d0]">
+              <div>
+                <p className="royal-heading text-2xl text-[#f5f0e8]">Menu 9 Preview</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.3em] text-[#a98f63]">
+                  Embedded live reference
+                </p>
               </div>
-            ) : (
-              <div className="w-full h-full bg-[#1a0a12]" />
-            )}
-          </div>
-
-          <div
-            className="absolute inset-y-0 right-0 rounded-r-lg overflow-hidden"
-            style={{ width: "calc(50% - 1.5px)" }}
-          >
-            <div
-              className="w-full h-full"
-              style={{
-                transform: flipping === "next" ? "rotateY(10deg)" : "rotateY(0deg)",
-                transformOrigin: "left center",
-                transition: "transform 0.4s ease",
-                perspective: "1200px",
-              }}
-            >
-              <Page data={curr} pageNum={current + 1} />
+              <a
+                href={brandAssets.menuReference}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-[#a98f63]/35 px-4 py-2 text-xs uppercase tracking-[0.2em] text-[#f5f0e8]"
+              >
+                Open PDF
+              </a>
             </div>
+            <object
+              data={brandAssets.menuReference}
+              type="application/pdf"
+              className="h-[75vh] min-h-[720px] w-full bg-white"
+            >
+              <div className="flex h-full min-h-[500px] flex-col items-center justify-center gap-4 p-8 text-center text-[#f5f0e8]">
+                <p className="royal-heading text-3xl text-[#a98f63]">PDF preview is unavailable here</p>
+                <a
+                  href={brandAssets.menuReference}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-gradient-to-r from-[#a98f63] to-[#d2c1a0] px-5 py-3 text-sm font-semibold text-[#241108]"
+                >
+                  Open Food Menu 9
+                </a>
+              </div>
+            </object>
           </div>
-        </div>
 
-        <div className="mt-8 flex items-center gap-6">
-          <button
-            onClick={goPrev}
-            disabled={current <= 0 || !!flipping}
-            className="rounded-full border border-[#a98f63]/60 px-7 py-2.5 text-sm text-[#cbbca1] hover:bg-[#a98f63] hover:text-[#1e0c0f] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            ← Prev
-          </button>
-          <span className="text-xs tracking-[0.3em] text-[#cbbca1] uppercase">
-            {current + 1} / {menuBookPages.length}
-          </span>
-          <button
-            onClick={goNext}
-            disabled={current >= menuBookPages.length - 1 || !!flipping}
-            className="rounded-full border border-[#a98f63]/60 px-7 py-2.5 text-sm text-[#cbbca1] hover:bg-[#a98f63] hover:text-[#1e0c0f] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            Next →
-          </button>
-        </div>
-
-        <div className="mt-4 flex gap-2">
-          {menuBookPages.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => { if (!flipping) setCurrent(i); }}
-              aria-label={`Go to page ${i + 1}`}
-              className="rounded-full transition-all"
-              style={{
-                width: i === current ? "20px" : "6px",
-                height: "6px",
-                background: i === current ? "#a98f63" : "rgba(169,143,99,0.3)",
-              }}
-            />
-          ))}
-        </div>
+          <aside className="space-y-5">
+            {menuFiles.map((file) => (
+              <article
+                key={file.href}
+                className="rounded-[1.75rem] border border-[#a98f63]/20 bg-[#1a0a12]/85 p-5 text-[#f5f0e8]"
+              >
+                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63]">Document</p>
+                <h2 className="royal-heading mt-3 text-2xl">{file.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-[#d9ccb8]">{file.note}</p>
+                <a
+                  href={file.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#d8bf91]"
+                >
+                  Open file
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </article>
+            ))}
+          </aside>
+        </section>
       </main>
     </div>
   );

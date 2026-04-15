@@ -1,13 +1,30 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { RoyalButton } from "@/components/ui/RoyalButton";
+import { brandAssets } from "@/lib/branding";
 
 export const HeroSection = () => {
   return (
     <section className="relative min-h-[100vh] flex items-center justify-center px-6 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#1a0010,#3e001c)]" />
       <div className="relative text-center max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto mb-8 relative h-28 w-28 overflow-hidden rounded-full border border-[#a98f63]/40 bg-[#210811] shadow-[0_0_40px_rgba(169,143,99,0.18)]"
+        >
+          <Image
+            src={brandAssets.mainLogo}
+            alt="Legends main logo"
+            fill
+            sizes="112px"
+            className="object-cover"
+            priority
+          />
+        </motion.div>
         <motion.p initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }} className="royal-heading text-4xl md:text-6xl">Welcome to the</motion.p>
         <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.6 }} className="royal-heading text-[#a98f63] text-6xl md:text-8xl leading-none">Kingdom</motion.h1>
         <motion.p initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.6 }} className="royal-heading text-5xl md:text-7xl">of Brews</motion.p>
