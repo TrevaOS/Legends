@@ -1,15 +1,17 @@
 export const BeerCard = ({
   name,
+  style,
   abv,
   description,
   ibu = 20,
-  price = 420,
-  pair = "Smoked sliders",
+  price,
+  pair,
   image,
   onViewDetails,
 }: {
   name: string;
-  abv: string;
+  style?: string;
+  abv?: string;
   description: string;
   ibu?: number;
   price?: number;
@@ -25,10 +27,16 @@ export const BeerCard = ({
     <div className="p-5">
       <h3 className="royal-heading text-xl text-[#f5f0e8]">{name}</h3>
       <div className="h-px bg-[#a98f63]/50 my-3" />
-      <p className="text-xs text-[#cbbca1]">ABV: {abv} | IBU: {ibu}</p>
-      <p className="text-sm mt-1">Price: INR {price}</p>
+      {style || abv || ibu ? (
+        <p className="text-xs text-[#cbbca1]">
+          {[style, abv ? `ABV: ${abv}` : null, ibu ? `IBU: ${ibu}` : null]
+            .filter(Boolean)
+            .join(" | ")}
+        </p>
+      ) : null}
+      {price ? <p className="text-sm mt-1">Price: INR {price}</p> : null}
       <p className="text-sm mt-3 text-[#e8e0d0]">{description}</p>
-      <p className="text-xs mt-2 text-[#cbbca1]">Pairs well with: {pair}</p>
+      {pair ? <p className="text-xs mt-2 text-[#cbbca1]">Pairs well with: {pair}</p> : null}
       <div className="mt-4">
         <button type="button" onClick={onViewDetails} className="inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-semibold border border-[#a98f63] text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors">
           View Details

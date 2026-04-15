@@ -1,6 +1,16 @@
 import { EventCard } from "@/components/ui/EventCard";
+import { featuredAmbience, galleryItems } from "@/lib/data";
 
 export default function EventsPage() {
+  const eventImages = [
+    featuredAmbience[0],
+    featuredAmbience[1],
+    featuredAmbience[2],
+    featuredAmbience[3],
+    galleryItems[1].image,
+    galleryItems[3].image,
+  ];
+
   return (
     <div className="px-6 py-16 max-w-6xl mx-auto">
       <h1 className="royal-heading text-6xl">The Legendary Nights</h1>
@@ -11,14 +21,7 @@ export default function EventsPage() {
         <EventCard title="Trivia Nights" date="05 May" time="8 PM | Team Entry" icon="??" />
         <EventCard title="Beer Tasting" date="12 May" time="6 PM | Reserve Seat" icon="??" />
       </div>
-      <section className="mt-16"><h2 className="royal-heading text-4xl">Past Events Gallery</h2><div className="masonry-grid mt-6">{[
-        "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1800&q=80",
-        "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=1800&q=80",
-        "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1800&q=80",
-        "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1800&q=80",
-        "https://images.unsplash.com/photo-1489516408517-0c0a15662682?auto=format&fit=crop&w=1800&q=80",
-        "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1800&q=80",
-      ].map((image,i)=><div key={i} className="masonry-item rounded-xl h-48 overflow-hidden border border-[#a98f63]/25"><img src={image} alt="Legends event moments" className="h-full w-full object-cover" loading="lazy" /></div>)}</div></section>
+      <section className="mt-16"><h2 className="royal-heading text-4xl">Past Events Gallery</h2><div className="masonry-grid mt-6">{eventImages.map((image,i)=><div key={i} className="masonry-item rounded-xl h-48 overflow-hidden border border-[#a98f63]/25"><img src={image} alt="Legends event moments" className="h-full w-full object-cover" loading="lazy" /></div>)}</div></section>
     </div>
   );
 }

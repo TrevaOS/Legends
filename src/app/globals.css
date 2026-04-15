@@ -70,3 +70,94 @@ body {
   0% { left: -120%; }
   100% { left: 120%; }
 }
+
+.menu-book-shell {
+  background:
+    radial-gradient(circle at top, rgba(201, 154, 104, 0.16), transparent 28%),
+    linear-gradient(180deg, #2a0b14 0%, #12070d 50%, #090607 100%);
+}
+
+.menu-book-wrapper {
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  padding: 12px 0 20px;
+}
+
+.menu-book {
+  margin: 0 auto;
+}
+
+.menu-book-page {
+  background: linear-gradient(180deg, #f6ead7 0%, #f9f2e8 100%);
+}
+
+.menu-book-paper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(134, 56, 70, 0.14);
+  background:
+    radial-gradient(circle at top right, rgba(201, 154, 104, 0.18), transparent 24%),
+    linear-gradient(180deg, #f7ebd9 0%, #fff9f1 100%);
+  color: #542f2f;
+}
+
+.menu-book-paper::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(185, 138, 79, 0.35);
+  pointer-events: none;
+}
+
+.menu-book-cover {
+  padding: 2rem;
+}
+
+.menu-book-scroll {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.menu-book-kicker {
+  margin: 0 0 0.75rem;
+  color: #9d5a3d;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+.menu-book-footer {
+  position: absolute;
+  right: 2rem;
+  bottom: 1.4rem;
+  margin: 0;
+  color: rgba(120, 61, 48, 0.8);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.menu-book .turn-page {
+  background: transparent;
+}
+
+@media (max-width: 1023px) {
+  .menu-book-cover,
+  .menu-book-scroll {
+    padding: 1.25rem;
+  }
+
+  .menu-book-paper::before {
+    inset: 10px;
+  }
+
+  .menu-book-footer {
+    right: 1.25rem;
+    bottom: 1rem;
+  }
+}

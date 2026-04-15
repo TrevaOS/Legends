@@ -1,45 +1,425 @@
-export const menuData = [
-  {
-    name: "Smoked Mutton Slider",
-    category: "Chef's Special",
-    price: 380,
-    description: "Slow-smoked pulled mutton in a toasted brioche bun with pickled onions and smoky aioli.",
-    ingredients: "Mutton, brioche bun, pickled onions, smoky aioli, jalapeños",
-    spice: "Medium",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Truffle Mushrooms",
-    category: "Chef's Special",
-    price: 420,
-    description: "Wild mushrooms sautéed in truffle butter with herbs, served on crispy sourdough toast.",
-    ingredients: "Wild mushrooms, truffle butter, thyme, rosemary, sourdough",
-    spice: "Mild",
-    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Legend Wings",
-    category: "Chef's Special",
-    price: 460,
-    description: "Crispy chicken wings glazed in our signature royal sauce, served with blue cheese dip.",
-    ingredients: "Chicken wings, royal glaze, blue cheese dip, celery",
-    spice: "Hot",
-    image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Royal Flatbread",
-    category: "Chef's Special",
-    price: 500,
-    description: "Stone-baked flatbread topped with fig compote, goat cheese, caramelised onions and rocket.",
-    ingredients: "Flatbread dough, fig compote, goat cheese, caramelised onions, rocket",
-    spice: "Mild",
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",
-  },
-];
+type MenuHighlight = {
+  name: string;
+  category: string;
+  description: string;
+  ingredients: string;
+  image: string;
+};
 
-export const beersData = [
-  { name: "Kingdom Lager", style: "Lager", abv: "4.8%", ibu: 18, price: 420, description: "Crisp, golden, and refreshingly royal", pair: "Burgers", image: "https://images.unsplash.com/photo-1514361892635-eae31ec32f97?auto=format&fit=crop&w=2400&q=80" },
-  { name: "Crowned IPA", style: "IPA", abv: "6.5%", ibu: 52, price: 460, description: "Bitter hops, bold character, legendary finish", pair: "Smoked tacos", image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=2400&q=80" },
-  { name: "Dark Knight Stout", style: "Stout", abv: "7.2%", ibu: 38, price: 480, description: "Rich, roasted, worth kneeling for", pair: "Chocolate tart", image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=2400&q=80" },
-  { name: "Wheat of Honor", style: "Wheat", abv: "4.2%", ibu: 14, price: 410, description: "Light, cloudy, brewed for the brave", pair: "Grilled prawns", image: "https://images.unsplash.com/photo-1566633806327-68e152aaf26d?auto=format&fit=crop&w=2400&q=80" },
-];
+type BeerItem = {
+  name: string;
+  style: string;
+  description: string;
+  image: string;
+  abv?: string;
+  ibu?: number;
+  price?: number;
+  pair?: string;
+};
+
+type GalleryItem = {
+  id: number;
+  category: "Ambience" | "Food";
+  image: string;
+  height: string;
+};
+
+const driveImage = (id: string, width = 1600) =>
+  `https://lh3.googleusercontent.com/d/${id}=w${width}`;
+
+const foodImages = {
+  dishOne: driveImage("1nPjiM9t4KsKI-lyiqbHAjlZbJmCsxPxP"),
+  dishTwo: driveImage("11ADtE25Chjy3dj6taGWyZqbtOMOtsqzy"),
+  dishThree: driveImage("1_jVH2N6EtUQDvJ-0BlT3L13KHHKoL7pf"),
+  dishFour: driveImage("13_76-SIPWcHW0nAaM-6--BIl28yS5gSr"),
+  dishFive: driveImage("1bBqSqP7lbRhVlf1Xeyfh5roEIFO-6tcb"),
+  dishSix: driveImage("1iJQVGpRn7b_kGGqJAivHZZ28Ek2rFY1J"),
+} as const;
+
+const ambienceImages = {
+  hero: driveImage("1IRSZGndXXtLvg60VHs9roIMAMGByJ35G", 2200),
+  spaceOne: driveImage("1IRin2j-mC6zgUzmQjBOzDKmJLM3lffyW"),
+  spaceTwo: driveImage("188dVjGBY2CzBOxEUj43ys4WvRMKzC9CV"),
+  spaceThree: driveImage("12CkEGcHOdny2lN6zxeTI3GYK0sJ0-ehm"),
+  spaceFour: driveImage("1wVt7zGrzhylI0181Oz7-Casb5F3lgciz"),
+  spaceFive: driveImage("1nGoyutdJLf5X8oT22vfny9rW2syRoUaL"),
+  spaceSix: driveImage("1fVO0FS9Bk5PFr1j4PCyPcprkluWUfUqv"),
+  spaceSeven: driveImage("1rrPn3lmUnXzy5i_sOT2WyKqSQNikJyWt"),
+  spaceEight: driveImage("1j16J7wgX4b0qDZ_Wz65MJUETq1BkMbzf"),
+  spaceNine: driveImage("1C3ddtMGmlZAo-6w33lL6JlkvxOaws27i"),
+  spaceTen: driveImage("1QsbtAhJZBuEeDUPsyXMx34BvgQO2T_Fq"),
+  spaceEleven: driveImage("1RDYhgEVsdyMiDG3OQpcuzFDhTls1TeUy"),
+} as const;
+
+export const featuredAmbience = [
+  ambienceImages.hero,
+  ambienceImages.spaceOne,
+  ambienceImages.spaceTwo,
+  ambienceImages.spaceThree,
+  ambienceImages.spaceFour,
+  ambienceImages.spaceFive,
+] as const;
+
+export const menuData: MenuHighlight[] = [
+  {
+    name: "Roasted Pineapple Burrata Salad",
+    category: "Salads",
+    description:
+      "Caramelized pineapple served with creamy burrata, fresh greens, and balsamic glaze.",
+    ingredients: "Pineapple, burrata, fresh greens, balsamic glaze",
+    image: foodImages.dishOne,
+  },
+  {
+    name: "Crunchy Futo Maki",
+    category: "Sushi",
+    description:
+      "Thick sushi roll filled with vegetables and crispy tempura flakes.",
+    ingredients: "Sushi rice, nori, vegetables, tempura flakes",
+    image: foodImages.dishTwo,
+  },
+  {
+    name: "Butter Chicken Bao",
+    category: "Bao",
+    description:
+      "Fluffy steamed bao filled with creamy butter chicken.",
+    ingredients: "Steamed bao, butter chicken, house garnish",
+    image: foodImages.dishThree,
+  },
+  {
+    name: "Mala Mushroom",
+    category: "Asian Starters",
+    description:
+      "Mushrooms tossed in spicy Sichuan mala sauce.",
+    ingredients: "Mushrooms, Sichuan mala sauce",
+    image: foodImages.dishFour,
+  },
+  {
+    name: "Chintamani Chicken",
+    category: "South Indian Bar Bites",
+    description:
+      "Tamil Nadu style spicy dry chicken cooked with dry red chilli, baby onion, and curry leaves.",
+    ingredients: "Chicken, dry red chilli, baby onion, curry leaves",
+    image: foodImages.dishFive,
+  },
+  {
+    name: "Cottage Cheese Steak",
+    category: "Grill",
+    description:
+      "Thick grilled paneer steak marinated with herbs and spices, served with chilli sauce and ratatouille.",
+    ingredients: "Paneer, herbs, spices, chilli sauce, ratatouille",
+    image: foodImages.dishSix,
+  },
+] as const;
+
+export const beersData: BeerItem[] = [
+  {
+    name: "Midnight Emperor",
+    style: "Stout",
+    description:
+      "Rich and full-bodied, layered with deep chocolate and roasted coffee aromas with a smooth finish and soft vanilla notes.",
+    image: ambienceImages.spaceSeven,
+  },
+  {
+    name: "Sky Sovereign",
+    style: "NEIPA",
+    description:
+      "A juicy hazy NEIPA bursting with mango, pineapple, and citrus notes, balanced by soft bitterness.",
+    image: ambienceImages.spaceEight,
+  },
+  {
+    name: "Kings Frontier",
+    style: "West Coast IPA",
+    description:
+      "Bright citrus and pine aromas with a clean malt backbone and a dry refreshing finish.",
+    image: ambienceImages.spaceNine,
+  },
+  {
+    name: "Knights Wit",
+    style: "Belgian Wit",
+    description:
+      "Brewed with coriander and orange peel for bright citrus, gentle spice, and a clean finish.",
+    image: ambienceImages.spaceTen,
+  },
+  {
+    name: "Golden Halo",
+    style: "Hefeweizen",
+    description:
+      "Classic wheat beer showing ripe banana, gentle clove spice, and a creamy cloudy mouthfeel.",
+    image: ambienceImages.spaceEleven,
+  },
+  {
+    name: "Orchard Queen",
+    style: "Apple Cider",
+    description:
+      "Crafted from selected apples with gentle sweetness, bright acidity, and a clean elegant finish.",
+    image: ambienceImages.spaceOne,
+  },
+  {
+    name: "Zen Empire",
+    style: "Japanese Lager",
+    description:
+      "Brewed with premium short-grain rice for a light body, subtle sweetness, and a crisp calming finish.",
+    image: ambienceImages.spaceTwo,
+  },
+  {
+    name: "Imperial Fields",
+    style: "Maize Lager",
+    description:
+      "Brewed with premium maize for subtle sweetness, a light refreshing body, and a smooth finish.",
+    image: ambienceImages.spaceThree,
+  },
+] as const;
+
+export const galleryItems: GalleryItem[] = [
+  { id: 1, category: "Ambience", image: ambienceImages.hero, height: "h-80" },
+  { id: 2, category: "Food", image: foodImages.dishOne, height: "h-56" },
+  { id: 3, category: "Ambience", image: ambienceImages.spaceOne, height: "h-64" },
+  { id: 4, category: "Food", image: foodImages.dishTwo, height: "h-72" },
+  { id: 5, category: "Ambience", image: ambienceImages.spaceFour, height: "h-56" },
+  { id: 6, category: "Food", image: foodImages.dishThree, height: "h-80" },
+  { id: 7, category: "Ambience", image: ambienceImages.spaceFive, height: "h-72" },
+  { id: 8, category: "Food", image: foodImages.dishFour, height: "h-56" },
+  { id: 9, category: "Ambience", image: ambienceImages.spaceSix, height: "h-80" },
+  { id: 10, category: "Food", image: foodImages.dishFive, height: "h-56" },
+  { id: 11, category: "Ambience", image: ambienceImages.spaceTen, height: "h-72" },
+  { id: 12, category: "Food", image: foodImages.dishSix, height: "h-64" },
+] as const;
+
+export const menuSections = [
+  {
+    title: "Salads",
+    items: [
+      "Roasted Pineapple Burrata Salad",
+      "Caesar Salad (Veg / Non-Veg)",
+      "Quinoa Salad",
+      "Greek Salad with Feta",
+      "Watermelon Feta Salad",
+      "Green Salad",
+    ],
+  },
+  {
+    title: "Sushi",
+    items: [
+      "Crunchy Futo Maki",
+      "California Roll",
+      "Avocado Asparagus Roll",
+      "Yasai Tempura Roll",
+      "Sriracha Blush Roll",
+      "Chicken Katsu Roll",
+      "Tempura Prawn Roll",
+      "Rainbow Roll",
+      "Spicy Salmon Roll",
+    ],
+  },
+  {
+    title: "Dimsum",
+    items: [
+      "Chicken & Chives Dimsum",
+      "Jhol Chicken Dimsum",
+      "Chicken Gyoza Dimsum",
+      "Wild Mushroom Dimsum",
+      "Edamame Creamy Dimsum",
+      "Corn & Spinach Dimsum",
+      "Cream Cheese Dimsum",
+    ],
+  },
+  {
+    title: "Bao",
+    items: [
+      "Teriyaki Pork Bao",
+      "Crispy Chicken Bao",
+      "Crispy Tofu Bao",
+      "Butter Chicken Bao",
+    ],
+  },
+  {
+    title: "Asian / Wok Starters",
+    items: [
+      "Mala Mushroom",
+      "Classic Chilli Paneer",
+      "Crispy Corn",
+      "Cheese Veg Spring Roll",
+      "Lamb Coriander Cumin",
+      "Ghost Chilli Drumsticks",
+      "Classic Chilli Chicken",
+      "Classic Chilli Prawns",
+      "Thread Fried Prawns",
+      "Mala Chicken",
+      "Prawns Dynamite",
+      "Crispy Fried Wings",
+      "Nam Prik Pla Fish",
+      "Drunken Chicken",
+      "Chicken Spring Roll",
+    ],
+  },
+  {
+    title: "Bar Bites / Appetizers",
+    items: [
+      "Potato Cheese Balls",
+      "Vegetable Bullets",
+      "Hummus with Pita",
+      "Cheese Nachos",
+      "Jalapeno Cheese Tikki",
+      "Chicken Nachos",
+      "Fish Fingers",
+      "Peri Peri Chicken",
+    ],
+  },
+  {
+    title: "South Indian Bar Bites",
+    items: [
+      "Chintamani Chicken",
+      "Chicken Kodiyala Bunch",
+      "Chicken Ghee Roast",
+      "Creamy Coriander Chicken",
+      "Kodi Karam Chips",
+      "Paneer Kodiyala Bunch",
+      "Paneer Ghee Roast",
+      "Royal Roasted Prawns",
+      "Prawns Ghee Roast",
+      "Mutton Ghee Roast",
+      "Mutton Pepper Fry",
+      "Mutton Kheema Balls",
+      "Fish Tawa Fry",
+      "Coorgi Pork",
+    ],
+  },
+  {
+    title: "Indian Main Course",
+    items: [
+      "Dal Bukhara",
+      "Dal Tadka",
+      "Paneer Lababdar",
+      "Kadai Paneer",
+      "Nizami Handi",
+      "Palak Paneer",
+      "Mushroom Hara Pyaz",
+      "Butter Chicken",
+      "Karachi Creamy Chicken",
+      "Chicken Tikka Masala",
+      "Rogan Gosht",
+      "Pepper Mutton Curry",
+      "Mango Fish Curry",
+      "Egg Masala",
+    ],
+  },
+  {
+    title: "Quick Bar Snacks",
+    items: [
+      "Peanut Masala",
+      "Salt / Peri Peri French Fries / Rosemary Potato Wedges",
+      "Chicken Pop Corn",
+      "Garlic Bread / Cheese Garlic Bread",
+    ],
+  },
+  {
+    title: "South Special Main Course",
+    items: [
+      "Country Chicken & Rice",
+      "Andhra Chilli Chicken with Neer Dosa / Porotta / Samiya",
+      "Legends Biryani Chicken / Mutton",
+    ],
+  },
+  {
+    title: "Tandoor",
+    items: [
+      "Hara Shame Kebab",
+      "Dahi Ke Kebab",
+      "Paneer Tikka (Lal Mirch)",
+      "Mushroom Cheese Melt",
+      "Chicken Kebab",
+      "All Time Fried Legends Chicken Kebab",
+      "Gulab Chandani Murgh",
+      "Pathar Ka Gosht",
+      "Tandoori Fish Tikka",
+      "Mutton Seekh Kebab",
+      "Lucknow Murgh Tikka",
+      "Tandoori Chicken",
+      "Tangdi Kebab",
+      "Tandoori Pomfret",
+      "Bungalow Jinga",
+    ],
+  },
+  {
+    title: "Grill",
+    items: [
+      "Cottage Cheese Steak",
+      "Grilled Chicken",
+      "Grilled Fish",
+    ],
+  },
+  {
+    title: "Pizza & Pasta",
+    items: [
+      "Classic Margherita",
+      "Burrata & Basil Pizza",
+      "Fungi Pizza",
+      "Basil Almond Pesto Pizza",
+      "Paneer Tikka Pizza",
+      "Garden Vegetable Pizza",
+      "Peri Peri Chicken Pizza",
+      "Pepperoni Pizza",
+      "Seafood Pizza",
+      "BBQ Chicken Pizza",
+      "Penne Alfredo (Veg / Non-Veg)",
+      "Penne Arrabbiata (Veg / Non-Veg)",
+      "Penne Basil Pesto (Veg / Non-Veg)",
+      "Spaghetti Aglio e Olio (Veg / Non-Veg)",
+    ],
+  },
+  {
+    title: "Asian Main Course",
+    items: [
+      "Classic Fried Rice (Veg / Chicken / Prawn)",
+      "Wild Mushroom Fried Rice",
+      "Butter Garlic Fried Rice (Veg / Chicken / Prawn)",
+      "Schezwan Fried Rice (Veg / Chicken / Prawn)",
+      "Kung Pao Chicken Combo",
+      "Wok Tossed Noodles (Veg / Chicken / Prawn)",
+      "Mee Goreng (Veg / Chicken / Prawn)",
+      "Pad Thai (Veg / Chicken / Prawn)",
+      "Thai Red Curry (Veg / Chicken / Prawn)",
+      "Thai Green Curry (Veg / Chicken / Prawn)",
+      "Chilli Wok Curry (Veg / Chicken / Prawn)",
+      "Hunan Wok Curry (Veg / Chicken / Prawn)",
+    ],
+  },
+  {
+    title: "Breads & Rice",
+    items: [
+      "Roti",
+      "Naan",
+      "Kulcha",
+      "Laccha Paratha",
+      "Malabar Paratha",
+      "Chilli Cheese Naan",
+      "Steamed Rice",
+      "Ghee Rice",
+      "Jeera Rice",
+      "Curd Rice",
+    ],
+  },
+  {
+    title: "Burgers",
+    items: [
+      "Tandoori Chicken Burger",
+      "Crispy Chicken Burger",
+      "Grilled Chicken Burger",
+    ],
+  },
+  {
+    title: "Desserts & Ice Cream",
+    items: [
+      "Gajar ka Halwa",
+      "Lotus Biscoff Cheese Cake",
+      "Chocolate Walnut Brownie",
+      "Chocolate Caramel Tart",
+      "Choco Lava Cake",
+      "Banoffee Pie",
+      "Belgian Bliss",
+      "Vanilla",
+      "Mango",
+      "Very Berry Strawberry",
+    ],
+  },
+] as const;

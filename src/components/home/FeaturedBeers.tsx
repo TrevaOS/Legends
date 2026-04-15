@@ -23,6 +23,7 @@ export const FeaturedBeers = () => {
               <BeerCard
                 key={b.name}
                 name={b.name}
+                style={b.style}
                 abv={b.abv}
                 description={b.description}
                 ibu={b.ibu}
@@ -58,10 +59,14 @@ export const FeaturedBeers = () => {
               <img src={selectedBeer.image} alt={selectedBeer.name} className="h-64 w-full object-cover" />
               <div className="p-6">
                 <h2 className="royal-heading text-4xl text-[#f5f0e8]">{selectedBeer.name}</h2>
-                <p className="mt-3 text-[#cbbca1]">Style: {selectedBeer.style} | ABV: {selectedBeer.abv} | IBU: {selectedBeer.ibu}</p>
-                <p className="mt-2">Price: INR {selectedBeer.price}</p>
+                <p className="mt-3 text-[#cbbca1]">
+                  {[`Style: ${selectedBeer.style}`, selectedBeer.abv ? `ABV: ${selectedBeer.abv}` : null, selectedBeer.ibu ? `IBU: ${selectedBeer.ibu}` : null]
+                    .filter(Boolean)
+                    .join(" | ")}
+                </p>
+                {selectedBeer.price ? <p className="mt-2">Price: INR {selectedBeer.price}</p> : null}
                 <p className="mt-4 text-[#e8e0d0]">{selectedBeer.description}</p>
-                <p className="mt-2 text-sm text-[#cbbca1]">Best paired with: {selectedBeer.pair}</p>
+                {selectedBeer.pair ? <p className="mt-2 text-sm text-[#cbbca1]">Best paired with: {selectedBeer.pair}</p> : null}
                 <button
                   type="button"
                   onClick={() => setActiveBeer(null)}
