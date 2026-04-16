@@ -72,7 +72,7 @@ export const LaunchPopup = () => {
               </p>
 
               <div className="mt-5 ornamental-border rounded-xl p-4">
-                <p className="royal-heading text-2xl text-[#a98f63]">16 April 2026</p>
+                <p className="royal-heading text-2xl text-[#a98f63]">17 April 2026</p>
                 <p className="text-[#e8e0d0] text-sm mt-1">7:00 PM Onwards</p>
               </div>
 

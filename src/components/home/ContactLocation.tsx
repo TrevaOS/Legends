@@ -25,7 +25,7 @@ export const ContactLocation = () => (
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a98f63" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.9 12.5 19.79 19.79 0 0 1 1.87 4 2 2 0 0 1 3.86 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
-            <p>+91 99999 99999</p>
+            <p>+91 81239 79966</p>
           </div>
 
           <div className="flex items-center gap-3 text-sm text-[#e8e0d0]">
@@ -33,7 +33,7 @@ export const ContactLocation = () => (
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <polyline points="2,4 12,13 22,4" />
             </svg>
-            <p>support@legendsbrewery.in</p>
+            <p>reservations@legendsbrwery.in</p>
           </div>
         </article>
       </div>

@@ -18,7 +18,7 @@ export const EventsTeaser = () => (
             Passion · Craftsmanship · Timeless Grandeur
           </p>
           <div className="h-px bg-[#a98f63]/40 my-5" />
-          <p className="royal-heading text-3xl text-[#a98f63]">16 April 2026</p>
+          <p className="royal-heading text-3xl text-[#a98f63]">17 April 2026</p>
           <p className="text-[#e8e0d0] mt-2 text-lg">7:00 PM Onwards</p>
           <p className="text-[#cbbca1] mt-1 text-sm">Signature brews. Royal feasts. A night to remember.</p>
         </div>

@@ -47,8 +47,8 @@ export const Footer = () => {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#a98f63]">Connect</p>
             <div className="mt-4 flex flex-col gap-2.5 text-sm text-[#cbbca1]">
-              <p>support@legendsbrewery.in</p>
-              <p>+91 99999 99999</p>
+              <p>reservations@legendsbrwery.in</p>
+              <p>+91 81239 79966</p>
               <a
                 href="https://www.instagram.com/legendsbreweryblr/"
                 target="_blank"

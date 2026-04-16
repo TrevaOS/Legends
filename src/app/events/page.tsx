@@ -46,7 +46,7 @@ export default function EventsPage() {
               </svg>
               <div>
                 <p className="text-[10px] text-[#cbbca1] uppercase tracking-widest">Date</p>
-                <p className="royal-heading text-xl text-[#f5f0e8]">16 April 2026</p>
+                <p className="royal-heading text-xl text-[#f5f0e8]">17 April 2026</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
