@@ -4,30 +4,30 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { beersData } from "@/lib/data";
 
-// 8 distinct beer mug / pint glass photos — one per beer
+// Direct Unsplash image IDs from the provided URLs
 const beerImages: Record<string, string> = {
-  // Stout — dark black stout pint
+  // https://unsplash.com/photos/a-glass-of-beer-on-the-table-COR0PuNzRP0
   "Midnight Emperor":
-    "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800&q=80&fit=crop",
-  // NEIPA — hazy orange cloudy pint
+    "https://images.unsplash.com/photo-1559526323-cb2f2fe2591b?w=800&q=80&fit=crop",
+  // https://unsplash.com/photos/two-glasses-of-beer-and-a-plate-of-chips-emxnsiKpqAE
   "Sky Sovereign":
-    "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=800&q=80&fit=crop",
-  // West Coast IPA — golden amber pint glass
+    "https://images.unsplash.com/photo-1575367439058-6096bb9cf5e2?w=800&q=80&fit=crop",
+  // https://unsplash.com/photos/a-glass-of-beer-sitting-on-top-of-a-wooden-table-AJ73tDEX4nQ
   "Kings Frontier":
-    "https://images.unsplash.com/photo-1518176258769-f227c798150e?w=800&q=80&fit=crop",
-  // Belgian Wit — pale cloudy wheat beer
+    "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800&q=80&fit=crop",
+  // https://unsplash.com/photos/cold-mug-of-beer--0IhYpOOJNo
   "Knights Wit":
-    "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=800&q=80&fit=crop",
-  // Hefeweizen — tall weizen glass with foam
+    "https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=800&q=80&fit=crop",
+  // https://unsplash.com/photos/a-mug-of-beer-sitting-next-to-a-bottle-of-beer-aHYbkatsW98
   "Golden Halo":
-    "https://images.unsplash.com/photo-1583242025264-e3e0b9e56c46?w=800&q=80&fit=crop",
-  // Apple Cider — golden cider pint with bubbles
+    "https://images.unsplash.com/photo-1584225064785-c62a8b43d148?w=800&q=80&fit=crop",
+  // https://unsplash.com/photos/two-glasses-of-tea-sit-on-a-tray-JcjI16vSBgM
   "Orchard Queen":
-    "https://images.unsplash.com/photo-1601924582970-9238bcb495d9?w=800&q=80&fit=crop",
-  // Japanese Lager — crisp clear lager mug
+    "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=800&q=80&fit=crop",
+  // https://unsplash.com/photos/a-mug-of-beer-on-a-bar-vexrSwTropM
   "Zen Empire":
     "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=800&q=80&fit=crop",
-  // Maize Lager — pale golden lager pint
+  // https://unsplash.com/photos/two-mugs-of-beer-sitting-on-a-table-9rEeUcKHcoI
   "Imperial Fields":
     "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=800&q=80&fit=crop",
 };
@@ -60,7 +60,7 @@ export default function BeersPage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#13080a] via-transparent to-transparent" />
-                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/60 px-2 py-1 rounded-full">
+                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/70 px-2 py-1 rounded-full">
                   {beer.style}
                 </span>
               </div>
@@ -83,7 +83,7 @@ export default function BeersPage() {
         })}
       </div>
 
-      {/* Modal */}
+      {/* Detail modal */}
       <AnimatePresence>
         {selectedBeer ? (
           <motion.div
