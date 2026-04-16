@@ -1,39 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 import { brandAssets } from "@/lib/branding";
 import { featuredAmbience } from "@/lib/data";
 
 const DRIVE_FILE_ID = "13Fz7AKNQ0wyq0ogtmASd4TOmpGU0W-zz";
-const driveVideoSources = [
-  `https://drive.usercontent.google.com/download?id=${DRIVE_FILE_ID}&export=view&authuser=0`,
-  `https://drive.google.com/uc?export=download&id=${DRIVE_FILE_ID}`,
-] as const;
+const videoUrl = `https://drive.google.com/file/d/${DRIVE_FILE_ID}/preview?autoplay=1`;
 
 export const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [loaded, setLoaded] = useState(false);
+  const [showFallback, setShowFallback] = useState(true);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const timer = window.setTimeout(() => {
+      setShowFallback(false);
+    }, 1800);
 
-    const tryPlay = () => {
-      void video.play().then(() => setLoaded(true)).catch(() => {
-        setLoaded(false);
-      });
-    };
-
-    tryPlay();
-    video.addEventListener("canplay", tryPlay);
-    video.addEventListener("loadeddata", tryPlay);
-
-    return () => {
-      video.removeEventListener("canplay", tryPlay);
-      video.removeEventListener("loadeddata", tryPlay);
-    };
+    return () => window.clearTimeout(timer);
   }, []);
 
   return (
@@ -42,29 +26,26 @@ export const HeroSection = () => {
         src={featuredAmbience[0]}
         alt=""
         aria-hidden="true"
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${loaded ? "opacity-0" : "opacity-100"}`}
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${showFallback ? "opacity-100" : "opacity-0"}`}
       />
 
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={featuredAmbience[0]}
+      <iframe
+        src={videoUrl}
+        title="Legends hero background video"
         aria-hidden="true"
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${loaded ? "opacity-100" : "opacity-0"}`}
-        onCanPlay={() => setLoaded(true)}
-        onLoadedData={() => setLoaded(true)}
-        onError={() => setLoaded(false)}
-      >
-        {driveVideoSources.map((src) => (
-          <source key={src} src={src} type="video/mp4" />
-        ))}
-      </video>
+        allow="autoplay; fullscreen"
+        className="absolute border-0 pointer-events-none"
+        onLoad={() => setShowFallback(false)}
+        style={{
+          width: "calc(100% + 320px)",
+          height: "calc(100% + 320px)",
+          top: "-160px",
+          left: "-160px",
+        }}
+      />
 
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,2,5,0.45)_0%,rgba(10,2,5,0.58)_55%,rgba(8,4,6,0.92)_100%)]" />
+
       <div className="relative mx-auto w-full max-w-5xl px-6 pb-16 pt-28 lg:pt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -96,7 +77,8 @@ export const HeroSection = () => {
           transition={{ delay: 0.25, duration: 0.7 }}
           className="royal-heading mt-4 text-5xl leading-none text-[#f6ecdf] md:text-6xl lg:text-7xl"
         >
-          Welcome to the<br />
+          Welcome to the
+          <br />
           <span className="text-[#cbbca1]">Kingdom of Brews</span>
         </motion.h1>
 
