@@ -33,11 +33,8 @@ export default function GalleryPage() {
     <div className="mx-auto max-w-6xl px-6 py-16">
       <p className="text-xs uppercase tracking-[0.45em] text-[#a98f63]">Gallery</p>
       <h1 className="royal-heading mt-4 text-5xl text-[#f5f0e8] md:text-6xl">
-        A creative mixed layout, without the extra toggle buttons.
+        Inside the Kingdom
       </h1>
-      <p className="mt-4 max-w-3xl text-[#d8ccb7]">
-        Venue moments and food shots now sit in one balanced layout so the page feels designed instead of switchable.
-      </p>
 
       <div className="mt-6 flex flex-wrap gap-3">
         {filters.map((f) => (

@@ -5,7 +5,7 @@ import { OrnamentalDivider } from "@/components/ui/OrnamentalDivider";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 import { beersData } from "@/lib/data";
 
-// Curated Unsplash beer images matched to each beer style
+// Proper craft beer images per style
 const beerImages: Record<string, string> = {
   "Midnight Emperor":
     "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&q=80",

@@ -91,7 +91,7 @@ export const FlipbookMenu = () => {
         try {
           book.turn("destroy");
         } catch {
-          // Ignore teardown noise from turn.js when the component unmounts mid-transition.
+          // ignore teardown
         }
       };
     };
@@ -112,29 +112,26 @@ export const FlipbookMenu = () => {
     <div className="menu-book-shell px-4 py-10 md:px-6 md:py-14">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8">
-          <p className="text-xs uppercase tracking-[0.45em] text-[#c28a57]">Legends Menu Book</p>
-          <h1 className="royal-heading mt-3 text-4xl text-[#fff4e8] md:text-6xl">Flip through the menu</h1>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#ead8c6] md:text-base">
-            Use the arrows to navigate through our full food and drinks menu.
-          </p>
+          <p className="text-xs uppercase tracking-[0.45em] text-[#c28a57]">Kingdom of Brews</p>
+          <h1 className="royal-heading mt-3 text-4xl text-[#fff4e8] md:text-6xl">Our Menu</h1>
         </div>
 
         <div className="mb-6 flex items-center justify-between">
           <button
             type="button"
             onClick={() => turnPage("previous")}
-            className="inline-flex items-center gap-2 rounded-full border border-[#d2a871]/45 px-4 py-2 text-sm text-[#fff4e8]"
+            className="inline-flex items-center gap-2 rounded-full border border-[#d2a871]/45 px-5 py-2.5 text-sm text-[#fff4e8] hover:border-[#d2a871] transition-colors"
           >
             <ChevronLeft className="h-4 w-4" />
-            Previous
+            Prev
           </button>
           <p className="text-xs uppercase tracking-[0.35em] text-[#caa17b]">
-            Page {currentPage} of {pages.length}
+            {currentPage} / {pages.length}
           </p>
           <button
             type="button"
             onClick={() => turnPage("next")}
-            className="inline-flex items-center gap-2 rounded-full border border-[#d2a871]/45 px-4 py-2 text-sm text-[#fff4e8]"
+            className="inline-flex items-center gap-2 rounded-full border border-[#d2a871]/45 px-5 py-2.5 text-sm text-[#fff4e8] hover:border-[#d2a871] transition-colors"
           >
             Next
             <ChevronRight className="h-4 w-4" />
@@ -149,7 +146,7 @@ export const FlipbookMenu = () => {
                   <div className="menu-book-paper menu-book-cover">
                     <img
                       src={featuredAmbience[0]}
-                      alt="Legends ambience cover"
+                      alt="Legends ambience"
                       className="absolute inset-0 h-full w-full object-cover opacity-20"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(82,15,25,0.18),rgba(82,15,25,0.72))]" />
@@ -160,12 +157,12 @@ export const FlipbookMenu = () => {
                           Legends
                         </h2>
                         <p className="mt-4 max-w-sm text-sm leading-7 text-[#f6e8d7]">
-                          A printed-style menu experience for the food and beer lineup at Legends.
+                          Craft beers, signature dishes, and royal flavours — all in one place.
                         </p>
                       </div>
                       <div className="rounded-[1.75rem] border border-[#deb17c]/50 bg-[#f5e7d6]/90 p-5 text-[#5f1f2b]">
-                        <p className="text-xs uppercase tracking-[0.35em] text-[#8d3a46]">Featured this round</p>
-                        <p className="royal-heading mt-3 text-2xl">Bar bites, grills, biryani, burgers, and dessert</p>
+                        <p className="text-xs uppercase tracking-[0.35em] text-[#8d3a46]">Today&apos;s highlights</p>
+                        <p className="royal-heading mt-3 text-2xl">Bar bites, grills, biryani, burgers, and desserts</p>
                       </div>
                     </div>
                   </div>
@@ -174,7 +171,6 @@ export const FlipbookMenu = () => {
                 {page.kind === "section" ? (
                   <div className="menu-book-paper">
                     <div className="menu-book-scroll">
-                      <p className="menu-book-kicker">Section {page.pageNumber - 1}</p>
                       <h2 className="royal-heading text-4xl text-[#7f2438]">{page.title}</h2>
                       <div className="mt-5 h-px bg-[linear-gradient(90deg,#b78b54,transparent)]" />
                       <ul className="mt-6 space-y-3 text-[#55352f]">
@@ -188,25 +184,21 @@ export const FlipbookMenu = () => {
                         ))}
                       </ul>
                     </div>
-                    <p className="menu-book-footer">Legends menu book</p>
+                    <p className="menu-book-footer">Legends</p>
                   </div>
                 ) : null}
 
                 {page.kind === "beer" ? (
                   <div className="menu-book-paper">
                     <div className="menu-book-scroll">
-                      <p className="menu-book-kicker">Beer Lineup</p>
-                      <h2 className="royal-heading text-4xl text-[#7f2438]">Signature brews</h2>
+                      <h2 className="royal-heading text-4xl text-[#7f2438]">Signature Brews</h2>
                       <div className="mt-6 grid gap-4">
                         {beersData.map((beer) => (
                           <div key={beer.name} className="rounded-[1.25rem] border border-[#e3caa8] bg-[#fffaf4] p-4">
-                            <div className="flex items-start gap-4">
-                              <img src={beer.image} alt={beer.name} className="hidden h-20 w-20 rounded-2xl object-cover sm:block" />
-                              <div>
-                                <p className="royal-heading text-2xl text-[#5d1e2a]">{beer.name}</p>
-                                <p className="mt-1 text-xs uppercase tracking-[0.28em] text-[#a2643a]">{beer.style}</p>
-                                <p className="mt-3 text-sm leading-6 text-[#5f4037]">{beer.description}</p>
-                              </div>
+                            <div>
+                              <p className="royal-heading text-2xl text-[#5d1e2a]">{beer.name}</p>
+                              <p className="mt-1 text-xs uppercase tracking-[0.28em] text-[#a2643a]">{beer.style}</p>
+                              <p className="mt-3 text-sm leading-6 text-[#5f4037]">{beer.description}</p>
                             </div>
                           </div>
                         ))}

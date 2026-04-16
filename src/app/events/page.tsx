@@ -35,14 +35,22 @@ export default function EventsPage() {
 
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <span className="text-[#a98f63] text-2xl">📅</span>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a98f63" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
               <div>
                 <p className="text-xs text-[#cbbca1] uppercase tracking-widest">Date</p>
                 <p className="royal-heading text-2xl text-[#f5f0e8]">16 April 2026</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-[#a98f63] text-2xl">🕖</span>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a98f63" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                <circle cx="12" cy="12" r="9" />
+                <polyline points="12 7 12 12 15 15" />
+              </svg>
               <div>
                 <p className="text-xs text-[#cbbca1] uppercase tracking-widest">Time</p>
                 <p className="royal-heading text-2xl text-[#f5f0e8]">7:00 PM Onwards</p>
@@ -66,7 +74,7 @@ export default function EventsPage() {
             rel="noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#a98f63] text-[#200b0f] font-semibold px-6 py-3 hover:bg-[#cbbca1] transition-colors"
           >
-            Follow for Updates →
+            Follow for Updates
           </a>
         </div>
       </div>
