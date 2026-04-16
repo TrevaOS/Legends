@@ -13,19 +13,24 @@ export default function AboutPage() {
         <section className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <article>
             <p className="text-lg leading-relaxed">
-              From the moment you step in, you are not just welcomed, you are crowned. Legends is
-              built on craftsmanship, hospitality, and heroic celebration.
+              Legends was born from a singular vision: to create a space where every guest feels
+              like royalty. We set out to build not just a brewery but a kingdom where bold flavours,
+              warm hospitality, an unforgettable atmosphere come together under one roof.
             </p>
             <p className="mt-5 text-base leading-relaxed text-[#cbbca1]">
-              Every brew we craft tells a story of bold choices, of patience, of passion poured
-              into every pint. Our space overlooks Bengaluru&apos;s skyline as a reminder that
-              great things happen when you dare to dream bigger than the city itself.
+              Every pint we pour carries the weight of meticulous craft. From the grain selection
+              to the final pour, our brewmasters treat each batch as a signature work. We believe
+              that great beer deserves great company, great food, a setting that elevates every sip.
+            </p>
+            <p className="mt-5 text-base leading-relaxed text-[#cbbca1]">
+              Rooted in Bengaluru with a spirit that reaches far beyond the city, Legends stands as
+              a celebration of courage, creativity, the relentless pursuit of excellence.
             </p>
           </article>
           <div className="rounded-2xl overflow-hidden border border-[#a98f63]/30 h-80">
             <img
-              src={featuredAmbience[1]}
-              alt="Legends interior ambience"
+              src={featuredAmbience[2]}
+              alt="Legends interior"
               className="h-full w-full object-cover"
               loading="lazy"
             />
@@ -40,15 +45,15 @@ export default function AboutPage() {
           {[
             {
               title: "Craftsmanship",
-              desc: "Every brew is made with single-minded dedication no shortcuts, no compromises.",
+              desc: "Every brew is made with single-minded dedication. No shortcuts. No compromises. Only the finest.",
             },
             {
               title: "Quality",
-              desc: "From grain to glass, only the finest ingredients find their way into your pint.",
+              desc: "From grain to glass, only the finest ingredients find their way into your pint at Legends.",
             },
             {
               title: "Heritage",
-              desc: "Rooted in the art of brewing with a vision that honours both tradition and boldness.",
+              desc: "Rooted in the art of brewing with a vision that honours both tradition and bold innovation.",
             },
           ].map((item) => (
             <article key={item.title} className="ornamental-border rounded-xl p-6">
@@ -85,7 +90,6 @@ export default function AboutPage() {
           </div>
         </section>
       </AnimatedSection>
-
     </div>
   );
 }

@@ -26,10 +26,11 @@ export const AboutPreview = () => (
         <div>
           <p className="text-xs uppercase tracking-[0.45em] text-[#a98f63]">Our Story</p>
           <h2 className="royal-heading mt-4 text-4xl text-[#f5f0e8] md:text-5xl">
-            Built for Those Who Dare to Dream Bigger
+            Built for Those Who Dare to{" "}
+            <span className="text-[#a98f63]">Dream Bigger</span>
           </h2>
           <p className="mt-5 text-base leading-7 text-[#cbbca1]">
-            From the moment you step in, you are not just welcomed — you are crowned. Legends is built on craftsmanship, hospitality, and the art of the perfect brew.
+            From the moment you step in, you are not just welcomed. You are Crowned. Legends is built on Craftsmanship, Hospitality, the Art of the Perfect Brew.
           </p>
           <Link
             href="/about"

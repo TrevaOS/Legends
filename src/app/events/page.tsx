@@ -30,7 +30,7 @@ export default function EventsPage() {
               <span className="text-[#a98f63]">Legends Microbrewery</span>
             </h2>
             <p className="mt-3 text-sm text-[#cbbca1] leading-relaxed">
-              A celebration of passion, craftsmanship, and timeless grandeur. Signature brews, royal feasts. A night to remember.
+              A celebration of passion, craftsmanship, timeless grandeur. Signature brews, royal feasts. A night to remember.
             </p>
           </div>
 

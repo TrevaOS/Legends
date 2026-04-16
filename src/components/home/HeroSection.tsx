@@ -1,27 +1,45 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 import { brandAssets } from "@/lib/branding";
 
-// Google Drive file ID from the shared link
 const DRIVE_FILE_ID = "13Fz7AKNQ0wyq0ogtmASd4TOmpGU0W-zz";
+// Google Drive direct stream — works for background autoplay without controls
+const VIDEO_SRC = `https://drive.google.com/uc?export=preview&id=${DRIVE_FILE_ID}`;
 
 export const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play().catch(() => {
+      // Autoplay blocked — retry on first user interaction
+      const retry = () => { v.play(); document.removeEventListener("click", retry); };
+      document.addEventListener("click", retry);
+    });
+  }, []);
+
   return (
     <section className="relative flex h-screen max-h-[100dvh] items-center overflow-hidden">
-      {/* Drive video embed — autoplay, muted, no UI chrome */}
-      <iframe
-        src={`https://drive.google.com/file/d/${DRIVE_FILE_ID}/preview`}
-        allow="autoplay; fullscreen"
-        allowFullScreen
-        className="pointer-events-none absolute inset-0 h-[calc(100%+120px)] w-[calc(100%+120px)] -left-[60px] -top-[60px] border-0"
-        aria-hidden="true"
-        title="background video"
+      {/* Muted background video — no controls, loops silently */}
+      <video
+        ref={videoRef}
+        src={VIDEO_SRC}
+        autoPlay
+        muted
+        loop
+        playsInline
+        disablePictureInPicture
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ pointerEvents: "none" }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,2,5,0.50)_0%,rgba(10,2,5,0.62)_55%,rgba(8,4,6,0.90)_100%)]" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,2,5,0.48)_0%,rgba(10,2,5,0.60)_55%,rgba(8,4,6,0.90)_100%)]" />
 
       {/* Content */}
       <div className="relative mx-auto w-full max-w-5xl px-6 pb-16 pt-28 lg:pt-32">
@@ -65,7 +83,7 @@ export const HeroSection = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mt-4 max-w-lg text-sm leading-6 text-[#ead8c6] md:text-base"
         >
-          Bengaluru&apos;s finest microbrewery. Bold craft beers, royal feasts, and an atmosphere fit for legends.
+          Bengaluru&apos;s finest microbrewery. Bold craft beers, royal feasts, an atmosphere fit for legends.
         </motion.p>
 
         <motion.div

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 const quotes = [
-  "Legendary places run on honest opinions, and Legends serves both flavor and soul.",
+  "Legendary places run on honest opinions andLegends serves both flavor and soul.",
   "From the first pour to the final toast, every detail feels royal.",
   "Brewed for Heroes is not just a line, it is the full experience.",
 ];

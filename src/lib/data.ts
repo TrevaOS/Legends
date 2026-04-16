@@ -65,7 +65,7 @@ export const menuData: MenuHighlight[] = [
     name: "Roasted Pineapple Burrata Salad",
     category: "Salads",
     description:
-      "Caramelized pineapple served with creamy burrata, fresh greens, and balsamic glaze.",
+      "Caramelized pineapple served with creamy burrata, fresh greens andbalsamic glaze.",
     ingredients: "Pineapple, burrata, fresh greens, balsamic glaze",
     image: foodImages.dishOne,
   },
@@ -97,7 +97,7 @@ export const menuData: MenuHighlight[] = [
     name: "Chintamani Chicken",
     category: "South Indian Bar Bites",
     description:
-      "Tamil Nadu style spicy dry chicken cooked with dry red chilli, baby onion, and curry leaves.",
+      "Tamil Nadu style spicy dry chicken cooked with dry red chilli, baby onion andcurry leaves.",
     ingredients: "Chicken, dry red chilli, baby onion, curry leaves",
     image: foodImages.dishFive,
   },
@@ -123,7 +123,7 @@ export const beersData: BeerItem[] = [
     name: "Sky Sovereign",
     style: "NEIPA",
     description:
-      "A juicy hazy NEIPA bursting with mango, pineapple, and citrus notes, balanced by soft bitterness.",
+      "A juicy hazy NEIPA bursting with mango, pineapple andcitrus notes, balanced by soft bitterness.",
     image: ambienceImages.spaceEight,
   },
   {
@@ -137,35 +137,35 @@ export const beersData: BeerItem[] = [
     name: "Knights Wit",
     style: "Belgian Wit",
     description:
-      "Brewed with coriander and orange peel for bright citrus, gentle spice, and a clean finish.",
+      "Brewed with coriander and orange peel for bright citrus, gentle spice anda clean finish.",
     image: ambienceImages.spaceTen,
   },
   {
     name: "Golden Halo",
     style: "Hefeweizen",
     description:
-      "Classic wheat beer showing ripe banana, gentle clove spice, and a creamy cloudy mouthfeel.",
+      "Classic wheat beer showing ripe banana, gentle clove spice anda creamy cloudy mouthfeel.",
     image: ambienceImages.spaceEleven,
   },
   {
     name: "Orchard Queen",
     style: "Apple Cider",
     description:
-      "Crafted from selected apples with gentle sweetness, bright acidity, and a clean elegant finish.",
+      "Crafted from selected apples with gentle sweetness, bright acidity anda clean elegant finish.",
     image: ambienceImages.spaceOne,
   },
   {
     name: "Zen Empire",
     style: "Japanese Lager",
     description:
-      "Brewed with premium short-grain rice for a light body, subtle sweetness, and a crisp calming finish.",
+      "Brewed with premium short-grain rice for a light body, subtle sweetness anda crisp calming finish.",
     image: ambienceImages.spaceTwo,
   },
   {
     name: "Imperial Fields",
     style: "Maize Lager",
     description:
-      "Brewed with premium maize for subtle sweetness, a light refreshing body, and a smooth finish.",
+      "Brewed with premium maize for subtle sweetness, a light refreshing body anda smooth finish.",
     image: ambienceImages.spaceThree,
   },
 ] as const;

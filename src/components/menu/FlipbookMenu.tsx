@@ -88,12 +88,12 @@ export const FlipbookMenu = () => {
                     <p className="text-xs uppercase tracking-[0.5em] text-[#9d5a3d]">Kingdom of Brews</p>
                     <h2 className="royal-heading mt-4 text-6xl text-[#5d1e2a] leading-tight">Legends</h2>
                     <p className="mt-4 text-sm leading-7 text-[#7a4a3a] max-w-sm">
-                      Craft beers, signature dishes, and royal flavours — all in one place.
+                      Craft beers, signature dishes, royal flavours. All in one place.
                     </p>
                   </div>
                   <div className="mt-8 rounded-2xl border border-[#deb17c]/50 bg-[#fdf0e0] p-5">
                     <p className="text-xs uppercase tracking-[0.35em] text-[#8d3a46]">Today&apos;s highlights</p>
-                    <p className="royal-heading mt-2 text-xl text-[#5d1e2a]">Bar bites, grills, biryani, burgers, and desserts</p>
+                    <p className="royal-heading mt-2 text-xl text-[#5d1e2a]">Bar Bites, Grills, Biryani, Burgers, Desserts</p>
                   </div>
                 </div>
               )}
