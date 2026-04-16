@@ -63,7 +63,7 @@ body {
 .masonry-grid { column-count: 3; column-gap: 16px; }
 .masonry-item { break-inside: avoid; margin-bottom: 16px; }
 
-/* Royal diamond trellis pattern — used as section backgrounds */
+/* Royal diamond trellis pattern used as section backgrounds */
 .royal-pattern {
   background-color: #13080a;
   background-image:

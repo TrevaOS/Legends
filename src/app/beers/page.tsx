@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { beersData } from "@/lib/data";
 
 // Curated Unsplash beer images matched to each beer style
@@ -25,14 +25,8 @@ const beerImages: Record<string, string> = {
 };
 
 export default function BeersPage() {
-  const filters = useMemo(() => ["All", ...new Set(beersData.map((beer) => beer.style))], []);
-  const [filter, setFilter] = useState("All");
   const [activeBeer, setActiveBeer] = useState<string | null>(null);
-
-  const list = useMemo(() => {
-    if (filter === "All") return [...beersData];
-    return beersData.filter((b) => b.style === filter);
-  }, [filter]);
+  const list = [...beersData];
 
   const selectedBeer = list.find((beer) => beer.name === activeBeer) ?? null;
 
@@ -42,21 +36,6 @@ export default function BeersPage() {
       <p className="mt-4 max-w-3xl text-[#d8ccb7]">
         Crafted with passion, every pint tells the story of the kingdom.
       </p>
-      <div className="mt-6 flex flex-wrap gap-3">
-        {filters.map((f) => (
-          <button
-            key={f}
-            onClick={() => setFilter(f)}
-            className={`px-4 py-2 rounded-full border transition-colors ${
-              filter === f
-                ? "bg-[#a98f63] text-[#200b0f] border-[#a98f63]"
-                : "border-[#a98f63]/60 text-[#e8e0d0] hover:border-[#a98f63]"
-            }`}
-          >
-            {f}
-          </button>
-        ))}
-      </div>
 
       <AnimatePresence mode="popLayout">
         <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">

@@ -43,7 +43,6 @@ export default function ContactPage() {
           <p className="mt-4">Sy. No. 16/2, Sy. No. 17/4 and 5, Panathur Main Road, Balagere, Varthur Hobli, Bengaluru - 560087</p>
           <p className="mt-2">+91 99999 99999</p>
           <p>support@legendsbrewery.in</p>
-          <p className="mt-2">Mon-Thu 12pm-11pm, Fri-Sun 12pm-12am</p>
         </article>
       </div>
       <iframe title="map" className="w-full mt-8 h-80 rounded-2xl border border-[#a98f63]/35" src="https://www.google.com/maps?q=Panathur+Main+Road+Bengaluru&output=embed" loading="lazy" />

@@ -115,7 +115,7 @@ export const FlipbookMenu = () => {
           <p className="text-xs uppercase tracking-[0.45em] text-[#c28a57]">Legends Menu Book</p>
           <h1 className="royal-heading mt-3 text-4xl text-[#fff4e8] md:text-6xl">Flip through the menu</h1>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#ead8c6] md:text-base">
-            The menu now opens straight into the booklet without the extra source cards, welcome spread, or PDF download buttons.
+            Use the arrows to navigate through our full food and drinks menu.
           </p>
         </div>
 

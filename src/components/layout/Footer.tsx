@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="h-[2px] bg-gradient-to-r from-transparent via-[#a98f63] to-transparent" />
       <div className="max-w-7xl mx-auto px-6 py-12 text-[#e8e0d0]">
         <div className="flex flex-col md:flex-row md:items-start gap-10">
-          {/* Logo — left aligned */}
+          {/* Logo left aligned */}
           <div className="flex-shrink-0 flex flex-col items-start">
             <div className="relative h-20 w-20 overflow-hidden rounded-full border border-[#a98f63]/40 bg-[#1d0b14] shadow-[0_0_30px_rgba(169,143,99,0.14)]">
               <img
@@ -39,7 +39,8 @@ export const Footer = () => {
               <p className="font-semibold text-[#a98f63]">Visit Us</p>
               <div className="mt-2 flex flex-col gap-2 text-[#cbbca1]">
                 <p>Bengaluru, Karnataka</p>
-                <p>Open daily from 12 PM</p>
+                <p>Mon-Thu 12pm-11pm</p>
+                <p>Fri-Sun 12pm-12am</p>
                 <Link href="/reservations" className="hover:text-[#a98f63] transition-colors">Book a Table</Link>
               </div>
             </div>

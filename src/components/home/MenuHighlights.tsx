@@ -40,7 +40,7 @@ export const MenuHighlights = () => (
       <div className="max-w-6xl mx-auto">
         <h2 className="royal-heading text-4xl text-center text-[#83043b]">Feast Like a Legend</h2>
         <p className="text-center text-[#5a3a30] mt-3 mb-10">
-          Real dishes from our kitchen — hover to explore
+          Signature dishes from our kitchen
         </p>
         {/* 3 columns x 2 rows */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

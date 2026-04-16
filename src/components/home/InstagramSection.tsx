@@ -66,9 +66,6 @@ export const InstagramSection = () => (
           ))}
         </div>
 
-        <p className="text-center text-[#cbbca1] text-sm mt-6">
-          Stay updated on our journey — follow us for behind-the-scenes, events, and brews.
-        </p>
       </div>
     </section>
   </AnimatedSection>

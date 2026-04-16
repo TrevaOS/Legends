@@ -3,40 +3,32 @@ import { RoyalButton } from "@/components/ui/RoyalButton";
 import { galleryItems } from "@/lib/data";
 
 export const GalleryPreview = () => {
-  const items = galleryItems.slice(0, 5);
+  const ambienceItems = galleryItems.filter((i) => i.category === "Ambience").slice(0, 6);
 
   return (
     <AnimatedSection>
-      <section className="bg-[#110f0f] px-6 py-18 md:py-20">
-        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end">
-          <div>
-            <p className="text-xs uppercase tracking-[0.45em] text-[#a98f63]">Gallery Preview</p>
-            <h2 className="royal-heading mt-4 text-4xl text-[#f5f0e8] md:text-5xl">
-              A lighter home gallery that feels curated.
-            </h2>
-            <p className="mt-4 max-w-xl text-base leading-7 text-[#cbbca1]">
-              The home screen now shows a compact preview instead of a tall, heavy wall of images.
-            </p>
-            <div className="mt-8">
-              <RoyalButton href="/gallery">Open Full Gallery</RoyalButton>
+      <section className="bg-[#110f0f] px-6 py-16 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+            <div>
+              <p className="text-xs uppercase tracking-[0.45em] text-[#a98f63]">Gallery Preview</p>
+              <h2 className="royal-heading mt-3 text-4xl text-[#f5f0e8] md:text-5xl">
+                Inside the Kingdom
+              </h2>
             </div>
+            <RoyalButton href="/gallery">View Full Gallery</RoyalButton>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 md:gap-4">
-            <div className="col-span-2 overflow-hidden rounded-[1.5rem] border border-[#a98f63]/20">
-              <img
-                src={items[0].image}
-                alt="Legends interior preview"
-                className="h-64 w-full object-cover md:h-72"
-                loading="lazy"
-              />
-            </div>
-            {items.slice(1).map((item, index) => (
-              <div key={item.id} className="overflow-hidden rounded-[1.25rem] border border-[#a98f63]/20">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {ambienceItems.map((item, index) => (
+              <div
+                key={item.id}
+                className={`overflow-hidden rounded-[1.25rem] border border-[#a98f63]/20 ${index === 0 ? "col-span-2 md:col-span-1" : ""}`}
+              >
                 <img
                   src={item.image}
-                  alt={`Legends gallery preview ${index + 2}`}
-                  className="h-32 w-full object-cover md:h-36"
+                  alt={`Legends gallery ${index + 1}`}
+                  className="h-52 w-full object-cover hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
