@@ -14,12 +14,19 @@ export default function BeersPage() {
     <div className="px-6 py-16 max-w-6xl mx-auto">
       <h1 className="royal-heading text-6xl">Brewed for Heroes</h1>
       <p className="mt-4 max-w-3xl text-[#d8ccb7]">
-        Crafted with passion, every pint tells the story of the kingdom.
+        A cleaner look at the house lineup with the key beer details first.
       </p>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {list.map((beer) => {
-          const img = beerImages[beer.name];
+          const img = beerImages[beer.name] ?? beerImages["Golden Halo"];
+          const stats = [
+            `Style: ${beer.style}`,
+            beer.abv ? `ABV: ${beer.abv}` : null,
+            beer.ibu ? `IBU: ${beer.ibu}` : null,
+            beer.rating ? `Rating: ${beer.rating}` : null,
+          ].filter(Boolean);
+
           return (
             <article
               key={beer.name}
@@ -40,7 +47,16 @@ export default function BeersPage() {
               <div className="p-5 flex flex-col flex-1">
                 <h3 className="royal-heading text-xl text-[#f5f0e8]">{beer.name}</h3>
                 <div className="h-px bg-[#a98f63]/40 my-3" />
-                <p className="text-sm text-[#e8e0d0] flex-1 leading-6">{beer.description}</p>
+                <div className="flex flex-wrap gap-2 flex-1 content-start">
+                  {stats.map((stat) => (
+                    <span
+                      key={stat}
+                      className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0]"
+                    >
+                      {stat}
+                    </span>
+                  ))}
+                </div>
                 <div className="mt-4">
                   <button
                     type="button"
@@ -82,7 +98,23 @@ export default function BeersPage() {
                 <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63]">{selectedBeer.style}</p>
                 <h2 className="royal-heading text-4xl text-[#f5f0e8] mt-2">{selectedBeer.name}</h2>
                 <div className="h-px bg-[#a98f63]/30 my-4" />
-                <p className="text-[#e8e0d0] leading-7">{selectedBeer.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    selectedBeer.abv ? `ABV: ${selectedBeer.abv}` : null,
+                    selectedBeer.ibu ? `IBU: ${selectedBeer.ibu}` : null,
+                    selectedBeer.rating ? `Rating: ${selectedBeer.rating}` : null,
+                  ]
+                    .filter(Boolean)
+                    .map((stat) => (
+                      <span
+                        key={stat}
+                        className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0]"
+                      >
+                        {stat}
+                      </span>
+                    ))}
+                </div>
+                <p className="mt-4 text-[#e8e0d0] leading-7">{selectedBeer.description}</p>
                 <button
                   type="button"
                   onClick={() => setActiveBeer(null)}

@@ -127,7 +127,22 @@ export const FlipbookMenu = () => {
                       <div key={beer.name} className="rounded-xl border border-[#e3caa8] bg-white p-4">
                         <p className="royal-heading text-lg text-[#5d1e2a]">{beer.name}</p>
                         <p className="text-xs uppercase tracking-[0.2em] text-[#a2643a] mt-0.5">{beer.style}</p>
-                        <p className="mt-2 text-xs leading-5 text-[#5f4037]">{beer.description}</p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {[
+                            beer.abv ? `ABV ${beer.abv}` : null,
+                            beer.ibu ? `IBU ${beer.ibu}` : null,
+                            beer.rating ? `Rating ${beer.rating}` : null,
+                          ]
+                            .filter(Boolean)
+                            .map((stat) => (
+                              <span
+                                key={stat}
+                                className="rounded-full border border-[#d7bb95] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-[#5f4037]"
+                              >
+                                {stat}
+                              </span>
+                            ))}
+                        </div>
                       </div>
                     ))}
                   </div>

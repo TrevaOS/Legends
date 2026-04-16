@@ -1,12 +1,29 @@
 "use client";
 
+import { useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 import { menuData } from "@/lib/data";
 
-const FlipCard = ({ item }: { item: typeof menuData[number] }) => (
-  <div className="group h-80 [perspective:1000px]">
-    <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+const FlipCard = ({ item }: { item: typeof menuData[number] }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <div
+      className="group h-80 cursor-pointer [perspective:1000px]"
+      role="button"
+      tabIndex={0}
+      onClick={() => setIsFlipped((current) => !current)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setIsFlipped((current) => !current);
+        }
+      }}
+    >
+      <div
+        className={`relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] ${isFlipped ? "[transform:rotateY(180deg)]" : ""}`}
+      >
       {/* Front */}
       <div className="absolute inset-0 rounded-xl overflow-hidden [backface-visibility:hidden]">
         <img src={item.image} alt={item.name} className="h-full w-full object-cover" loading="lazy" />
@@ -14,6 +31,7 @@ const FlipCard = ({ item }: { item: typeof menuData[number] }) => (
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <p className="text-xs text-[#a98f63] uppercase tracking-[0.1em]">{item.category}</p>
           <p className="royal-heading text-xl text-[#f5f0e8] mt-1">{item.name}</p>
+          <p className="mt-3 text-[11px] uppercase tracking-[0.25em] text-[#cbbca1] md:hidden">Tap to flip</p>
         </div>
       </div>
 
@@ -32,7 +50,8 @@ const FlipCard = ({ item }: { item: typeof menuData[number] }) => (
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export const MenuHighlights = () => (
   <AnimatedSection>

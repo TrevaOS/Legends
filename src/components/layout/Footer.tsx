@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { brandAssets } from "@/lib/branding";
+import { venueDetails } from "@/lib/data";
 
 export const Footer = () => {
   return (
@@ -38,7 +39,8 @@ export const Footer = () => {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#a98f63]">Visit Us</p>
             <div className="mt-4 flex flex-col gap-2.5 text-sm text-[#cbbca1]">
-              <p>Bengaluru, Karnataka</p>
+              <p>{venueDetails.address}</p>
+              <p>{venueDetails.hours}</p>
               <Link href="/reservations" className="hover:text-[#a98f63] transition-colors">Book a Table</Link>
             </div>
           </div>
@@ -47,8 +49,8 @@ export const Footer = () => {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#a98f63]">Connect</p>
             <div className="mt-4 flex flex-col gap-2.5 text-sm text-[#cbbca1]">
-              <p>reservations@legendsbrwery.in</p>
-              <p>+91 81239 79966</p>
+              <p>{venueDetails.email}</p>
+              <p>{venueDetails.phone}</p>
               <a
                 href="https://www.instagram.com/legendsbreweryblr/"
                 target="_blank"

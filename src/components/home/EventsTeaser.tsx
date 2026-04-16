@@ -1,5 +1,6 @@
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { RoyalButton } from "@/components/ui/RoyalButton";
+import { launchEventDetails } from "@/lib/data";
 
 export const EventsTeaser = () => (
   <AnimatedSection>
@@ -18,9 +19,9 @@ export const EventsTeaser = () => (
             Passion · Craftsmanship · Timeless Grandeur
           </p>
           <div className="h-px bg-[#a98f63]/40 my-5" />
-          <p className="royal-heading text-3xl text-[#a98f63]">17 April 2026</p>
-          <p className="text-[#e8e0d0] mt-2 text-lg">7:00 PM Onwards</p>
-          <p className="text-[#cbbca1] mt-1 text-sm">Signature brews. Royal feasts. A night to remember.</p>
+          <p className="royal-heading text-3xl text-[#a98f63]">{launchEventDetails.dateLabel}</p>
+          <p className="text-[#e8e0d0] mt-2 text-lg">{launchEventDetails.timeLabel}</p>
+          <p className="text-[#cbbca1] mt-1 text-sm">{launchEventDetails.tagline}</p>
         </div>
         <div className="mt-8">
           <RoyalButton href="/events">Event Details</RoyalButton>

@@ -1,4 +1,4 @@
-import { featuredAmbience } from "@/lib/data";
+import { featuredAmbience, launchEventDetails } from "@/lib/data";
 
 export default function EventsPage() {
   return (
@@ -46,7 +46,7 @@ export default function EventsPage() {
               </svg>
               <div>
                 <p className="text-[10px] text-[#cbbca1] uppercase tracking-widest">Date</p>
-                <p className="royal-heading text-xl text-[#f5f0e8]">17 April 2026</p>
+                <p className="royal-heading text-xl text-[#f5f0e8]">{launchEventDetails.dateLabel}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -56,7 +56,7 @@ export default function EventsPage() {
               </svg>
               <div>
                 <p className="text-[10px] text-[#cbbca1] uppercase tracking-widest">Time</p>
-                <p className="royal-heading text-xl text-[#f5f0e8]">7:00 PM Onwards</p>
+                <p className="royal-heading text-xl text-[#f5f0e8]">{launchEventDetails.timeLabel}</p>
               </div>
             </div>
           </div>

@@ -13,6 +13,7 @@ type BeerItem = {
   image: string;
   abv?: string;
   ibu?: number;
+  rating?: string;
   price?: number;
   pair?: string;
 };
@@ -49,6 +50,21 @@ const ambienceImages = {
   spaceNine: driveImage("1C3ddtMGmlZAo-6w33lL6JlkvxOaws27i"),
   spaceTen: driveImage("1QsbtAhJZBuEeDUPsyXMx34BvgQO2T_Fq"),
   spaceEleven: driveImage("1RDYhgEVsdyMiDG3OQpcuzFDhTls1TeUy"),
+} as const;
+
+export const venueDetails = {
+  address: "Varthur Rd, Devasthanagalu, Balagere, Bengaluru, Varthur, Karnataka 560087",
+  phone: "+91 81239 79966",
+  email: "reservations@legendsbrwery.in",
+  hours: "12 PM - 1 AM, all days",
+  mapEmbedSrc:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.505618358531!2d77.73130197454611!3d12.939465115583094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13006db60e2d%3A0x303cdc9fe49ae3ca!2sLegends%20Microbrewery!5e0!3m2!1sen!2sin!4v1776345726838!5m2!1sen!2sin",
+} as const;
+
+export const launchEventDetails = {
+  dateLabel: "17 April 2026",
+  timeLabel: "5:00 PM Onwards",
+  tagline: "Signature brews. Royal feasts. A night to remember.",
 } as const;
 
 export const featuredAmbience = [
@@ -116,56 +132,56 @@ export const beersData: BeerItem[] = [
     name: "Midnight Emperor",
     style: "Stout",
     description:
-      "Rich and full-bodied, layered with deep chocolate and roasted coffee aromas with a smooth finish and soft vanilla notes.",
+      "Rich and full-bodied, layered with deep chocolate and roasted coffee aromas. Subtle caramel sweetness balances the roasted malt character, creating a smooth, indulgent finish with vanilla notes.",
     image: ambienceImages.spaceSeven,
   },
   {
     name: "Sky Sovereign",
     style: "NEIPA",
     description:
-      "A juicy hazy NEIPA bursting with mango, pineapple andcitrus notes, balanced by soft bitterness.",
+      "A juicy, hazy NEIPA bursting with tropical notes of mango, pineapple, and citrus. Soft bitterness balances sweetness with a smooth, vibrant finish.",
     image: ambienceImages.spaceEight,
   },
   {
     name: "Kings Frontier",
     style: "West Coast IPA",
     description:
-      "Bright citrus and pine aromas with a clean malt backbone and a dry refreshing finish.",
+      "Bright citrus and pine aromas lead, supported by a clean malt backbone. Bold hop-forward bitterness with a dry, refreshing finish.",
     image: ambienceImages.spaceNine,
   },
   {
     name: "Knights Wit",
     style: "Belgian Wit",
     description:
-      "Brewed with coriander and orange peel for bright citrus, gentle spice anda clean finish.",
+      "Brewed with coriander and orange peel. Bright citrus, gentle spice, and a clean refreshing finish.",
     image: ambienceImages.spaceTen,
   },
   {
     name: "Golden Halo",
     style: "Hefeweizen",
     description:
-      "Classic wheat beer showing ripe banana, gentle clove spice anda creamy cloudy mouthfeel.",
+      "Classic wheat beer showcasing ripe banana and gentle clove spice. Soft, cloudy, and smooth with a creamy mouthfeel.",
     image: ambienceImages.spaceEleven,
   },
   {
     name: "Orchard Queen",
     style: "Apple Cider",
     description:
-      "Crafted from selected apples with gentle sweetness, bright acidity anda clean elegant finish.",
+      "Crafted from selected apples with gentle sweetness, bright acidity, and a clean, elegant finish.",
     image: ambienceImages.spaceOne,
   },
   {
     name: "Zen Empire",
     style: "Japanese Lager",
     description:
-      "Brewed with premium short-grain rice for a light body, subtle sweetness anda crisp calming finish.",
+      "Brewed with premium short-grain rice. Light-bodied, clean, subtle sweetness, and crisp calming finish.",
     image: ambienceImages.spaceTwo,
   },
   {
     name: "Imperial Fields",
     style: "Maize Lager",
     description:
-      "Brewed with premium maize for subtle sweetness, a light refreshing body anda smooth finish.",
+      "Brewed with premium maize for subtle sweetness and light refreshing body with smooth finish.",
     image: ambienceImages.spaceThree,
   },
 ] as const;
