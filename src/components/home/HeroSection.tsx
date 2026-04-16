@@ -6,23 +6,38 @@ import { RoyalButton } from "@/components/ui/RoyalButton";
 import { brandAssets } from "@/lib/branding";
 import { featuredAmbience } from "@/lib/data";
 
-// Google Drive file — embed iframe is the only reliable way to play Drive videos in browser
 const DRIVE_FILE_ID = "13Fz7AKNQ0wyq0ogtmASd4TOmpGU0W-zz";
+const driveVideoSources = [
+  `https://drive.usercontent.google.com/download?id=${DRIVE_FILE_ID}&export=view&authuser=0`,
+  `https://drive.google.com/uc?export=download&id=${DRIVE_FILE_ID}`,
+] as const;
 
 export const HeroSection = () => {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [loaded, setLoaded] = useState(false);
 
-  // After iframe loads, hide the fallback poster
   useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 1200);
-    return () => clearTimeout(timer);
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      void video.play().then(() => setLoaded(true)).catch(() => {
+        setLoaded(false);
+      });
+    };
+
+    tryPlay();
+    video.addEventListener("canplay", tryPlay);
+    video.addEventListener("loadeddata", tryPlay);
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+      video.removeEventListener("loadeddata", tryPlay);
+    };
   }, []);
 
   return (
     <section className="relative flex h-screen max-h-[100dvh] items-center overflow-hidden">
-
-      {/* Fallback poster — shown while iframe loads */}
       <img
         src={featuredAmbience[0]}
         alt=""
@@ -30,32 +45,26 @@ export const HeroSection = () => {
         className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${loaded ? "opacity-0" : "opacity-100"}`}
       />
 
-      {/*
-        Drive /preview iframe — the only way to play a Drive video without re-hosting.
-        Oversized + scaled so Drive's play button and UI chrome are pushed off-screen.
-        pointer-events: none prevents interaction.
-      */}
-      <iframe
-        ref={iframeRef}
-        src={`https://drive.google.com/file/d/${DRIVE_FILE_ID}/preview?autoplay=1&controls=0`}
-        allow="autoplay; fullscreen"
-        className="absolute border-0"
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={featuredAmbience[0]}
         aria-hidden="true"
-        title="background"
-        style={{
-          pointerEvents: "none",
-          // Oversized to push Drive UI off-screen
-          width: "calc(100% + 340px)",
-          height: "calc(100% + 340px)",
-          top: "-170px",
-          left: "-170px",
-        }}
-      />
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${loaded ? "opacity-100" : "opacity-0"}`}
+        onCanPlay={() => setLoaded(true)}
+        onLoadedData={() => setLoaded(true)}
+        onError={() => setLoaded(false)}
+      >
+        {driveVideoSources.map((src) => (
+          <source key={src} src={src} type="video/mp4" />
+        ))}
+      </video>
 
-      {/* Overlay blocks any Drive UI that bleeds through */}
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,2,5,0.45)_0%,rgba(10,2,5,0.58)_55%,rgba(8,4,6,0.92)_100%)]" />
-
-      {/* Content */}
       <div className="relative mx-auto w-full max-w-5xl px-6 pb-16 pt-28 lg:pt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

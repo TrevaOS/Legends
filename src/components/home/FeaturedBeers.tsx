@@ -4,26 +4,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { OrnamentalDivider } from "@/components/ui/OrnamentalDivider";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 import { beersData } from "@/lib/data";
-
-// Beer glass/pint photos matched to each style
-const beerImages: Record<string, string> = {
-  "Midnight Emperor":
-    "https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=600&q=80",
-  "Sky Sovereign":
-    "https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=600&q=80",
-  "Kings Frontier":
-    "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=600&q=80",
-  "Knights Wit":
-    "https://images.unsplash.com/photo-1558642891-54be180ea339?w=600&q=80",
-  "Golden Halo":
-    "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&q=80",
-  "Orchard Queen":
-    "https://images.unsplash.com/photo-1601924582970-9238bcb495d9?w=600&q=80",
-  "Zen Empire":
-    "https://images.unsplash.com/photo-1574793516766-af1e8c0e04e6?w=600&q=80",
-  "Imperial Fields":
-    "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&q=80",
-};
+import { beerImages } from "@/lib/beerImages";
 
 const BeerFlipCard = ({ beer }: { beer: (typeof beersData)[number] }) => {
   const img = beerImages[beer.name] ?? beerImages["Golden Halo"];
