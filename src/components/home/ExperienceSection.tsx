@@ -4,7 +4,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 export const ExperienceSection = () => {
   const items = [
     { icon: Music2, title: "Live Music Nights", description: "Curated nights with legendary soundscapes." },
-    { icon: Building2, title: "Rooftop Ambience", description: "Bengaluru skyline, warm lights, royal pours." },
+    { icon: Building2, title: "Royal Ambience", description: "Bengaluru skyline, warm lights, royal pours." },
     { icon: Beer, title: "Craft Brewing Tours", description: "Walk through the brewhouse with our masters." },
   ];
 

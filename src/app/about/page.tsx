@@ -18,7 +18,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-5 text-base leading-relaxed text-[#cbbca1]">
               Every brew we craft tells a story of bold choices, of patience, of passion poured
-              into every pint. Our rooftop overlooks Bengaluru&apos;s skyline as a reminder that
+              into every pint. Our space overlooks Bengaluru&apos;s skyline as a reminder that
               great things happen when you dare to dream bigger than the city itself.
             </p>
           </article>
@@ -65,7 +65,7 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
             {[
               { image: featuredAmbience[2], label: "The Bar" },
-              { image: featuredAmbience[3], label: "Rooftop Lounge" },
+              { image: featuredAmbience[3], label: "The Lounge" },
               { image: featuredAmbience[4], label: "The Brew Floor" },
               { image: galleryItems[1].image, label: "Kitchen Craft" },
               { image: featuredAmbience[5], label: "Private Dining" },

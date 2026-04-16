@@ -4,24 +4,32 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { beersData } from "@/lib/data";
 
-// Proper craft beer images per style
+// Beer glass/pint photos matched to each style
 const beerImages: Record<string, string> = {
+  // Stout – dark pint glass
   "Midnight Emperor":
-    "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=900&q=80&fit=crop",
+    "https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=900&q=80&fit=crop",
+  // NEIPA – hazy golden pint
   "Sky Sovereign":
-    "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&q=80",
+    "https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=900&q=80&fit=crop",
+  // West Coast IPA – amber hoppy pint
   "Kings Frontier":
-    "https://images.unsplash.com/photo-1581927692308-be9e43b4d860?w=600&q=80",
+    "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=900&q=80&fit=crop",
+  // Belgian Wit – cloudy wheat glass
   "Knights Wit":
-    "https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=600&q=80",
+    "https://images.unsplash.com/photo-1558642891-54be180ea339?w=900&q=80&fit=crop",
+  // Hefeweizen – tall wheat beer glass
   "Golden Halo":
-    "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=600&q=80",
+    "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=900&q=80&fit=crop",
+  // Apple Cider – golden cider glass
   "Orchard Queen":
-    "https://images.unsplash.com/photo-1601924582970-9238bcb495d9?w=600&q=80",
+    "https://images.unsplash.com/photo-1601924582970-9238bcb495d9?w=900&q=80&fit=crop",
+  // Japanese Lager – crisp clear lager
   "Zen Empire":
-    "https://images.unsplash.com/photo-1574793516766-af1e8c0e04e6?w=600&q=80",
+    "https://images.unsplash.com/photo-1574793516766-af1e8c0e04e6?w=900&q=80&fit=crop",
+  // Maize Lager – pale golden lager
   "Imperial Fields":
-    "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&q=80",
+    "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=900&q=80&fit=crop",
 };
 
 export default function BeersPage() {

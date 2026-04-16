@@ -1,215 +1,154 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { beersData, featuredAmbience, menuSections } from "@/lib/data";
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { beersData, menuSections } from "@/lib/data";
+import { brandAssets } from "@/lib/branding";
 
-type PageData =
+type Page =
   | { kind: "cover" }
-  | { kind: "section"; title: string; items: readonly string[]; pageNumber: number }
+  | { kind: "section"; title: string; items: readonly string[] }
   | { kind: "beer" };
 
-type TurnCommand = "display" | "size" | "destroy" | "next" | "previous";
-
-type TurnOptions = {
-  autoCenter: boolean;
-  display: "single" | "double";
-  elevation: number;
-  gradients: boolean;
-  duration: number;
-  page: number;
-  width: number;
-  height: number;
-  when: {
-    turned: (_event: unknown, page: number) => void;
-  };
-};
-
-interface TurnApi {
-  turn(options: TurnOptions): void;
-  turn(command: TurnCommand, ...args: unknown[]): void;
-}
-
 export const FlipbookMenu = () => {
-  const bookRef = useRef<HTMLDivElement | null>(null);
-  const bookApiRef = useRef<TurnApi | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const pages = useMemo<Page[]>(() => [
+    { kind: "cover" },
+    ...menuSections.map((s) => ({ kind: "section" as const, title: s.title, items: s.items })),
+    { kind: "beer" },
+  ], []);
 
-  const pages = useMemo<PageData[]>(
-    () => [
-      { kind: "cover" },
-      ...menuSections.map((section, index) => ({
-        kind: "section" as const,
-        title: section.title,
-        items: section.items,
-        pageNumber: index + 2,
-      })),
-      { kind: "beer" },
-    ],
-    []
-  );
+  const [current, setCurrent] = useState(0);
+  const [dir, setDir] = useState(1);
 
-  useEffect(() => {
-    let mounted = true;
-    let cleanup = () => {};
+  const go = (next: number) => {
+    if (next < 0 || next >= pages.length) return;
+    setDir(next > current ? 1 : -1);
+    setCurrent(next);
+  };
 
-    const initFlipbook = async () => {
-      const jqueryModule = await import("jquery");
-      await import("turn.js");
-      if (!mounted || !bookRef.current) return;
+  const page = pages[current];
 
-      const $ = jqueryModule.default as (element: HTMLDivElement) => TurnApi;
-      const book = $(bookRef.current);
-      bookApiRef.current = book;
-
-      const applySizing = () => {
-        const single = window.innerWidth < 1024;
-        const width = single ? Math.min(window.innerWidth - 32, 420) : 1120;
-        const height = single ? 680 : 760;
-        book.turn("display", single ? "single" : "double");
-        book.turn("size", width, height);
-      };
-
-      book.turn({
-        autoCenter: true,
-        display: window.innerWidth < 1024 ? "single" : "double",
-        elevation: 48,
-        gradients: true,
-        duration: 900,
-        page: 1,
-        width: window.innerWidth < 1024 ? Math.min(window.innerWidth - 32, 420) : 1120,
-        height: window.innerWidth < 1024 ? 680 : 760,
-        when: {
-          turned: (_event: unknown, page: number) => setCurrentPage(page),
-        },
-      });
-
-      const onResize = () => applySizing();
-      window.addEventListener("resize", onResize);
-      cleanup = () => {
-        window.removeEventListener("resize", onResize);
-        try {
-          book.turn("destroy");
-        } catch {
-          // ignore teardown
-        }
-      };
-    };
-
-    initFlipbook();
-
-    return () => {
-      mounted = false;
-      cleanup();
-    };
-  }, []);
-
-  const turnPage = (direction: "next" | "previous") => {
-    bookApiRef.current?.turn(direction);
+  const variants = {
+    enter: (d: number) => ({ opacity: 0, x: d > 0 ? 60 : -60 }),
+    center: { opacity: 1, x: 0 },
+    exit: (d: number) => ({ opacity: 0, x: d > 0 ? -60 : 60 }),
   };
 
   return (
-    <div className="menu-book-shell px-4 py-10 md:px-6 md:py-14">
-      <div className="mx-auto max-w-7xl">
+    <div className="menu-book-shell min-h-screen px-4 py-10 md:px-8 md:py-14">
+      <div className="mx-auto max-w-4xl">
+
+        {/* Header */}
         <div className="mb-8">
           <p className="text-xs uppercase tracking-[0.45em] text-[#c28a57]">Kingdom of Brews</p>
-          <h1 className="royal-heading mt-3 text-4xl text-[#fff4e8] md:text-6xl">Our Menu</h1>
+          <h1 className="royal-heading mt-2 text-4xl text-[#fff4e8] md:text-5xl">Our Menu</h1>
         </div>
 
-        <div className="mb-6 flex items-center justify-between">
+        {/* Page counter + nav */}
+        <div className="mb-5 flex items-center justify-between">
           <button
             type="button"
-            onClick={() => turnPage("previous")}
-            className="inline-flex items-center gap-2 rounded-full border border-[#d2a871]/45 px-5 py-2.5 text-sm text-[#fff4e8] hover:border-[#d2a871] transition-colors"
+            onClick={() => go(current - 1)}
+            disabled={current === 0}
+            className="rounded-full border border-[#d2a871]/50 px-5 py-2 text-sm text-[#fff4e8] disabled:opacity-30 hover:border-[#d2a871] transition-colors"
           >
-            <ChevronLeft className="h-4 w-4" />
             Prev
           </button>
           <p className="text-xs uppercase tracking-[0.35em] text-[#caa17b]">
-            {currentPage} / {pages.length}
+            {current + 1} / {pages.length}
           </p>
           <button
             type="button"
-            onClick={() => turnPage("next")}
-            className="inline-flex items-center gap-2 rounded-full border border-[#d2a871]/45 px-5 py-2.5 text-sm text-[#fff4e8] hover:border-[#d2a871] transition-colors"
+            onClick={() => go(current + 1)}
+            disabled={current === pages.length - 1}
+            className="rounded-full border border-[#d2a871]/50 px-5 py-2 text-sm text-[#fff4e8] disabled:opacity-30 hover:border-[#d2a871] transition-colors"
           >
             Next
-            <ChevronRight className="h-4 w-4" />
           </button>
         </div>
 
-        <div className="menu-book-wrapper">
-          <div ref={bookRef} className="menu-book">
-            {pages.map((page, index) => (
-              <div key={`${page.kind}-${index}`} className="menu-book-page">
-                {page.kind === "cover" ? (
-                  <div className="menu-book-paper menu-book-cover">
-                    <img
-                      src={featuredAmbience[0]}
-                      alt="Legends ambience"
-                      className="absolute inset-0 h-full w-full object-cover opacity-20"
-                    />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(82,15,25,0.18),rgba(82,15,25,0.72))]" />
-                    <div className="relative flex h-full flex-col justify-between">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.5em] text-[#f1c78d]">Kingdom of Brews</p>
-                        <h2 className="royal-heading mt-6 text-5xl leading-[0.95] text-[#fff3e5] md:text-7xl">
-                          Legends
-                        </h2>
-                        <p className="mt-4 max-w-sm text-sm leading-7 text-[#f6e8d7]">
-                          Craft beers, signature dishes, and royal flavours — all in one place.
-                        </p>
-                      </div>
-                      <div className="rounded-[1.75rem] border border-[#deb17c]/50 bg-[#f5e7d6]/90 p-5 text-[#5f1f2b]">
-                        <p className="text-xs uppercase tracking-[0.35em] text-[#8d3a46]">Today&apos;s highlights</p>
-                        <p className="royal-heading mt-3 text-2xl">Bar bites, grills, biryani, burgers, and desserts</p>
-                      </div>
-                    </div>
+        {/* Page area */}
+        <div className="relative overflow-hidden rounded-2xl border border-[#e3caa8] bg-[#fffaf4] shadow-[0_20px_60px_rgba(0,0,0,0.4)]" style={{ minHeight: 520 }}>
+          <AnimatePresence mode="wait" custom={dir}>
+            <motion.div
+              key={current}
+              custom={dir}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="w-full"
+            >
+              {/* COVER */}
+              {page.kind === "cover" && (
+                <div className="relative flex flex-col justify-between p-8 md:p-12" style={{ minHeight: 520 }}>
+                  <div>
+                    <img src={brandAssets.mainLogo} alt="Legends" className="h-16 w-16 rounded-full border border-[#e3caa8] object-cover mb-6" />
+                    <p className="text-xs uppercase tracking-[0.5em] text-[#9d5a3d]">Kingdom of Brews</p>
+                    <h2 className="royal-heading mt-4 text-6xl text-[#5d1e2a] leading-tight">Legends</h2>
+                    <p className="mt-4 text-sm leading-7 text-[#7a4a3a] max-w-sm">
+                      Craft beers, signature dishes, and royal flavours — all in one place.
+                    </p>
                   </div>
-                ) : null}
+                  <div className="mt-8 rounded-2xl border border-[#deb17c]/50 bg-[#fdf0e0] p-5">
+                    <p className="text-xs uppercase tracking-[0.35em] text-[#8d3a46]">Today&apos;s highlights</p>
+                    <p className="royal-heading mt-2 text-xl text-[#5d1e2a]">Bar bites, grills, biryani, burgers, and desserts</p>
+                  </div>
+                </div>
+              )}
 
-                {page.kind === "section" ? (
-                  <div className="menu-book-paper">
-                    <div className="menu-book-scroll">
-                      <h2 className="royal-heading text-4xl text-[#7f2438]">{page.title}</h2>
-                      <div className="mt-5 h-px bg-[linear-gradient(90deg,#b78b54,transparent)]" />
-                      <ul className="mt-6 space-y-3 text-[#55352f]">
-                        {page.items.map((item) => (
-                          <li
-                            key={item}
-                            className="rounded-[1.1rem] border border-[#e3caa8] bg-[#fffaf4] px-4 py-3 text-sm leading-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <p className="menu-book-footer">Legends</p>
-                  </div>
-                ) : null}
+              {/* SECTION */}
+              {page.kind === "section" && (
+                <div className="p-8 md:p-10" style={{ minHeight: 520 }}>
+                  <h2 className="royal-heading text-3xl text-[#7f2438]">{page.title}</h2>
+                  <div className="mt-4 h-px bg-[linear-gradient(90deg,#b78b54,transparent)]" />
+                  <ul className="mt-6 grid sm:grid-cols-2 gap-2">
+                    {page.items.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-xl border border-[#e3caa8] bg-white px-4 py-2.5 text-sm text-[#55352f] leading-5"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-8 text-right text-xs uppercase tracking-[0.28em] text-[#c8a87a]">Legends</p>
+                </div>
+              )}
 
-                {page.kind === "beer" ? (
-                  <div className="menu-book-paper">
-                    <div className="menu-book-scroll">
-                      <h2 className="royal-heading text-4xl text-[#7f2438]">Signature Brews</h2>
-                      <div className="mt-6 grid gap-4">
-                        {beersData.map((beer) => (
-                          <div key={beer.name} className="rounded-[1.25rem] border border-[#e3caa8] bg-[#fffaf4] p-4">
-                            <div>
-                              <p className="royal-heading text-2xl text-[#5d1e2a]">{beer.name}</p>
-                              <p className="mt-1 text-xs uppercase tracking-[0.28em] text-[#a2643a]">{beer.style}</p>
-                              <p className="mt-3 text-sm leading-6 text-[#5f4037]">{beer.description}</p>
-                            </div>
-                          </div>
-                        ))}
+              {/* BEERS */}
+              {page.kind === "beer" && (
+                <div className="p-8 md:p-10" style={{ minHeight: 520 }}>
+                  <h2 className="royal-heading text-3xl text-[#7f2438]">Signature Brews</h2>
+                  <div className="mt-4 h-px bg-[linear-gradient(90deg,#b78b54,transparent)]" />
+                  <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                    {beersData.map((beer) => (
+                      <div key={beer.name} className="rounded-xl border border-[#e3caa8] bg-white p-4">
+                        <p className="royal-heading text-lg text-[#5d1e2a]">{beer.name}</p>
+                        <p className="text-xs uppercase tracking-[0.2em] text-[#a2643a] mt-0.5">{beer.style}</p>
+                        <p className="mt-2 text-xs leading-5 text-[#5f4037]">{beer.description}</p>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ) : null}
-              </div>
-            ))}
-          </div>
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
         </div>
+
+        {/* Dot indicators */}
+        <div className="mt-5 flex justify-center gap-1.5">
+          {pages.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => go(i)}
+              className={`h-1.5 rounded-full transition-all ${i === current ? "w-6 bg-[#d2a871]" : "w-1.5 bg-[#d2a871]/30"}`}
+            />
+          ))}
+        </div>
+
       </div>
     </div>
   );
