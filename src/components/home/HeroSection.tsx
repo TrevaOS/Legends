@@ -6,8 +6,8 @@ import { RoyalButton } from "@/components/ui/RoyalButton";
 import { brandAssets } from "@/lib/branding";
 import { featuredAmbience } from "@/lib/data";
 
-const DRIVE_FILE_ID = "13Fz7AKNQ0wyq0ogtmASd4TOmpGU0W-zz";
-const videoUrl = `https://drive.google.com/file/d/${DRIVE_FILE_ID}/preview?autoplay=1`;
+const videoUrl =
+  "https://github.com/TrevaOS/Legends-Assets/raw/refs/heads/main/1776262785985.publer.com.mp4";
 
 export const HeroSection = () => {
   const [showFallback, setShowFallback] = useState(true);
@@ -29,20 +29,17 @@ export const HeroSection = () => {
         className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${showFallback ? "opacity-100" : "opacity-0"}`}
       />
 
-      <iframe
-        src={videoUrl}
-        title="Legends hero background video"
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
         aria-hidden="true"
-        allow="autoplay; fullscreen"
-        className="absolute border-0 pointer-events-none"
-        onLoad={() => setShowFallback(false)}
-        style={{
-          width: "calc(100% + 320px)",
-          height: "calc(100% + 320px)",
-          top: "-160px",
-          left: "-160px",
-        }}
-      />
+        className="absolute inset-0 h-full w-full object-cover"
+        onLoadedData={() => setShowFallback(false)}
+      >
+        <source src={videoUrl} type="video/mp4" />
+      </video>
 
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,2,5,0.45)_0%,rgba(10,2,5,0.58)_55%,rgba(8,4,6,0.92)_100%)]" />
 
