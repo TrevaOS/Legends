@@ -59,6 +59,15 @@ export const venueDetails = {
   hours: "12 PM – 1 AM daily",
   mapEmbedSrc:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.505618358531!2d77.73130197454611!3d12.939465115583094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13006db60e2d%3A0x303cdc9fe49ae3ca!2sLegends%20Microbrewery!5e0!3m2!1sen!2sin!4v1776345726838!5m2!1sen!2sin",
+  dailyHours: [
+    { day: "Sunday", hours: "12:00 PM - 1:00 AM" },
+    { day: "Monday", hours: "12:00 PM - 1:00 AM" },
+    { day: "Tuesday", hours: "12:00 PM - 1:00 AM" },
+    { day: "Wednesday", hours: "12:00 PM - 1:00 AM" },
+    { day: "Thursday", hours: "12:00 PM - 1:00 AM" },
+    { day: "Friday", hours: "12:00 PM - 1:00 AM" },
+    { day: "Saturday", hours: "12:00 PM - 1:00 AM" },
+  ],
 } as const;
 
 export const launchEventDetails = {
