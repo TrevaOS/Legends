@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 const quotes = [
-  "Legendary places run on honest opinions andLegends serves both flavor and soul.",
+  "Legendary places run on honest opinions and LEGENDS serves both flavor and soul.",
   "From the first pour to the final toast, every detail feels royal.",
   "Brewed for Heroes is not just a line, it is the full experience.",
 ];
@@ -25,7 +25,7 @@ export const Testimonials = () => {
           <AnimatePresence mode="wait">
             <motion.p key={quotes[index]} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="text-xl leading-relaxed min-h-24">{quotes[index]}</motion.p>
           </AnimatePresence>
-          <p className="mt-4 text-[#cbbca1]">Guest at Legends</p>
+          <p className="mt-4 text-[#cbbca1]">Guest at LEGENDS</p>
         </div>
       </section>
     </AnimatedSection>

@@ -46,7 +46,7 @@ const FlipCard = ({ item }: { item: typeof menuData[number] }) => {
             <span className="text-[#a98f63]">Ingredients:</span> {item.ingredients}
           </p>
         </div>
-        <p className="royal-heading text-lg text-[#a98f63]">Legends Signature</p>
+        <p className="royal-heading text-lg text-[#a98f63]">LEGENDS Signature</p>
       </div>
     </div>
   </div>

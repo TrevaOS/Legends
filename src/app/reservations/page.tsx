@@ -6,7 +6,12 @@ import { supabase } from "@/lib/supabase";
 import { sendToSheet } from "@/lib/sheets";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 
-const slots = ["12:00", "13:00", "14:00", "19:00", "20:00", "21:00"];
+const slots = ["12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM", "09:00 PM", "09:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM", "12:00 AM", "12:30 AM"];
+
+const convertSlotTo12Hour = (slot: string): string => {
+  const [time12hr] = slot.split(" ");
+  return slot;
+};
 
 export default function ReservationsPage() {
   const [step, setStep] = useState(1);
@@ -18,6 +23,7 @@ export default function ReservationsPage() {
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
   const [reference, setReference] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const canContinue = useMemo(() => {
     if (step === 1) return Boolean(date);
@@ -26,6 +32,8 @@ export default function ReservationsPage() {
   }, [step, date, name, phone, email]);
 
   const confirm = async () => {
+    if (submitting) return;
+    setSubmitting(true);
     const ref = `LGM-${Date.now().toString().slice(-6)}`;
     const payload = {
       form: "reservation",
@@ -42,8 +50,6 @@ export default function ReservationsPage() {
     };
 
     if (supabase) await supabase.from("reservations").insert(payload);
-
-    // Write to Google Sheets via Apps Script
     await sendToSheet(payload);
 
     setReference(ref);
@@ -149,7 +155,9 @@ export default function ReservationsPage() {
               <RoyalButton onClick={() => canContinue && setStep((s) => s + 1)}>Continue</RoyalButton>
             )}
             {step === 4 && (
-              <RoyalButton onClick={confirm}>Confirm Reservation</RoyalButton>
+              <RoyalButton onClick={confirm} disabled={submitting}>
+              {submitting ? "Confirming..." : "Confirm Reservation"}
+            </RoyalButton>
             )}
           </div>
         </motion.section>

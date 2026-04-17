@@ -11,8 +11,8 @@ export const EventsTeaser = () => (
       />
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <p className="text-xs text-[#a98f63] uppercase tracking-[0.4em] mb-4">Upcoming Event</p>
-        <h2 className="royal-heading text-5xl md:text-6xl">Grand Launch</h2>
-        <p className="royal-heading text-2xl text-[#a98f63] mt-3">Legends Microbrewery</p>
+        <h2 className="royal-heading text-5xl md:text-6xl">Grand Opening</h2>
+        <p className="royal-heading text-2xl text-[#a98f63] mt-3">LEGENDS Microbrewery</p>
         <div className="mt-8 ornamental-border rounded-2xl p-8 bg-[#200b14]/60 backdrop-blur-sm inline-block w-full max-w-xl mx-auto">
           <p className="text-[#cbbca1] text-sm uppercase tracking-widest">An evening of</p>
           <p className="royal-heading text-xl text-[#f5f0e8] mt-2">

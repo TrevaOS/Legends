@@ -10,7 +10,7 @@ export const AboutPreview = () => (
         <div className="relative h-72 md:h-96 overflow-hidden rounded-2xl border border-[#a98f63]/30">
           <img
             src={featuredAmbience[1]}
-            alt="Legends Microbrewery"
+            alt="LEGENDS Microbrewery"
             className="h-full w-full object-cover"
             loading="lazy"
           />
@@ -30,7 +30,7 @@ export const AboutPreview = () => (
             <span className="text-[#a98f63]">Dream Bigger</span>
           </h2>
           <p className="mt-5 text-base leading-7 text-[#cbbca1]">
-            From the moment you step in, you are not just welcomed. You are Crowned. Legends is built on Craftsmanship, Hospitality, the Art of the Perfect Brew.
+            From the moment you step in, you are not just welcomed. You are Crowned. LEGENDS is built on Craftsmanship, Hospitality, the Art of the Perfect Brew.
           </p>
           <Link
             href="/about"

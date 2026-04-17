@@ -84,9 +84,9 @@ export const FlipbookMenu = () => {
               {page.kind === "cover" && (
                 <div className="relative flex flex-col justify-between p-8 md:p-12" style={{ minHeight: 520 }}>
                   <div>
-                    <img src={brandAssets.mainLogo} alt="Legends" className="h-16 w-16 rounded-full border border-[#e3caa8] object-cover mb-6" />
+                    <img src={brandAssets.mainLogo} alt="LEGENDS" className="h-16 w-16 rounded-full border border-[#e3caa8] object-cover mb-6" />
                     <p className="text-xs uppercase tracking-[0.5em] text-[#9d5a3d]">Kingdom of Brews</p>
-                    <h2 className="royal-heading mt-4 text-6xl text-[#5d1e2a] leading-tight">Legends</h2>
+                    <h2 className="royal-heading mt-4 text-6xl text-[#5d1e2a] leading-tight">LEGENDS</h2>
                     <p className="mt-4 text-sm leading-7 text-[#7a4a3a] max-w-sm">
                       Craft beers, signature dishes, royal flavours. All in one place.
                     </p>
@@ -113,7 +113,7 @@ export const FlipbookMenu = () => {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-8 text-right text-xs uppercase tracking-[0.28em] text-[#c8a87a]">Legends</p>
+                  <p className="mt-8 text-right text-xs uppercase tracking-[0.28em] text-[#c8a87a]">LEGENDS</p>
                 </div>
               )}
 

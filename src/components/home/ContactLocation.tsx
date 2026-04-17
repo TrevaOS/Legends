@@ -13,7 +13,7 @@ export const ContactLocation = () => (
           src={venueDetails.mapEmbedSrc}
         />
         <article className="ornamental-border rounded-2xl p-6 bg-[#1a0010]/70 space-y-5">
-          <h3 className="royal-heading text-3xl text-[#a98f63]">Visit Legends</h3>
+          <h3 className="royal-heading text-3xl text-[#a98f63]">Visit LEGENDS</h3>
 
           <div className="flex items-start gap-3 text-sm text-[#e8e0d0]">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a98f63" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 flex-shrink-0">

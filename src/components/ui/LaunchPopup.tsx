@@ -65,8 +65,8 @@ export const LaunchPopup = () => {
               <div className="h-px bg-[#a98f63]/40 my-5" />
 
               <p className="text-[#cbbca1] text-sm leading-relaxed">
-                Join us for the <strong className="text-[#f5f0e8]">Grand Launch</strong> of<br />
-                <strong className="text-[#a98f63] royal-heading text-lg">Legends Microbrewery</strong>
+                Join us for the <strong className="text-[#f5f0e8]">Grand Opening</strong> of<br />
+                <strong className="text-[#a98f63] royal-heading text-lg">LEGENDS Microbrewery</strong>
               </p>
               <p className="text-[#cbbca1] text-xs mt-2">
                 A celebration of passion, craftsmanship, timeless grandeur.

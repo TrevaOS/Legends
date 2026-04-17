@@ -38,7 +38,7 @@ export const Navbar = () => {
             />
           </div>
           <div className="leading-none">
-            <p className="royal-heading text-lg text-[#f5f0e8]">Legends</p>
+            <p className="royal-heading text-lg text-[#f5f0e8]">LEGENDS</p>
             <p className="text-[10px] uppercase tracking-[0.35em] text-[#a98f63]">Kingdom of Brews</p>
           </div>
         </Link>
@@ -61,7 +61,7 @@ export const Navbar = () => {
                   />
                 </div>
                 <div>
-                  <p className="royal-heading text-lg text-[#f5f0e8]">Legends</p>
+                  <p className="royal-heading text-lg text-[#f5f0e8]">LEGENDS</p>
                   <p className="text-[10px] uppercase tracking-[0.35em] text-[#a98f63]">Kingdom of Brews</p>
                 </div>
               </div>

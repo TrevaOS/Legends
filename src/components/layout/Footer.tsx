@@ -69,7 +69,7 @@ export const Footer = () => {
 
         <div className="mt-12 h-px bg-[#a98f63]/20" />
         <p className="mt-6 text-center text-xs text-[#cbbca1]">
-          Copyright 2026 Legends. Kingdom of Brews. All rights reserved.
+          © 2026 LEGENDS. Kingdom of Brews. All rights reserved.
         </p>
       </div>
     </footer>

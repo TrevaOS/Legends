@@ -53,10 +53,10 @@ const ambienceImages = {
 } as const;
 
 export const venueDetails = {
-  address: "Varthur Rd, Devasthanagalu, Balagere, Bengaluru, Varthur, Karnataka 560087",
+  address: "Balagere Road, Varthur, Bengaluru - 560087",
   phone: "+91 81239 79966",
   email: "reservations@legendsbrewery.in",
-  hours: "12 PM - 1 AM, all days",
+  hours: "12 PM – 1 AM daily",
   mapEmbedSrc:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.505618358531!2d77.73130197454611!3d12.939465115583094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13006db60e2d%3A0x303cdc9fe49ae3ca!2sLegends%20Microbrewery!5e0!3m2!1sen!2sin!4v1776345726838!5m2!1sen!2sin",
 } as const;

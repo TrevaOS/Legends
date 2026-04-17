@@ -4,19 +4,19 @@ export default function EventsPage() {
   return (
     <div className="px-6 py-12 max-w-5xl mx-auto">
       <p className="text-xs text-[#a98f63] uppercase tracking-[0.4em]">Mark Your Calendar</p>
-      <h1 className="royal-heading text-5xl mt-2 md:text-6xl">Grand Launch</h1>
+      <h1 className="royal-heading text-5xl mt-2 md:text-6xl">Grand Opening</h1>
 
       <div className="mt-10 grid lg:grid-cols-2 gap-8 items-start">
         {/* Image */}
         <div className="relative rounded-2xl overflow-hidden border border-[#a98f63]/40 h-72 lg:h-80">
           <img
             src={featuredAmbience[0]}
-            alt="Legends Microbrewery"
+            alt="LEGENDS Microbrewery"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#13080a]/80 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-5">
-            <p className="royal-heading text-2xl text-[#a98f63]">Legends Microbrewery</p>
+            <p className="royal-heading text-2xl text-[#a98f63]">LEGENDS Microbrewery</p>
             <p className="text-[#e8e0d0] text-sm mt-0.5">Kingdom of Brews</p>
           </div>
         </div>
@@ -26,8 +26,8 @@ export default function EventsPage() {
           <div>
             <p className="text-xs text-[#a98f63] uppercase tracking-[0.4em]">Indulge in Grandeur</p>
             <h2 className="royal-heading text-2xl mt-2 text-[#f5f0e8] md:text-3xl">
-              The Grand Launch of<br />
-              <span className="text-[#a98f63]">Legends Microbrewery</span>
+              The Grand Opening of<br />
+              <span className="text-[#a98f63]">LEGENDS Microbrewery</span>
             </h2>
             <p className="mt-3 text-sm text-[#cbbca1] leading-relaxed">
               A celebration of passion, craftsmanship, timeless grandeur. Signature brews, royal feasts. A night to remember.

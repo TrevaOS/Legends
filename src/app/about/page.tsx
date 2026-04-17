@@ -13,7 +13,7 @@ export default function AboutPage() {
         <section className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <article>
             <p className="text-lg leading-relaxed">
-              Legends was born from a singular vision: to create a space where every guest feels
+              LEGENDS was born from a singular vision: to create a space where every guest feels
               like royalty. We set out to build not just a brewery but a kingdom where bold flavours,
               warm hospitality, an unforgettable atmosphere come together under one roof.
             </p>
@@ -23,7 +23,7 @@ export default function AboutPage() {
               that great beer deserves great company, great food, a setting that elevates every sip.
             </p>
             <p className="mt-5 text-base leading-relaxed text-[#cbbca1]">
-              Rooted in Bengaluru with a spirit that reaches far beyond the city, Legends stands as
+              Rooted in Bengaluru with a spirit that reaches far beyond the city, LEGENDS stands as
               a celebration of courage, creativity, the relentless pursuit of excellence.
             </p>
           </article>
@@ -49,7 +49,7 @@ export default function AboutPage() {
             },
             {
               title: "Quality",
-              desc: "From grain to glass, only the finest ingredients find their way into your pint at Legends.",
+              desc: "From grain to glass, only the finest ingredients find their way into your pint at LEGENDS.",
             },
             {
               title: "Heritage",

@@ -18,9 +18,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Legends | Kingdom of Brews - Bengaluru",
+  title: "LEGENDS | Kingdom of Brews - Bengaluru",
   description:
-    "Welcome to Legends, Bengaluru. Craft beers brewed for heroes. Explore our beer menu and experience the Kingdom of Brews.",
+    "Welcome to LEGENDS, Bengaluru. Craft beers brewed for heroes. Explore our beer menu and experience the Kingdom of Brews.",
   keywords:
     "microbrewery bangalore, craft beer bengaluru, legends brewery, kingdom of brews",
 };
