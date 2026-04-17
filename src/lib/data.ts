@@ -148,7 +148,7 @@ export const beersData: BeerItem[] = [
     name: "Sky Sovereign",
     style: "NEIPA",
     description:
-      "A juicy, hazy NEIPA bursting with tropical notes of mango, pineapple, and citrus. Soft bitterness balances sweetness with a smooth, vibrant finish.",
+      "A juicy, hazy NEIPA bursting with tropical notes of mango, pineapple and citrus. Soft bitterness balances sweetness with a smooth, vibrant finish.",
     image: ambienceImages.spaceEight,
   },
   {
@@ -162,28 +162,28 @@ export const beersData: BeerItem[] = [
     name: "Knights Wit",
     style: "Belgian Wit",
     description:
-      "Brewed with coriander and orange peel. Bright citrus, gentle spice, and a clean refreshing finish.",
+      "Brewed with coriander and orange peel. Bright citrus, gentle spice and a clean refreshing finish.",
     image: ambienceImages.spaceTen,
   },
   {
     name: "Golden Halo",
     style: "Hefeweizen",
     description:
-      "Classic wheat beer showcasing ripe banana and gentle clove spice. Soft, cloudy, and smooth with a creamy mouthfeel.",
+      "Classic wheat beer showcasing ripe banana and gentle clove spice. Soft, cloudy and smooth with a creamy mouthfeel.",
     image: ambienceImages.spaceEleven,
   },
   {
     name: "Orchard Queen",
     style: "Apple Cider",
     description:
-      "Crafted from selected apples with gentle sweetness, bright acidity, and a clean, elegant finish.",
+      "Crafted from selected apples with gentle sweetness, bright acidity and a clean, elegant finish.",
     image: ambienceImages.spaceOne,
   },
   {
     name: "Zen Empire",
     style: "Japanese Lager",
     description:
-      "Brewed with premium short-grain rice. Light-bodied, clean, subtle sweetness, and crisp calming finish.",
+      "Brewed with premium short-grain rice. Light-bodied, clean, subtle sweetness and crisp calming finish.",
     image: ambienceImages.spaceTwo,
   },
   {
