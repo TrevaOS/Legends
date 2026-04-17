@@ -1,4 +1,18 @@
+import type { Metadata } from "next";
 import { featuredAmbience, launchEventDetails } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Events | LEGENDS Microbrewery - Grand Opening & Special Events",
+  description:
+    "Join us at LEGENDS Microbrewery for our Grand Opening and special events. Experience craft beer, gourmet food, and unforgettable moments.",
+  keywords:
+    "brewery events bangalore, grand opening party, craft beer events bengaluru, microbrewery bangalore events",
+  openGraph: {
+    title: "Events | LEGENDS Microbrewery",
+    description: "Join us for our Grand Opening and special events.",
+    url: "https://legensmicrobrewery.com/events",
+  },
+};
 
 export default function EventsPage() {
   return (

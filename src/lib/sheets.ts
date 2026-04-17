@@ -3,13 +3,13 @@ export const APPS_SCRIPT_URL =
 
 type SheetPayload = Record<string, string | number>;
 
-export async function sendToSheet(payload: SheetPayload): Promise<void> {
+export async function sendToSheet(payload: SheetPayload): Promise<string | null> {
   try {
-    // GET with payload as query param is the most reliable no-cors approach
-    // for Apps Script — POST bodies can be dropped by browser CORS handling.
     const url = `${APPS_SCRIPT_URL}?payload=${encodeURIComponent(JSON.stringify(payload))}`;
-    await fetch(url, { method: "GET", mode: "no-cors" });
+    const response = await fetch(url, { method: "GET", mode: "no-cors" });
+    const data = await response.json();
+    return data.reference || null;
   } catch {
-    // Non-blocking — form still submits even if logging fails
+    return null;
   }
 }

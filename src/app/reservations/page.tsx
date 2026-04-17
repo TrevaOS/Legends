@@ -8,8 +8,6 @@ import { RoyalButton } from "@/components/ui/RoyalButton";
 
 const slots = ["12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM", "12:00 AM"];
 
-let referenceCounter = 1000;
-
 export default function ReservationsPage() {
   const [step, setStep] = useState(1);
   const [date, setDate] = useState("");
@@ -22,17 +20,34 @@ export default function ReservationsPage() {
   const [reference, setReference] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+  const minDate = useMemo(() => {
+    const today = new Date();
+    return today.toISOString().split("T")[0];
+  }, []);
+
+  const isTimeValid = useMemo(() => {
+    if (!date || !time) return true;
+    if (date !== minDate) return true;
+    const [timeStr, period] = time.split(" ");
+    const [hours, mins] = timeStr.split(":").map(Number);
+    const slotHours = period === "PM" && hours !== 12 ? hours + 12 : hours === 12 && period === "AM" ? 0 : hours;
+    const slotMinutes = mins;
+    const now = new Date();
+    const currentHours = now.getHours();
+    const currentMinutes = now.getMinutes();
+    return slotHours > currentHours || (slotHours === currentHours && slotMinutes > currentMinutes);
+  }, [date, time, minDate]);
+
   const canContinue = useMemo(() => {
-    if (step === 1) return Boolean(date);
+    if (step === 1) return Boolean(date) && date >= minDate;
+    if (step === 2) return isTimeValid;
     if (step === 4) return Boolean(name && phone && email);
     return true;
-  }, [step, date, name, phone, email]);
+  }, [step, date, minDate, isTimeValid, name, phone, email]);
 
   const confirm = async () => {
     if (submitting) return;
     setSubmitting(true);
-    referenceCounter++;
-    const ref = `LGM-${referenceCounter}`;
 
     const now = new Date();
     const day = String(now.getDate()).padStart(2, "0");
@@ -45,7 +60,6 @@ export default function ReservationsPage() {
 
     const payload = {
       form: "reservation",
-      reference: ref,
       date,
       time,
       guests,
@@ -58,9 +72,9 @@ export default function ReservationsPage() {
     };
 
     if (supabase) await supabase.from("reservations").insert(payload);
-    await sendToSheet(payload);
+    const ref = await sendToSheet(payload);
 
-    setReference(ref);
+    setReference(ref || "LGM-ERROR");
     setStep(5);
   };
 
@@ -93,6 +107,7 @@ export default function ReservationsPage() {
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
+                min={minDate}
                 className="mt-4 px-3 py-2 bg-[#2d1020] border border-[#a98f63]/35 rounded-md text-[#f5f0e8]"
               />
             </div>
@@ -101,16 +116,29 @@ export default function ReservationsPage() {
           {step === 2 && (
             <div>
               <p className="royal-heading text-2xl">Select a Time</p>
+              {date === minDate && !isTimeValid && (
+                <p className="mt-2 text-sm text-[#f5a0a0]">Please select a future time</p>
+              )}
               <div className="mt-4 flex flex-wrap gap-3">
-                {slots.map((slot) => (
-                  <button
-                    key={slot}
-                    onClick={() => setTime(slot)}
-                    className={`px-4 py-2 rounded-full border transition-colors ${time === slot ? "bg-[#a98f63] text-[#2a1200] border-[#a98f63]" : "border-[#a98f63]/45 text-[#f5f0e8] hover:border-[#a98f63]"}`}
-                  >
-                    {slot}
-                  </button>
-                ))}
+                {slots.map((slot) => {
+                  const [timeStr, period] = slot.split(" ");
+                  const [hours, mins] = timeStr.split(":").map(Number);
+                  const slotHours = period === "PM" && hours !== 12 ? hours + 12 : hours === 12 && period === "AM" ? 0 : hours;
+                  const slotMinutes = mins;
+                  const now = new Date();
+                  const isDisabled = date === minDate && (slotHours < now.getHours() || (slotHours === now.getHours() && slotMinutes <= now.getMinutes()));
+
+                  return (
+                    <button
+                      key={slot}
+                      onClick={() => setTime(slot)}
+                      disabled={isDisabled}
+                      className={`px-4 py-2 rounded-full border transition-colors ${isDisabled ? "opacity-50 cursor-not-allowed border-[#a98f63]/20 text-[#a98f63]/50" : time === slot ? "bg-[#a98f63] text-[#2a1200] border-[#a98f63]" : "border-[#a98f63]/45 text-[#f5f0e8] hover:border-[#a98f63]"}`}
+                    >
+                      {slot}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
