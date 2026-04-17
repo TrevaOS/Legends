@@ -5,14 +5,10 @@ type SheetPayload = Record<string, string | number>;
 
 export async function sendToSheet(payload: SheetPayload): Promise<void> {
   try {
-    // Apps Script cross-origin POST requires no-cors mode.
-    // The response will be opaque but the sheet write still executes server-side.
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify(payload),
-    });
+    // GET with payload as query param is the most reliable no-cors approach
+    // for Apps Script — POST bodies can be dropped by browser CORS handling.
+    const url = `${APPS_SCRIPT_URL}?payload=${encodeURIComponent(JSON.stringify(payload))}`;
+    await fetch(url, { method: "GET", mode: "no-cors" });
   } catch {
     // Non-blocking — form still submits even if logging fails
   }
