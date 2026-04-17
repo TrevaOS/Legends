@@ -65,7 +65,7 @@ export const HeroSection = () => {
           transition={{ delay: 0.15, duration: 0.6 }}
           className="text-[10px] uppercase tracking-[0.5em] text-[#d8b583]"
         >
-          Craft Beer · Food · Atmosphere
+          Craft Beer · Food · Ambiance
         </motion.p>
 
         <motion.h1
@@ -85,7 +85,7 @@ export const HeroSection = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mt-4 max-w-lg text-sm leading-6 text-[#ead8c6] md:text-base"
         >
-          Bengaluru&apos;s finest microbrewery. Bold craft beers, royal feasts, an atmosphere fit for legends.
+          Bengaluru&apos;s finest microbrewery. Bold craft beers, royal feasts, an ambiance fit for legends.
         </motion.p>
 
         <motion.div

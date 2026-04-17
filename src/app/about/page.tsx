@@ -15,7 +15,7 @@ export default function AboutPage() {
             <p className="text-lg leading-relaxed">
               LEGENDS was born from a singular vision: to create a space where every guest feels
               like royalty. We set out to build not just a brewery but a kingdom where bold flavours,
-              warm hospitality, an unforgettable atmosphere come together under one roof.
+              warm hospitality, an unforgettable ambiance come together under one roof.
             </p>
             <p className="mt-5 text-base leading-relaxed text-[#cbbca1]">
               Every pint we pour carries the weight of meticulous craft. From the grain selection

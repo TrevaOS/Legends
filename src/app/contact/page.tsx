@@ -14,6 +14,16 @@ export default function ContactPage() {
     e.preventDefault();
     setLoading(true);
     const fd = new FormData(e.currentTarget);
+
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, "0");
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const year = now.getFullYear();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const formattedTimestamp = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+
     const payload = {
       form: "contact",
       name: String(fd.get("name") || ""),
@@ -21,7 +31,7 @@ export default function ContactPage() {
       phone: String(fd.get("phone") || ""),
       subject: String(fd.get("subject") || ""),
       message: String(fd.get("message") || ""),
-      submitted_at: new Date().toISOString(),
+      submitted_at: formattedTimestamp,
     };
 
     // Write to Supabase
