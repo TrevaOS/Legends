@@ -26,6 +26,11 @@ export const FlipbookMenu = () => {
     setCurrent(next);
   };
 
+  const goToSection = (title: string) => {
+    const index = pages.findIndex((p) => p.kind === "section" && p.title === title);
+    if (index !== -1) go(index);
+  };
+
   const page = pages[current];
 
   const variants = {
@@ -36,13 +41,38 @@ export const FlipbookMenu = () => {
 
   return (
     <div className="menu-book-shell min-h-screen px-4 py-10 md:px-8 md:py-14">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-8">
 
-        {/* Header */}
-        <div className="mb-8">
-          <p className="text-xs uppercase tracking-[0.45em] text-[#c28a57]">Kingdom of Brews</p>
-          <h1 className="royal-heading mt-2 text-4xl text-[#fff4e8] md:text-5xl">Our Menu</h1>
+        {/* Left Sidebar - Category Filter */}
+        <div className="md:col-span-1">
+          <div className="sticky top-20">
+            <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63] font-semibold mb-4">Categories</p>
+            <div className="flex flex-col gap-2">
+              {menuSections.map((section) => (
+                <button
+                  key={section.title}
+                  onClick={() => goToSection(section.title)}
+                  className={`text-left px-3 py-2 rounded-lg transition-colors text-sm ${
+                    page.kind === "section" && page.title === section.title
+                      ? "bg-[#a98f63] text-[#2a1200] font-semibold"
+                      : "text-[#cbbca1] hover:text-[#a98f63] hover:bg-[#a98f63]/10"
+                  }`}
+                >
+                  {section.title}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* Main Content */}
+        <div className="md:col-span-3">
+
+          {/* Header */}
+          <div className="mb-8">
+            <p className="text-xs uppercase tracking-[0.45em] text-[#c28a57]">Kingdom of Brews</p>
+            <h1 className="royal-heading mt-2 text-4xl text-[#fff4e8] md:text-5xl">Our Menu</h1>
+          </div>
 
         {/* Page counter + nav */}
         <div className="mb-5 flex items-center justify-between">
@@ -164,6 +194,7 @@ export const FlipbookMenu = () => {
           ))}
         </div>
 
+        </div>
       </div>
     </div>
   );

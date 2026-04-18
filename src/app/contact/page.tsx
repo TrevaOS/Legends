@@ -12,38 +12,44 @@ export default function ContactPage() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (loading || done) return;
     setLoading(true);
-    const fd = new FormData(e.currentTarget);
 
-    const now = new Date();
-    const day = String(now.getDate()).padStart(2, "0");
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const year = now.getFullYear();
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
-    const formattedTimestamp = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+    try {
+      const fd = new FormData(e.currentTarget);
 
-    const payload = {
-      form: "contact",
-      name: String(fd.get("name") || ""),
-      email: String(fd.get("email") || ""),
-      phone: String(fd.get("phone") || ""),
-      subject: String(fd.get("subject") || ""),
-      message: String(fd.get("message") || ""),
-      submitted_at: formattedTimestamp,
-    };
+      const now = new Date();
+      const day = String(now.getDate()).padStart(2, "0");
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const year = now.getFullYear();
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const seconds = String(now.getSeconds()).padStart(2, "0");
+      const formattedTimestamp = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
 
-    // Write to Supabase
-    if (supabase) {
-      await supabase.from("contact_submissions").insert(payload);
+      const payload = {
+        form: "contact",
+        name: String(fd.get("name") || ""),
+        email: String(fd.get("email") || ""),
+        phone: String(fd.get("phone") || ""),
+        subject: String(fd.get("subject") || ""),
+        message: String(fd.get("message") || ""),
+        submitted_at: formattedTimestamp,
+      };
+
+      if (supabase) {
+        await supabase.from("contact_submissions").insert(payload);
+      }
+
+      await sendToSheet(payload);
+
+      setDone(true);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setLoading(false);
     }
-
-    // Write to Google Sheets via Apps Script
-    await sendToSheet(payload);
-
-    setDone(true);
-    setLoading(false);
   };
 
   return (
@@ -51,17 +57,25 @@ export default function ContactPage() {
       <h1 className="royal-heading text-6xl">Contact</h1>
       <div className="grid lg:grid-cols-2 gap-8 mt-10">
         <form onSubmit={onSubmit} className="ornamental-border rounded-2xl p-6 bg-[#1a0010]/70 space-y-4">
-          <input required name="name" placeholder="Name" className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8]" />
-          <input required type="email" name="email" placeholder="Email" className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8]" />
-          <input name="phone" placeholder="Phone" className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8]" />
-          <select name="subject" className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8]">
-            <option>General</option>
-            <option>Events</option>
-            <option>Partnership</option>
-          </select>
-          <textarea required name="message" placeholder="Message" rows={5} className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8]" />
-          <RoyalButton type="submit">{loading ? "Sending..." : "Send Message"}</RoyalButton>
-          {done && <p className="text-[#a98f63]">Your message has been received. We will be in touch soon.</p>}
+          {!done ? (
+            <>
+              <input required name="name" placeholder="Name" disabled={loading} className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8] disabled:opacity-50" />
+              <input required type="email" name="email" placeholder="Email" disabled={loading} className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8] disabled:opacity-50" />
+              <input name="phone" placeholder="Phone" disabled={loading} className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8] disabled:opacity-50" />
+              <select name="subject" disabled={loading} className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8] disabled:opacity-50">
+                <option>General</option>
+                <option>Events</option>
+                <option>Partnership</option>
+              </select>
+              <textarea required name="message" placeholder="Message" rows={5} disabled={loading} className="w-full px-3 py-2 rounded-md bg-[#2d1020] border border-[#a98f63]/35 text-[#f5f0e8] disabled:opacity-50" />
+              <RoyalButton type="submit" disabled={loading}>{loading ? "Sending..." : "Send Message"}</RoyalButton>
+            </>
+          ) : (
+            <div className="text-center py-8">
+              <p className="royal-heading text-2xl text-[#a98f63]">Message Received</p>
+              <p className="mt-3 text-[#cbbca1]">Thank you for reaching out. We'll get back to you soon.</p>
+            </div>
+          )}
         </form>
 
         <div className="space-y-6">

@@ -212,6 +212,53 @@ export const galleryItems: GalleryItem[] = [
 
 export const menuSections = [
   {
+    title: "Cocktails",
+    items: [
+      "Smoked Mango Ritual",
+      "Forbidden Orchard",
+      "Emerald Mist",
+      "The Bourbon King",
+      "Midnight Court",
+      "House of Kiwi",
+      "Pinefire Regent",
+      "Emperor's Lagoon",
+      "Queen's Kiss",
+      "Final Chapter",
+      "Drukan King",
+      "King's Counsel",
+    ],
+  },
+  {
+    title: "Premium Gin Series",
+    items: [
+      "Queen's Refresher",
+      "Imperial Infusion",
+      "Citrus Throne",
+    ],
+  },
+  {
+    title: "Power Mix Series",
+    items: [
+      "Crown Breaker",
+      "Redline Dominion",
+      "Golden Voltage",
+      "Blue Monarch",
+    ],
+  },
+  {
+    title: "Mocktails",
+    items: [
+      "Berry Rush",
+      "Tropic Indulgence",
+      "Obsidian Fizz",
+      "Ruby Rush",
+      "Coconut Insignia (Blue Pea Edition)",
+      "Coconut Insignia (Berry Tropical Edition)",
+      "Virgin Piña Colada",
+      "Mojito Eclipse",
+    ],
+  },
+  {
     title: "Salads",
     items: [
       "Roasted Pineapple Burrata Salad",

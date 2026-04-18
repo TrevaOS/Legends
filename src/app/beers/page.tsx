@@ -2,13 +2,14 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { beerImages } from "@/lib/beerImages";
+import { beerImages, beerTaps } from "@/lib/beerImages";
 import { beersData } from "@/lib/data";
 
 export default function BeersPage() {
   const [activeBeer, setActiveBeer] = useState<string | null>(null);
   const list = [...beersData];
   const selectedBeer = list.find((beer) => beer.name === activeBeer) ?? null;
+  const tapNames = Object.keys(beerTaps) as Array<keyof typeof beerTaps>;
 
   return (
     <div className="px-6 py-16 max-w-6xl mx-auto">
@@ -16,6 +17,26 @@ export default function BeersPage() {
       <p className="mt-4 max-w-3xl text-[#d8ccb7]">
         A cleaner look at the house lineup with the key beer details first.
       </p>
+
+      {/* Beer Taps Display */}
+      <div className="mt-12 mb-16">
+        <h2 className="royal-heading text-2xl text-[#a98f63] mb-6">Our Signature Taps</h2>
+        <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+          {tapNames.map((name) => (
+            <div key={name} className="flex flex-col items-center">
+              <div className="h-32 w-32 flex items-center justify-center">
+                <img
+                  src={beerTaps[name]}
+                  alt={`${name} tap`}
+                  className="h-full w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <p className="mt-3 text-sm font-semibold text-[#cbbca1]">{name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {list.map((beer) => {

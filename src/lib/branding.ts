@@ -1,8 +1,8 @@
 export const brandAssets = {
-  mainLogo: "/assets/logos/Legends_Logo_Variations_page-0001.png",
-  faviconLogo: "/assets/logos/Legends_Logo_Variations_page-0009.jpg",
-  secondaryMark: "/assets/logos/Legends_Logo_Variations_page-0015.jpg",
-  footerLogo: "/assets/logos/Legends_Logo_Variations_page-0020.jpg",
+  mainLogo: "/assets/logos/Legends Logo.png",
+  faviconLogo: "/assets/logos/Legends Logo.png",
+  secondaryMark: "/assets/logos/Legends Logo.png",
+  footerLogo: "/assets/logos/Legends Logo.png",
   menuReference: "/assets/documents/menu/menu 9.pdf",
   finalFoodMenu: "/assets/documents/menu/LEGENDS FINAL FOOD MENU 3.pdf",
 } as const;

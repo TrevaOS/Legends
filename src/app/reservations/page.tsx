@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase";
 import { sendToSheet } from "@/lib/sheets";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 
-const slots = ["12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM", "12:00 AM"];
+const slots = ["12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM"];
 
 export default function ReservationsPage() {
   const [step, setStep] = useState(1);
@@ -116,9 +116,6 @@ export default function ReservationsPage() {
           {step === 2 && (
             <div>
               <p className="royal-heading text-2xl">Select a Time</p>
-              {date === minDate && !isTimeValid && (
-                <p className="mt-2 text-sm text-[#f5a0a0]">Please select a future time</p>
-              )}
               <div className="mt-4 flex flex-wrap gap-3">
                 {slots.map((slot) => {
                   const [timeStr, period] = slot.split(" ");
