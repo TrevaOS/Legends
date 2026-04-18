@@ -43,8 +43,8 @@ export const FlipbookMenu = () => {
     <div className="menu-book-shell min-h-screen px-4 py-10 md:px-8 md:py-14">
       <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-8">
 
-        {/* Left Sidebar - Category Filter */}
-        <div className="md:col-span-1">
+        {/* Left Sidebar - Category Filter (Desktop Only) */}
+        <div className="hidden md:block md:col-span-1">
           <div className="sticky top-20">
             <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63] font-semibold mb-4">Categories</p>
             <div className="flex flex-col gap-2">
@@ -66,7 +66,7 @@ export const FlipbookMenu = () => {
         </div>
 
         {/* Main Content */}
-        <div className="md:col-span-3">
+        <div className="col-span-1 md:col-span-3">
 
           {/* Header */}
           <div className="mb-8">

@@ -6,10 +6,11 @@ type SheetPayload = Record<string, string | number>;
 export async function sendToSheet(payload: SheetPayload): Promise<string | null> {
   try {
     const url = `${APPS_SCRIPT_URL}?payload=${encodeURIComponent(JSON.stringify(payload))}`;
-    const response = await fetch(url, { method: "GET", mode: "no-cors" });
+    const response = await fetch(url, { method: "GET" });
     const data = await response.json();
     return data.reference || null;
-  } catch {
+  } catch (error) {
+    console.error("Error sending to sheet:", error);
     return null;
   }
 }
