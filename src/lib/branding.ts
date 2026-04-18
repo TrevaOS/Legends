@@ -1,5 +1,5 @@
 export const brandAssets = {
-  mainLogo: "/assets/logos/Legends_Logo_Variations_page-0001.jpg",
+  mainLogo: "/assets/logos/Legends_Logo_Variations_page-0001.png",
   faviconLogo: "/assets/logos/Legends_Logo_Variations_page-0009.jpg",
   secondaryMark: "/assets/logos/Legends_Logo_Variations_page-0015.jpg",
   footerLogo: "/assets/logos/Legends_Logo_Variations_page-0020.jpg",
