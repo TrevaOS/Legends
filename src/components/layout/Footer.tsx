@@ -41,7 +41,7 @@ export const Footer = () => {
             <div className="mt-4 flex flex-col gap-2.5 text-sm text-[#cbbca1]">
               <p>{venueDetails.address}</p>
               <p>{venueDetails.hours}</p>
-              <Link href="/reservations" className="hover:text-[#a98f63] transition-colors">Book a Table</Link>
+              <a href="https://widget.reservego.co/reserveOutlets/69e43f6414d072543704f2f8?source=9" target="_blank" rel="noreferrer" className="hover:text-[#a98f63] transition-colors">Book a Table</a>
             </div>
           </div>
 

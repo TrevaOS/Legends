@@ -44,7 +44,7 @@ export const Navbar = () => {
         </Link>
         <div className="hidden md:flex items-center gap-6 text-sm font-medium">
           {links.map(([label, href]) => (<Link key={href} href={href} className="hover:text-[#a98f63] transition-colors">{label}</Link>))}
-          <Link href="/reservations" className="px-4 py-2 rounded-full bg-gradient-to-r from-[#a98f63] to-[#cbbca1] text-[#2a1200] font-bold text-xs uppercase tracking-[0.14em]">Book a Table</Link>
+          <a href="https://widget.reservego.co/reserveOutlets/69e43f6414d072543704f2f8?source=9" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full bg-gradient-to-r from-[#a98f63] to-[#cbbca1] text-[#2a1200] font-bold text-xs uppercase tracking-[0.14em]">Book a Table</a>
         </div>
         <button className="md:hidden" onClick={() => setOpen((v) => !v)} aria-label="toggle menu">{open ? <X /> : <Menu />}</button>
       </nav>
@@ -68,7 +68,7 @@ export const Navbar = () => {
               {links.map(([label, href]) => (
                 <Link key={href} href={href} onClick={() => setOpen(false)} className="text-lg">{label}</Link>
               ))}
-              <Link href="/reservations" onClick={() => setOpen(false)} className="mt-2 px-4 py-3 text-center rounded-full bg-gradient-to-r from-[#a98f63] to-[#cbbca1] text-[#2a1200] font-semibold">Book a Table</Link>
+              <a href="https://widget.reservego.co/reserveOutlets/69e43f6414d072543704f2f8?source=9" target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="mt-2 px-4 py-3 text-center rounded-full bg-gradient-to-r from-[#a98f63] to-[#cbbca1] text-[#2a1200] font-semibold">Book a Table</a>
             </div>
           </motion.div>
         ) : null}
