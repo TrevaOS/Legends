@@ -95,7 +95,7 @@ export const HeroSection = () => {
           className="mt-8 flex flex-wrap gap-4"
         >
           <RoyalButton href="/beers">Explore Our Beers</RoyalButton>
-          <RoyalButton href="/reservations" variant="outline">Book a Table</RoyalButton>
+          <RoyalButton href="https://widget.reservego.co/reserveOutlets/69e43f6414d072543704f2f8?source=9" variant="outline" target="_blank" rel="noreferrer">Book a Table</RoyalButton>
         </motion.div>
       </div>
     </section>

@@ -8,6 +8,6 @@ export const EventCard = ({ title, date, time, icon }: { title: string; date: st
     </div>
     <h3 className="royal-heading text-2xl mt-4">{title}</h3>
     <p className="text-sm text-[#cbbca1] mt-2">{time}</p>
-    <div className="mt-5"><RoyalButton href="/reservations">Book Spot</RoyalButton></div>
+    <div className="mt-5"><RoyalButton href="https://widget.reservego.co/reserveOutlets/69e43f6414d072543704f2f8?source=9" target="_blank" rel="noreferrer">Book Spot</RoyalButton></div>
   </article>
 );
