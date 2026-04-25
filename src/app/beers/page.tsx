@@ -44,7 +44,7 @@ export default function BeersPage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#13080a] via-transparent to-transparent" />
-                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/70 px-2 py-1 rounded-full">
+                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/70 px-2 py-1 rounded-full brewski-font">
                   {beer.style}
                 </span>
                 {beer.tapLogo && (
@@ -65,7 +65,7 @@ export default function BeersPage() {
                   {stats.map((stat) => (
                     <span
                       key={stat}
-                      className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0]"
+                      className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0] brewski-font"
                     >
                       {stat}
                     </span>
@@ -75,7 +75,7 @@ export default function BeersPage() {
                   <button
                     type="button"
                     onClick={() => setActiveBeer(beer.name)}
-                    className="rounded-full px-5 py-2 text-sm font-semibold border border-[#a98f63] text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors"
+                    className="rounded-full px-5 py-2 text-sm font-semibold border border-[#a98f63] text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors brewski-font"
                   >
                     View Details
                   </button>
@@ -103,13 +103,25 @@ export default function BeersPage() {
               className="w-full max-w-2xl overflow-hidden rounded-2xl border border-[#a98f63]/40 bg-[#1a0010]"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={beerImages[selectedBeer.name]}
-                alt={selectedBeer.name}
-                className="h-64 w-full object-cover"
-              />
+              <div className="relative">
+                <img
+                  src={beerImages[selectedBeer.name]}
+                  alt={selectedBeer.name}
+                  className="h-64 w-full object-cover"
+                />
+                {selectedBeer.tapLogo && (
+                  <div className="absolute top-4 right-4 h-16 w-16 flex items-center justify-center bg-[#13080a]/80 rounded-full border border-[#a98f63]/40">
+                    <img
+                      src={selectedBeer.tapLogo}
+                      alt={`${selectedBeer.name} tap`}
+                      className="h-14 w-14 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+              </div>
               <div className="p-6">
-                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63]">{selectedBeer.style}</p>
+                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63] brewski-font">{selectedBeer.style}</p>
                 <h2 className="royal-heading text-4xl text-[#f5f0e8] mt-2 brewski-font">{selectedBeer.name}</h2>
                 <div className="h-px bg-[#a98f63]/30 my-4" />
                 <div className="flex flex-wrap gap-2">
@@ -122,17 +134,17 @@ export default function BeersPage() {
                     .map((stat) => (
                       <span
                         key={stat}
-                        className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0]"
+                        className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0] brewski-font"
                       >
                         {stat}
                       </span>
                     ))}
                 </div>
-                <p className="mt-4 text-[#e8e0d0] leading-7">{selectedBeer.description}</p>
+                <p className="mt-4 text-[#e8e0d0] leading-7 brewski-font">{selectedBeer.description}</p>
                 <button
                   type="button"
                   onClick={() => setActiveBeer(null)}
-                  className="mt-6 rounded-full border border-[#a98f63] px-5 py-2 text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors"
+                  className="mt-6 rounded-full border border-[#a98f63] px-5 py-2 text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors brewski-font"
                 >
                   Close
                 </button>

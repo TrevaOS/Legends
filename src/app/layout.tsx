@@ -27,11 +27,11 @@ export const metadata: Metadata = {
     title: "LEGENDS | Kingdom of Brews - Bengaluru's Premier Microbrewery",
     description:
       "Experience craft beers brewed with meticulous care at LEGENDS Microbrewery. Reservation Booking available.",
-    url: "https://legensmicrobrewery.com",
+    url: "https://legendsbrewery.in",
     siteName: "LEGENDS Microbrewery",
     images: [
       {
-        url: "https://legensmicrobrewery.com/og-image.jpg",
+        url: "https://legendsbrewery.in/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "LEGENDS Microbrewery - Kingdom of Brews",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "LEGENDS | Kingdom of Brews - Bengaluru",
     description:
       "Craft beers, gourmet food, and royal ambiance at LEGENDS Microbrewery.",
-    images: ["https://legensmicrobrewery.com/og-image.jpg"],
+    images: ["https://legendsbrewery.in/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "LEGENDS Microbrewery",
-    image: "https://legensmicrobrewery.com/og-image.jpg",
+    image: "https://legendsbrewery.in/og-image.jpg",
     description:
       "LEGENDS Microbrewery - Bengaluru's premier craft brewery with gourmet food and royal ambiance.",
     address: {
@@ -73,7 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       addressRegion: "Karnataka",
     },
     telephone: "+91-XXXXXXXXXX",
-    url: "https://legensmicrobrewery.com",
+    url: "https://legendsbrewery.in",
     priceRange: "₹₹₹",
     openingHoursSpecification: [
       {
@@ -97,7 +97,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="canonical" href="https://legensmicrobrewery.com" />
+        <link rel="canonical" href="https://legendsbrewery.in" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
