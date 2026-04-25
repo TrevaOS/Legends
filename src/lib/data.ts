@@ -11,6 +11,7 @@ type BeerItem = {
   style: string;
   description: string;
   image: string;
+  tapLogo?: string;
   abv?: string;
   ibu?: number;
   rating?: string;
@@ -24,6 +25,8 @@ type GalleryItem = {
   image: string;
   height: string;
 };
+
+import { beerTaps } from "./beerImages";
 
 const driveImage = (id: string, width = 1600) =>
   `https://lh3.googleusercontent.com/d/${id}=w${width}`;
@@ -143,6 +146,7 @@ export const beersData: BeerItem[] = [
     description:
       "Rich and full-bodied, layered with deep chocolate and roasted coffee aromas. Subtle caramel sweetness balances the roasted malt character, creating a smooth, indulgent finish with vanilla notes.",
     image: ambienceImages.spaceSeven,
+    tapLogo: beerTaps.Bull,
   },
   {
     name: "Sky Sovereign",
@@ -150,6 +154,7 @@ export const beersData: BeerItem[] = [
     description:
       "A juicy, hazy NEIPA bursting with tropical notes of mango, pineapple and citrus. Soft bitterness balances sweetness with a smooth, vibrant finish.",
     image: ambienceImages.spaceEight,
+    tapLogo: beerTaps.Deer,
   },
   {
     name: "Kings Frontier",
@@ -157,6 +162,7 @@ export const beersData: BeerItem[] = [
     description:
       "Bright citrus and pine aromas lead, supported by a clean malt backbone. Bold hop-forward bitterness with a dry, refreshing finish.",
     image: ambienceImages.spaceNine,
+    tapLogo: beerTaps.Eagle,
   },
   {
     name: "Knights Wit",
@@ -164,6 +170,7 @@ export const beersData: BeerItem[] = [
     description:
       "Brewed with coriander and orange peel. Bright citrus, gentle spice and a clean refreshing finish.",
     image: ambienceImages.spaceTen,
+    tapLogo: beerTaps.Elephant,
   },
   {
     name: "Golden Halo",
@@ -171,6 +178,7 @@ export const beersData: BeerItem[] = [
     description:
       "Classic wheat beer showcasing ripe banana and gentle clove spice. Soft, cloudy and smooth with a creamy mouthfeel.",
     image: ambienceImages.spaceEleven,
+    tapLogo: beerTaps.Fox,
   },
   {
     name: "Orchard Queen",
@@ -178,6 +186,7 @@ export const beersData: BeerItem[] = [
     description:
       "Crafted from selected apples with gentle sweetness, bright acidity and a clean, elegant finish.",
     image: ambienceImages.spaceOne,
+    tapLogo: beerTaps.Horse,
   },
   {
     name: "Zen Empire",
@@ -185,6 +194,7 @@ export const beersData: BeerItem[] = [
     description:
       "Brewed with premium short-grain rice. Light-bodied, clean, subtle sweetness and crisp calming finish.",
     image: ambienceImages.spaceTwo,
+    tapLogo: beerTaps.Lion,
   },
   {
     name: "Imperial Fields",
@@ -192,6 +202,7 @@ export const beersData: BeerItem[] = [
     description:
       "Brewed with premium maize for subtle sweetness and light refreshing body with smooth finish.",
     image: ambienceImages.spaceThree,
+    tapLogo: beerTaps.Owl,
   },
 ] as const;
 

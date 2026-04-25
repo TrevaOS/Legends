@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { beerImages, beerTaps } from "@/lib/beerImages";
+import { beerImages } from "@/lib/beerImages";
 import { beersData } from "@/lib/data";
 
 // Import Brewski font
@@ -12,7 +12,6 @@ export default function BeersPage() {
   const [activeBeer, setActiveBeer] = useState<string | null>(null);
   const list = [...beersData];
   const selectedBeer = list.find((beer) => beer.name === activeBeer) ?? null;
-  const tapNames = Object.keys(beerTaps) as Array<keyof typeof beerTaps>;
 
   return (
     <div className="px-6 py-16 max-w-6xl mx-auto">
@@ -21,32 +20,6 @@ export default function BeersPage() {
         A cleaner look at the house lineup with the key beer details first.
       </p>
 
-      {/* Beer Taps Display */}
-      <div className="mt-12 mb-16">
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-          {tapNames.map((name, idx) => {
-            const beer = list[idx];
-            const tapImage = beerTaps[name];
-            return (
-              <div
-                key={name}
-                className="flex flex-col items-center p-4 rounded-xl border border-[#a98f63]/20 bg-[#0a0805]/40 hover:border-[#a98f63]/40 hover:bg-[#0a0805]/60 transition-all duration-300 w-32"
-              >
-                <div className="h-28 w-28 flex items-center justify-center mb-3">
-                  <img
-                    src={tapImage}
-                    alt={`${name} tap`}
-                    className="h-full w-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#a98f63] font-semibold text-center">{beer?.style || name}</p>
-                <p className="mt-2 text-xs font-semibold text-[#f5f0e8] text-center brewski-font">{beer?.name || name}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {list.map((beer) => {
@@ -74,6 +47,16 @@ export default function BeersPage() {
                 <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/70 px-2 py-1 rounded-full">
                   {beer.style}
                 </span>
+                {beer.tapLogo && (
+                  <div className="absolute bottom-3 right-3 h-12 w-12 flex items-center justify-center bg-[#13080a]/70 rounded-full">
+                    <img
+                      src={beer.tapLogo}
+                      alt={`${beer.name} tap`}
+                      className="h-10 w-10 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
               </div>
               <div className="p-5 flex flex-col flex-1">
                 <h3 className="royal-heading text-xl text-[#f5f0e8] brewski-font">{beer.name}</h3>
