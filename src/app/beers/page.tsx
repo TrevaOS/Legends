@@ -5,6 +5,9 @@ import { useState } from "react";
 import { beerImages, beerTaps } from "@/lib/beerImages";
 import { beersData } from "@/lib/data";
 
+// Import Brewski font
+import "@/styles/brewski.css";
+
 export default function BeersPage() {
   const [activeBeer, setActiveBeer] = useState<string | null>(null);
   const list = [...beersData];
@@ -13,28 +16,35 @@ export default function BeersPage() {
 
   return (
     <div className="px-6 py-16 max-w-6xl mx-auto">
-      <h1 className="royal-heading text-6xl">Brewed for Heroes</h1>
+      <h1 className="royal-heading text-6xl brewski-font">Brewed for Heroes</h1>
       <p className="mt-4 max-w-3xl text-[#d8ccb7]">
         A cleaner look at the house lineup with the key beer details first.
       </p>
 
       {/* Beer Taps Display */}
       <div className="mt-12 mb-16">
-        <h2 className="royal-heading text-2xl text-[#a98f63] mb-6">Our Signature Taps</h2>
-        <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-          {tapNames.map((name) => (
-            <div key={name} className="flex flex-col items-center">
-              <div className="h-32 w-32 flex items-center justify-center">
-                <img
-                  src={beerTaps[name]}
-                  alt={`${name} tap`}
-                  className="h-full w-full object-contain"
-                  loading="lazy"
-                />
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+          {tapNames.map((name, idx) => {
+            const beer = list[idx];
+            const tapImage = beerTaps[name];
+            return (
+              <div
+                key={name}
+                className="flex flex-col items-center p-4 rounded-xl border border-[#a98f63]/20 bg-[#0a0805]/40 hover:border-[#a98f63]/40 hover:bg-[#0a0805]/60 transition-all duration-300 w-32"
+              >
+                <div className="h-28 w-28 flex items-center justify-center mb-3">
+                  <img
+                    src={tapImage}
+                    alt={`${name} tap`}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#a98f63] font-semibold text-center">{beer?.style || name}</p>
+                <p className="mt-2 text-xs font-semibold text-[#f5f0e8] text-center brewski-font">{beer?.name || name}</p>
               </div>
-              <p className="mt-3 text-sm font-semibold text-[#cbbca1]">{name}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -66,7 +76,7 @@ export default function BeersPage() {
                 </span>
               </div>
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="royal-heading text-xl text-[#f5f0e8]">{beer.name}</h3>
+                <h3 className="royal-heading text-xl text-[#f5f0e8] brewski-font">{beer.name}</h3>
                 <div className="h-px bg-[#a98f63]/40 my-3" />
                 <div className="flex flex-wrap gap-2 flex-1 content-start">
                   {stats.map((stat) => (
@@ -117,7 +127,7 @@ export default function BeersPage() {
               />
               <div className="p-6">
                 <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63]">{selectedBeer.style}</p>
-                <h2 className="royal-heading text-4xl text-[#f5f0e8] mt-2">{selectedBeer.name}</h2>
+                <h2 className="royal-heading text-4xl text-[#f5f0e8] mt-2 brewski-font">{selectedBeer.name}</h2>
                 <div className="h-px bg-[#a98f63]/30 my-4" />
                 <div className="flex flex-wrap gap-2">
                   {[
