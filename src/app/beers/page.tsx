@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { beerImages } from "@/lib/beerImages";
 import { beersData } from "@/lib/data";
+import { CurvedHeading } from "@/components/ui/CurvedHeading";
 
 // Import Brewski font
 import "@/styles/brewski.css";
@@ -15,10 +16,27 @@ export default function BeersPage() {
 
   return (
     <div className="px-6 py-16 max-w-6xl mx-auto">
-      <h1 className="royal-heading text-6xl brewski-font">Brewed for Heroes</h1>
-      <p className="mt-4 max-w-3xl text-[#d8ccb7]">
-        A cleaner look at the house lineup with the key beer details first.
-      </p>
+      <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+        <div className="flex-1">
+          <div className="flex justify-center md:justify-start">
+            <CurvedHeading
+              text="BREWED FOR HEROES"
+              width={280}
+              height={280}
+              fontSize={20}
+              color="#a98f63"
+            />
+          </div>
+        </div>
+        <div className="flex-1">
+          <h2 className="royal-heading text-5xl brewski-font text-[#f5f0e8]">
+            Brewed for Heroes
+          </h2>
+          <p className="mt-4 text-[#d8ccb7] leading-relaxed">
+            A cleaner look at the house lineup with the key beer details first.
+          </p>
+        </div>
+      </div>
 
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
