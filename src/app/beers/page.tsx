@@ -27,18 +27,13 @@ export default function BeersPage() {
 
   return (
     <div className="px-6 py-16 max-w-6xl mx-auto">
-      <div className="mb-12">
-        <div className="flex justify-center">
-          <div className="relative w-full max-w-2xl h-32 flex items-center justify-center overflow-hidden rounded-lg" style={{ backgroundImage: 'linear-gradient(135deg, #d4af79 0%, #18050f 100%)' }}>
-            <img
-              src="/assets/font/22372334.png"
-              alt="Brewed for Heroes"
-              className="h-20 w-auto relative z-10"
-            />
-          </div>
-        </div>
+      <div className="mb-12 text-center">
+        <img
+          src="/assets/font/22372334.png"
+          alt="Brewed for Heroes"
+          className="h-24 w-auto mx-auto"
+        />
       </div>
-
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {list.map((beer) => {
@@ -63,7 +58,7 @@ export default function BeersPage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#13080a] via-transparent to-transparent" />
-                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/70 px-2 py-1 rounded-full" style={{ fontFamily: "Nunito" }}>
+                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/70 px-2 py-1 rounded-full brewski-font">
                   {beer.style}
                 </span>
                 {beer.tapLogo && (
@@ -77,32 +72,30 @@ export default function BeersPage() {
                   </div>
                 )}
               </div>
-              <div className="p-5 flex flex-col flex-1 bg-[#d4af79]">
-                <div className="h-10 mb-3 flex justify-center">
+              <div className="p-5 flex flex-col flex-1">
+                <div className="mb-3 text-center">
                   <img
                     src={beerFontImages[beer.name]}
                     alt={beer.name}
-                    className="h-full w-auto object-contain"
+                    className="h-16 w-auto inline-block"
                   />
                 </div>
-                <div className="h-px bg-[#5a3b1a]/40 my-2" />
+                <div className="h-px bg-[#a98f63]/40 my-3" />
                 <div className="flex flex-wrap gap-2 flex-1 content-start">
                   {stats.map((stat) => (
                     <span
                       key={stat}
-                      className="rounded-full border border-[#5a3b1a]/35 px-2 py-1 text-[9px] uppercase tracking-[0.08em] text-[#5a3b1a]"
-                      style={{ fontFamily: "Nunito" }}
+                      className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0] brewski-font"
                     >
                       {stat}
                     </span>
                   ))}
                 </div>
-                <div className="mt-3">
+                <div className="mt-4">
                   <button
                     type="button"
                     onClick={() => setActiveBeer(beer.name)}
-                    className="w-full rounded-full px-4 py-2 text-xs font-semibold border border-[#5a3b1a] text-[#5a3b1a] hover:bg-[#5a3b1a] hover:text-[#d4af79] transition-colors"
-                    style={{ fontFamily: "Nunito" }}
+                    className="rounded-full px-5 py-2 text-sm font-semibold border border-[#a98f63] text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors brewski-font"
                   >
                     View Details
                   </button>
@@ -148,12 +141,12 @@ export default function BeersPage() {
                 )}
               </div>
               <div className="p-6">
-                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63] text-center" style={{ fontFamily: "Nunito" }}>{selectedBeer.style}</p>
-                <div className="h-12 mt-3 mb-3 flex justify-center">
+                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63] brewski-font text-center">{selectedBeer.style}</p>
+                <div className="mt-2 mb-2 text-center">
                   <img
                     src={beerFontImages[selectedBeer.name]}
                     alt={selectedBeer.name}
-                    className="h-full w-auto object-contain"
+                    className="h-20 w-auto inline-block"
                   />
                 </div>
                 <div className="h-px bg-[#a98f63]/30 my-4" />
@@ -167,19 +160,17 @@ export default function BeersPage() {
                     .map((stat) => (
                       <span
                         key={stat}
-                        className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0]"
-                        style={{ fontFamily: "Nunito" }}
+                        className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0] brewski-font"
                       >
                         {stat}
                       </span>
                     ))}
                 </div>
-                <p className="mt-4 text-[#e8e0d0] leading-7" style={{ fontFamily: "Nunito" }}>{selectedBeer.description}</p>
+                <p className="mt-4 text-[#e8e0d0] leading-7 brewski-font">{selectedBeer.description}</p>
                 <button
                   type="button"
                   onClick={() => setActiveBeer(null)}
-                  className="mt-6 rounded-full border border-[#a98f63] px-5 py-2 text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors"
-                  style={{ fontFamily: "Nunito" }}
+                  className="mt-6 rounded-full border border-[#a98f63] px-5 py-2 text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors brewski-font"
                 >
                   Close
                 </button>
