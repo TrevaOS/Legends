@@ -41,7 +41,7 @@ export default function CorporateBookingPage() {
       };
 
       const response = await fetch(
-        "https://script.google.com/macros/d/YOUR_DEPLOYMENT_ID/usercontent",
+        "https://script.google.com/macros/d/AKfycby64nKTazKbXp75sRf9r3WG05wSMX1HFmECBvlk4gKLTQS8IjXNicdcZnCfScL5hm9NUQ/usercontent",
         {
           method: "POST",
           mode: "no-cors",
