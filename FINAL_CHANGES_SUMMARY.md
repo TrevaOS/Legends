@@ -49,7 +49,7 @@
 
 **Changed:**
 - From: `'🔞 Below the age of 21 alcohol will not be served'`
-- To: `'🔞 Alcohol will not be served to individuals under the age of 21'`
+- To: `'🔞 No alcohol served to under 21.'`
 - More grammatically correct and formal
 
 **Test:** Visit home page - watch marquee show updated message

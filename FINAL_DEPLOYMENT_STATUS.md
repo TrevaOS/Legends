@@ -93,7 +93,7 @@ All requested features have been implemented, tested, and verified. Your website
 
 #### Age Restriction (Issue #5)
 - ✓ Updated message in marquee
-- ✓ "Alcohol will not be served to individuals under the age of 21"
+- ✓ "No alcohol served to under 21."
 
 #### Home Screen Beer Names (Issue #5)
 - ✓ Brewski font applied
