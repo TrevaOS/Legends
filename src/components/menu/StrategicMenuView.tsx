@@ -109,24 +109,29 @@ export const StrategicMenuView = () => {
         </motion.div>
 
         {/* Other Sections */}
-        {orderedSections.slice(1).map((section, idx) => (
-          <motion.div
-            key={section.title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: (idx + 1) * 0.1 }}
-            className="mb-6"
-          >
-            <button
-              onClick={() => toggleSection(section.title)}
-              className="w-full flex items-center justify-between p-4 rounded-xl border border-[#a98f63]/40 bg-[#1a0010]/80 hover:bg-[#1a0010] transition-colors mb-3"
+        {orderedSections.slice(1).map((section, idx) => {
+          const getEmoji = (title: string) => {
+            if (title === "Starters") return "🥘";
+            if (title === "Cocktails") return "🍹";
+            if (title === "Main Course") return "🍽️";
+            return "🍴";
+          };
+
+          return (
+            <motion.div
+              key={section.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: (idx + 1) * 0.1 }}
+              className="mb-6"
             >
-              <h3 className="royal-heading text-xl text-[#a98f63]">
-                {section.title === "Starters" && "🥘"}
-                {section.title === "Cocktails" && "🍹"}
-                {section.title === "Main Course" && "🍽️"}
-                {` ${section.title}`}
-              </h3>
+              <button
+                onClick={() => toggleSection(section.title)}
+                className="w-full flex items-center justify-between p-4 rounded-xl border border-[#a98f63]/40 bg-[#1a0010]/80 hover:bg-[#1a0010] transition-colors mb-3"
+              >
+                <h3 className="royal-heading text-xl text-[#a98f63]">
+                  {getEmoji(section.title)} {section.title}
+                </h3>
               <span className="text-2xl text-[#a98f63]">
                 {expandedSections.includes(section.title) ? "−" : "+"}
               </span>
@@ -149,8 +154,9 @@ export const StrategicMenuView = () => {
                 ))}
               </motion.div>
             )}
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
 
         {/* Footer */}
         <div className="mt-12 text-center pt-8 border-t border-[#a98f63]/20">
