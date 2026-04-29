@@ -108,7 +108,7 @@ export default function CorporateBookingPage() {
                 onChange={handleChange}
                 required
                 className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] placeholder-[#8b7355] focus:outline-none focus:border-[#a98f63] transition-colors"
-                placeholder="Your company name"
+                placeholder="Infosys, TCS, Accenture..."
               />
             </div>
 
@@ -124,7 +124,7 @@ export default function CorporateBookingPage() {
                 onChange={handleChange}
                 required
                 className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] placeholder-[#8b7355] focus:outline-none focus:border-[#a98f63] transition-colors"
-                placeholder="Your name"
+                placeholder="Raj Kumar, Priya Singh..."
               />
             </div>
 
@@ -140,7 +140,7 @@ export default function CorporateBookingPage() {
                 onChange={handleChange}
                 required
                 className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] placeholder-[#8b7355] focus:outline-none focus:border-[#a98f63] transition-colors"
-                placeholder="your@email.com"
+                placeholder="contact@company.com"
               />
             </div>
 
@@ -156,7 +156,7 @@ export default function CorporateBookingPage() {
                 onChange={handleChange}
                 required
                 className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] placeholder-[#8b7355] focus:outline-none focus:border-[#a98f63] transition-colors"
-                placeholder="+91 98765 43210"
+                placeholder="9876543210"
               />
             </div>
 
@@ -187,14 +187,15 @@ export default function CorporateBookingPage() {
             {/* Event Date */}
             <div>
               <label className="block text-sm text-[#a98f63] uppercase tracking-[0.2em] mb-2">
-                Preferred Date *
+                Preferred Date & Time *
               </label>
               <input
-                type="date"
+                type="datetime-local"
                 name="event_date"
                 value={formData.event_date}
                 onChange={handleChange}
                 required
+                min={new Date().toISOString().slice(0, 16)}
                 className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] focus:outline-none focus:border-[#a98f63] transition-colors"
               />
             </div>
@@ -212,28 +213,8 @@ export default function CorporateBookingPage() {
                 required
                 min="1"
                 className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] placeholder-[#8b7355] focus:outline-none focus:border-[#a98f63] transition-colors"
-                placeholder="e.g., 25"
+                placeholder="50"
               />
-            </div>
-
-            {/* Budget */}
-            <div>
-              <label className="block text-sm text-[#a98f63] uppercase tracking-[0.2em] mb-2">
-                Budget Range
-              </label>
-              <select
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] focus:outline-none focus:border-[#a98f63] transition-colors"
-              >
-                <option value="">Select budget range</option>
-                <option value="under_10k">Under ₹10,000</option>
-                <option value="10k_25k">₹10,000 - ₹25,000</option>
-                <option value="25k_50k">₹25,000 - ₹50,000</option>
-                <option value="50k_100k">₹50,000 - ₹1,00,000</option>
-                <option value="above_100k">Above ₹1,00,000</option>
-              </select>
             </div>
           </div>
 
@@ -298,7 +279,7 @@ export default function CorporateBookingPage() {
           </div>
 
           <p className="text-xs text-[#8b7355] text-center mt-6">
-            For immediate assistance, contact Rohini at reservations@legendsbrewery.in or call us directly.
+            For immediate assistance, contact our team at reservations@legendsbrewery.in or call +91 81239 79966.
           </p>
         </form>
       </motion.div>

@@ -29,11 +29,11 @@ export default function BeersPage() {
     <div className="px-6 py-16 max-w-6xl mx-auto">
       <div className="mb-12">
         <div className="flex justify-center">
-          <div className="bg-[#d4af79] px-8 py-6 rounded-lg">
+          <div className="relative w-full max-w-2xl h-32 flex items-center justify-center overflow-hidden rounded-lg" style={{ backgroundImage: 'linear-gradient(135deg, #d4af79 0%, #18050f 100%)' }}>
             <img
               src="/assets/font/22372334.png"
               alt="Brewed for Heroes"
-              className="h-16 w-auto"
+              className="h-20 w-auto relative z-10"
             />
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function BeersPage() {
                 )}
               </div>
               <div className="p-5 flex flex-col flex-1 bg-[#d4af79]">
-                <div className="h-12 mb-3">
+                <div className="h-10 mb-3 flex justify-center">
                   <img
                     src={beerFontImages[beer.name]}
                     alt={beer.name}
@@ -148,8 +148,8 @@ export default function BeersPage() {
                 )}
               </div>
               <div className="p-6">
-                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63]" style={{ fontFamily: "Nunito" }}>{selectedBeer.style}</p>
-                <div className="h-14 mt-2 mb-2">
+                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63] text-center" style={{ fontFamily: "Nunito" }}>{selectedBeer.style}</p>
+                <div className="h-12 mt-3 mb-3 flex justify-center">
                   <img
                     src={beerFontImages[selectedBeer.name]}
                     alt={selectedBeer.name}

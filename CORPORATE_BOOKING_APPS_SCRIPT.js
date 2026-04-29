@@ -11,7 +11,6 @@
 
 var SHEET_ID = "1yyg-kBBw6pYa6xZ5XNDZb1fbscfebvSIkjCliGLF3YM"; // Replace with your corporate booking sheet ID
 var TO_EMAILS = ["tech@treva.in", "info@treva.in", "reservations@legendsbrewery.in"];
-var CORPORATE_EMAIL = "rohini@legendsbrewery.in"; // Rohini's email for corporate bookings
 var BCC_EMAIL = "ullas@treva.in";
 
 // ── HANDLE POST ───────────────────────────────────────────────────────────────
@@ -66,7 +65,7 @@ function writeCorporateBooking(d) {
   var ss    = SpreadsheetApp.openById(SHEET_ID);
   var sheet = getOrCreate(ss, "Corporate Bookings", [
     "Timestamp", "Status", "Company Name", "Contact Person", "Email", "Phone",
-    "Event Type", "Event Date", "Expected Guests", "Budget",
+    "Event Type", "Event Date", "Expected Guests",
     "Dietary Requirements", "Special Requests", "Mail Sent"
   ]);
 
@@ -80,7 +79,6 @@ function writeCorporateBooking(d) {
     d.event_type        || "",
     d.event_date        || "",
     String(d.expected_guests || ""),
-    d.budget            || "",
     d.dietary_requirements || "",
     d.special_requests  || "",
     "No"
@@ -103,16 +101,14 @@ function writeCorporateBooking(d) {
     "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" +
     "Event Type      : " + (d.event_type        || "N/A") + "\n" +
     "Preferred Date  : " + (d.event_date        || "N/A") + "\n" +
-    "Expected Guests : " + (d.expected_guests   || "N/A") + "\n" +
-    "Budget Range    : " + (d.budget            || "N/A") + "\n\n" +
+    "Expected Guests : " + (d.expected_guests   || "N/A") + "\n\n" +
     "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" +
     "REQUIREMENTS\n" +
     "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" +
     "Dietary Requirements:\n" + (d.dietary_requirements || "None specified") + "\n\n" +
     "Special Requests:\n" + (d.special_requests  || "None") + "\n\n" +
     "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" +
-    "Please follow up with the client and provide a customized quote.\n" +
-    "For corporate bookings, contact Rohini at " + CORPORATE_EMAIL;
+    "Please follow up with the client and provide a customized quote.";
 
   var clientBody =
     "Dear " + (d.contact_person || "there") + ",\n\n" +
@@ -138,7 +134,6 @@ function writeCorporateBooking(d) {
     // Send to team
     MailApp.sendEmail({
       to: TO_EMAILS.join(","),
-      cc: CORPORATE_EMAIL,
       bcc: BCC_EMAIL,
       subject: "🎉 New Corporate Booking Request - " + (d.company_name || "LEGENDS"),
       body: teamBody
@@ -153,10 +148,10 @@ function writeCorporateBooking(d) {
       });
     }
 
-    sheet.getRange(row, 13).setValue("Yes");
+    sheet.getRange(row, 12).setValue("Yes");
   } catch (err) {
     Logger.log("Email error: " + err.message);
-    sheet.getRange(row, 13).setValue("Failed: " + err.message);
+    sheet.getRange(row, 12).setValue("Failed: " + err.message);
   }
 }
 
@@ -296,7 +291,7 @@ function retrySweepCorporate(ss) {
   var vals = sheet.getDataRange().getValues();
 
   for (var i = 1; i < vals.length; i++) {
-    var mailStatus = String(vals[i][12]); // Column M = Mail Sent
+    var mailStatus = String(vals[i][11]); // Column L = Mail Sent
     if (mailStatus === "Yes") continue;
 
     var d = {
@@ -307,9 +302,8 @@ function retrySweepCorporate(ss) {
       event_type: vals[i][6],
       event_date: vals[i][7],
       expected_guests: vals[i][8],
-      budget: vals[i][9],
-      dietary_requirements: vals[i][10],
-      special_requests: vals[i][11]
+      dietary_requirements: vals[i][9],
+      special_requests: vals[i][10]
     };
 
     var teamBody =
@@ -326,14 +320,12 @@ function retrySweepCorporate(ss) {
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n" +
       "Event Type      : " + d.event_type + "\n" +
       "Preferred Date  : " + d.event_date + "\n" +
-      "Expected Guests : " + d.expected_guests + "\n" +
-      "Budget Range    : " + d.budget + "\n\n" +
+      "Expected Guests : " + d.expected_guests + "\n\n" +
       "Please follow up with the client.";
 
     try {
       MailApp.sendEmail({
         to: TO_EMAILS.join(","),
-        cc: CORPORATE_EMAIL,
         bcc: BCC_EMAIL,
         subject: "🎉 New Corporate Booking Request - " + d.company_name,
         body: teamBody
@@ -352,9 +344,9 @@ function retrySweepCorporate(ss) {
         });
       }
 
-      sheet.getRange(i + 1, 13).setValue("Yes");
+      sheet.getRange(i + 1, 12).setValue("Yes");
     } catch (err) {
-      sheet.getRange(i + 1, 13).setValue("Failed: " + err.message);
+      sheet.getRange(i + 1, 12).setValue("Failed: " + err.message);
     }
   }
 }
