@@ -21,7 +21,7 @@ export const StrategicMenuView = () => {
   // Reorder sections strategically
   const orderedSections = STRATEGIC_ORDER.map((title) =>
     menuSections.find((s) => s.title === title)
-  ).filter(Boolean) as typeof menuSections;
+  ).filter((s): s is typeof menuSections[0] => Boolean(s));
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#2c0015] via-[#1a0010] to-[#0f0e0e] px-4 py-12">
