@@ -6,6 +6,7 @@ import { OrnamentalDivider } from "@/components/ui/OrnamentalDivider";
 import { RoyalButton } from "@/components/ui/RoyalButton";
 import { beersData } from "@/lib/data";
 import { beerImages } from "@/lib/beerImages";
+import "@/styles/brewski.css";
 
 const BeerFlipCard = ({ beer }: { beer: (typeof beersData)[number] }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -38,7 +39,7 @@ const BeerFlipCard = ({ beer }: { beer: (typeof beersData)[number] }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-[#13080a]/90 via-[#13080a]/30 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-4">
             <p className="text-xs text-[#a98f63] uppercase tracking-[0.1em]">{beer.style}</p>
-            <p className="royal-heading text-2xl text-[#f5f0e8] mt-1">{beer.name}</p>
+            <p className="brewski-font text-2xl text-[#a98f63] mt-1">{beer.name}</p>
             <p className="mt-3 text-[11px] uppercase tracking-[0.25em] text-[#cbbca1] md:hidden">Tap to flip</p>
           </div>
         </div>
@@ -47,7 +48,7 @@ const BeerFlipCard = ({ beer }: { beer: (typeof beersData)[number] }) => {
         <div className="absolute inset-0 rounded-xl bg-[#1a0010] border border-[#a98f63]/40 p-5 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <div>
             <p className="text-xs text-[#a98f63] uppercase tracking-[0.1em]">{beer.style}</p>
-            <p className="royal-heading text-xl text-[#f5f0e8] mt-2">{beer.name}</p>
+            <p className="brewski-font text-xl text-[#a98f63] mt-2">{beer.name}</p>
             <div className="h-px bg-[#a98f63]/40 my-3" />
             <div className="flex flex-wrap gap-2">
               {stats.length ? (

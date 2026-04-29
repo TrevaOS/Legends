@@ -16,7 +16,7 @@ export default function HomePage() {
         notifications={[
           '⚠️ Entry not allowed with slippers',
           '⚠️ No outside food allowed',
-          '🔞 Below the age of 21 alcohol will not be served',
+          '🔞 Alcohol will not be served to individuals under the age of 21',
         ]}
         bgColor="#a98f63"
         textColor="#110f0f"

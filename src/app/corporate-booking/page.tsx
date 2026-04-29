@@ -206,8 +206,9 @@ export default function CorporateBookingPage() {
                   color: #f5f0e8;
                 }
                 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-                  filter: invert(1) brightness(1.2);
+                  filter: invert(1) sepia(1) saturate(5) hue-rotate(0deg) brightness(1.8);
                   cursor: pointer;
+                  margin-right: 8px;
                 }
               `}</style>
             </div>
