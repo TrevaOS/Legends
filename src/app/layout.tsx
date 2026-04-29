@@ -93,10 +93,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${montserrat.variable} ${playfair.variable}`}>
       <head>
+        {/* Favicon - Multiple sizes for all devices */}
+        <link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
+        <link rel="icon" type="image/png" href="/favicon-64.png" sizes="64x64" />
+        <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+        {/* Apple Touch Icon */}
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* Manifest for PWA */}
+        <link rel="manifest" href="/site.webmanifest" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -108,6 +114,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* End Google Tag Manager */}
+
+        {/* Google Analytics 4 (GA4) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-FMPTPCZMW9"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FMPTPCZMW9', {
+  'page_path': window.location.pathname,
+  'anonymize_ip': true,
+  'allow_google_signals': true,
+  'allow_ad_personalization_signals': true
+});`,
+          }}
+        />
+        {/* End Google Analytics 4 */}
+
         <link rel="canonical" href="https://legendsbrewery.in" />
         <script
           type="application/ld+json"
