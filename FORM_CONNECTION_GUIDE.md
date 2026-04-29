@@ -5,29 +5,24 @@ The form has a **placeholder URL** that won't work. You need to deploy the Googl
 
 ---
 
-## Step 1: Create a Google Sheet
+## Step 1: Open Your Google Sheet
 
-1. Go to [Google Sheets](https://sheets.google.com)
-2. Click **"+ New"** → **"Spreadsheet"**
-3. Name it: `"LEGENDS Corporate Bookings"`
-4. **Copy the Spreadsheet ID** from the URL:
-   - URL format: `https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit`
-   - Copy everything between `/d/` and `/edit`
+✅ You already have a Google Sheet with ID: `1yyg-kBBw6pYa6xZ5XNDZb1fbscfebvSIkjCliGLF3YM`
 
-**Example:** If URL is `https://docs.google.com/spreadsheets/d/1yyg-kBBw6pYa6xZ5XNDZb1fbscfebvSIkjCliGLF3YM/edit`
-Then Sheet ID is: `1yyg-kBBw6pYa6xZ5XNDZb1fbscfebvSIkjCliGLF3YM`
+Open it from your Google Drive.
 
 ---
 
 ## Step 2: Deploy Google Apps Script
 
 1. In your Google Sheet, click **Extensions > Apps Script**
-2. Delete any existing code
+2. Delete any existing code (if any)
 3. Copy the entire code from `CORPORATE_BOOKING_APPS_SCRIPT.js` in this repository
-4. Replace the placeholder SHEET_ID (line 8) with YOUR sheet ID:
+4. ✅ The Sheet ID is already set to your sheet ID in line 12:
    ```javascript
-   var SHEET_ID = "YOUR_SHEET_ID_HERE";
+   var SHEET_ID = "1yyg-kBBw6pYa6xZ5XNDZb1fbscfebvSIkjCliGLF3YM";
    ```
+   (No changes needed - it's already configured!)
 5. **Save** the script (Ctrl+S)
 6. Click **New Deployment** (top right)
 7. Select **"Web app"** from dropdown
@@ -35,25 +30,25 @@ Then Sheet ID is: `1yyg-kBBw6pYa6xZ5XNDZb1fbscfebvSIkjCliGLF3YM`
    - **Execute as:** Your Google account
    - **Who has access:** Anyone
 9. Click **"Deploy"**
-10. **Copy the Deployment URL** - It looks like:
+10. **Copy the Deployment URL** - Save it somewhere safe. It looks like:
     ```
     https://script.google.com/macros/d/DEPLOYMENT_ID/usercontent
     ```
 
 ---
 
-## Step 3: Update the Form
+## Step 3: Update the Form with Your Deployment URL
 
 1. Open `/workspaces/Legends/src/app/corporate-booking/page.tsx`
 2. Find line 44 (the fetch URL)
 3. Replace this:
    ```javascript
-   "https://script.google.com/macros/d/1UjNbfPqMlG6qJ6k3Z7Y8X9W2V3U4T5S6R7Q8P9O/usercontent"
+   "https://script.google.com/macros/d/YOUR_DEPLOYMENT_ID/usercontent"
    ```
-   With your **Deployment URL** from Step 2
+   With your **Deployment URL** from Step 2 (it will look like the example above but with a real ID)
 
 4. **Save the file**
-5. The website will auto-reload (or refresh the page)
+5. The website will auto-reload (or refresh the page manually)
 
 ---
 

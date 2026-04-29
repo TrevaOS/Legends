@@ -4,21 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { beerImages } from "@/lib/beerImages";
 import { beersData } from "@/lib/data";
-import { CurvedHeading } from "@/components/ui/CurvedHeading";
 
 // Import Brewski font
 import "@/styles/brewski.css";
-
-const beerFontImages: Record<string, string> = {
-  "Midnight Emperor": "/assets/font/22372334 (1).png",
-  "Sky Sovereign": "/assets/font/22372334 (2).png",
-  "Kings Frontier": "/assets/font/22372334 (3).png",
-  "Knights Wit": "/assets/font/22372334 (4).png",
-  "Golden Halo": "/assets/font/22372334 (5).png",
-  "Orchard Queen": "/assets/font/22372334 (6).png",
-  "Zen Empire": "/assets/font/22372334 (7).png",
-  "Imperial Fields": "/assets/font/22372334 (8).png",
-};
 
 export default function BeersPage() {
   const [activeBeer, setActiveBeer] = useState<string | null>(null);
@@ -28,11 +16,7 @@ export default function BeersPage() {
   return (
     <div className="px-6 py-16 max-w-6xl mx-auto">
       <div className="mb-12 text-center">
-        <img
-          src="/assets/font/22372334.png"
-          alt="Brewed for Heroes"
-          className="h-24 w-auto mx-auto"
-        />
+        <h1 className="brewski-font text-6xl md:text-7xl text-[#a98f63]">Brewed for Heroes</h1>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
@@ -58,7 +42,7 @@ export default function BeersPage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#13080a] via-transparent to-transparent" />
-                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/70 px-2 py-1 rounded-full brewski-font">
+                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-[0.3em] text-[#d8b583] bg-[#13080a]/70 px-2 py-1 rounded-full" style={{ fontFamily: 'Nunito' }}>
                   {beer.style}
                 </span>
                 {beer.tapLogo && (
@@ -74,18 +58,17 @@ export default function BeersPage() {
               </div>
               <div className="p-5 flex flex-col flex-1">
                 <div className="mb-3 text-center">
-                  <img
-                    src={beerFontImages[beer.name]}
-                    alt={beer.name}
-                    className="h-16 w-auto inline-block"
-                  />
+                  <h2 className="brewski-font text-2xl text-[#a98f63]">
+                    {beer.name}
+                  </h2>
                 </div>
                 <div className="h-px bg-[#a98f63]/40 my-3" />
                 <div className="flex flex-wrap gap-2 flex-1 content-start">
                   {stats.map((stat) => (
                     <span
                       key={stat}
-                      className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0] brewski-font"
+                      className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0]"
+                      style={{ fontFamily: 'Nunito', fontWeight: 500 }}
                     >
                       {stat}
                     </span>
@@ -141,13 +124,13 @@ export default function BeersPage() {
                 )}
               </div>
               <div className="p-6">
-                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63] brewski-font text-center">{selectedBeer.style}</p>
-                <div className="mt-2 mb-2 text-center">
-                  <img
-                    src={beerFontImages[selectedBeer.name]}
-                    alt={selectedBeer.name}
-                    className="h-20 w-auto inline-block"
-                  />
+                <p className="text-xs uppercase tracking-[0.35em] text-[#a98f63] text-center" style={{ fontFamily: 'Nunito', fontWeight: 600 }}>
+                  {selectedBeer.style}
+                </p>
+                <div className="mt-4 mb-4 text-center">
+                  <h2 className="brewski-font text-4xl text-[#a98f63]">
+                    {selectedBeer.name}
+                  </h2>
                 </div>
                 <div className="h-px bg-[#a98f63]/30 my-4" />
                 <div className="flex flex-wrap gap-2">
@@ -160,13 +143,16 @@ export default function BeersPage() {
                     .map((stat) => (
                       <span
                         key={stat}
-                        className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0] brewski-font"
+                        className="rounded-full border border-[#a98f63]/35 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#e8e0d0]"
+                        style={{ fontFamily: 'Nunito', fontWeight: 500 }}
                       >
                         {stat}
                       </span>
                     ))}
                 </div>
-                <p className="mt-4 text-[#e8e0d0] leading-7 brewski-font">{selectedBeer.description}</p>
+                <p className="mt-4 text-[#e8e0d0] leading-7" style={{ fontFamily: 'Nunito', fontWeight: 400 }}>
+                  {selectedBeer.description}
+                </p>
                 <button
                   type="button"
                   onClick={() => setActiveBeer(null)}
