@@ -65,9 +65,6 @@ const BeerFlipCard = ({ beer }: { beer: (typeof beersData)[number] }) => {
                 </span>
               )}
             </div>
-            <p className="mt-4 text-sm text-[#cbbca1] leading-relaxed">
-              Crafted from the Legends beer lineup with a stat-first preview.
-            </p>
           </div>
           <a
             href="/beers"

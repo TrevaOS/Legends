@@ -26,8 +26,8 @@ export const NotificationMarquee = ({
     fast: 'marquee-fast',
   }[speed];
 
-  // Double the notifications for seamless loop
-  const loopedNotifications = [...notifications, ...notifications];
+  // Quadruple the notifications for seamless infinite loop
+  const loopedNotifications = [...notifications, ...notifications, ...notifications, ...notifications];
 
   return (
     <div className={`notification-marquee ${bgColor === '#a98f63' ? 'bg-[#a98f63]' : ''}`} style={{ backgroundColor: bgColor }}>

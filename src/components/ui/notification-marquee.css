@@ -42,10 +42,6 @@
   }
 }
 
-/* Pause on hover for readability */
-.notification-marquee:hover .marquee-container {
-  animation-play-state: paused;
-}
 
 /* Responsive font size */
 @media (max-width: 768px) {

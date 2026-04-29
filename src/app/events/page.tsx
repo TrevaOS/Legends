@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function EventsPage() {
   return (
     <div className="px-6 py-12 max-w-5xl mx-auto">
-      <p className="text-xs text-[#a98f63] uppercase tracking-[0.4em]">Mark Your Calendar</p>
+      <p className="text-xs text-[#a98f63] uppercase tracking-[0.4em]">Our Grand Opening</p>
       <h1 className="royal-heading text-5xl mt-2 md:text-6xl">Grand Opening</h1>
 
       <div className="mt-10 grid lg:grid-cols-2 gap-8 items-start">
@@ -38,13 +38,13 @@ export default function EventsPage() {
         {/* Details */}
         <div className="ornamental-border rounded-2xl p-6 bg-[#1a0010]/80 space-y-5">
           <div>
-            <p className="text-xs text-[#a98f63] uppercase tracking-[0.4em]">Indulge in Grandeur</p>
+            <p className="text-xs text-[#a98f63] uppercase tracking-[0.4em]">A Grand Celebration</p>
             <h2 className="royal-heading text-2xl mt-2 text-[#f5f0e8] md:text-3xl">
               The Grand Opening of<br />
               <span className="text-[#a98f63]">LEGENDS Microbrewery</span>
             </h2>
             <p className="mt-3 text-sm text-[#cbbca1] leading-relaxed">
-              A celebration of passion, craftsmanship, timeless grandeur. Signature brews, royal feasts. A night to remember.
+              We celebrated passion, craftsmanship, and timeless grandeur with signature brews and royal feasts—an unforgettable night.
             </p>
           </div>
 
@@ -63,22 +63,12 @@ export default function EventsPage() {
                 <p className="royal-heading text-xl text-[#f5f0e8]">{launchEventDetails.dateLabel}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a98f63" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
-                <circle cx="12" cy="12" r="9" />
-                <polyline points="12 7 12 12 15 15" />
-              </svg>
-              <div>
-                <p className="text-[10px] text-[#cbbca1] uppercase tracking-widest">Time</p>
-                <p className="royal-heading text-xl text-[#f5f0e8]">{launchEventDetails.timeLabel}</p>
-              </div>
-            </div>
           </div>
 
           <div className="h-px bg-[#a98f63]/30" />
 
-          <div className="grid grid-cols-3 gap-2 text-center">
-            {["Signature Brews", "Royal Feasts", "Live Experience"].map((item) => (
+          <div className="grid grid-cols-2 gap-2 text-center">
+            {["Signature Brews", "Royal Feasts"].map((item) => (
               <div key={item} className="rounded-xl border border-[#a98f63]/30 py-2 px-1">
                 <p className="text-xs text-[#cbbca1]">{item}</p>
               </div>
@@ -91,7 +81,7 @@ export default function EventsPage() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-[#a98f63] text-[#200b0f] font-semibold px-5 py-2.5 text-sm hover:bg-[#cbbca1] transition-colors"
           >
-            Follow for Updates
+            Follow Us
           </a>
         </div>
       </div>
