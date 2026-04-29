@@ -78,7 +78,8 @@ export default function BeersPage() {
                   <button
                     type="button"
                     onClick={() => setActiveBeer(beer.name)}
-                    className="rounded-full px-5 py-2 text-sm font-semibold border border-[#a98f63] text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors brewski-font"
+                    className="rounded-full px-5 py-2 text-sm font-semibold border border-[#a98f63] text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors"
+                    style={{ fontFamily: 'Nunito', fontWeight: 600 }}
                   >
                     View Details
                   </button>
@@ -156,7 +157,8 @@ export default function BeersPage() {
                 <button
                   type="button"
                   onClick={() => setActiveBeer(null)}
-                  className="mt-6 rounded-full border border-[#a98f63] px-5 py-2 text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors brewski-font"
+                  className="mt-6 rounded-full border border-[#a98f63] px-5 py-2 text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors"
+                  style={{ fontFamily: 'Nunito', fontWeight: 600 }}
                 >
                   Close
                 </button>

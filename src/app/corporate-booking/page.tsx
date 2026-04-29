@@ -197,7 +197,19 @@ export default function CorporateBookingPage() {
                 required
                 min={new Date().toISOString().slice(0, 16)}
                 className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] focus:outline-none focus:border-[#a98f63] transition-colors"
+                style={{
+                  colorScheme: 'dark',
+                }}
               />
+              <style>{`
+                input[type="datetime-local"] {
+                  color: #f5f0e8;
+                }
+                input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+                  filter: invert(1) brightness(1.2);
+                  cursor: pointer;
+                }
+              `}</style>
             </div>
 
             {/* Expected Guests */}
