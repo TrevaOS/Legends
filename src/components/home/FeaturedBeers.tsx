@@ -19,7 +19,7 @@ const BeerFlipCard = ({ beer }: { beer: (typeof beersData)[number] }) => {
 
   return (
     <div
-      className="group h-80 cursor-pointer [perspective:1000px]"
+      className="group h-[22rem] md:h-80 cursor-pointer [perspective:1000px]"
       role="button"
       tabIndex={0}
       onClick={() => setIsFlipped((current) => !current)}
@@ -45,7 +45,7 @@ const BeerFlipCard = ({ beer }: { beer: (typeof beersData)[number] }) => {
         </div>
 
         {/* Back */}
-        <div className="absolute inset-0 rounded-xl bg-[#1a0010] border border-[#a98f63]/40 p-5 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <div className="absolute inset-0 rounded-xl bg-[#1a0010] border border-[#a98f63]/40 p-4 md:p-5 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <div>
             <p className="text-xs text-[#a98f63] uppercase tracking-[0.1em]">{beer.style}</p>
             <p className="brewski-font text-xl text-[#a98f63] mt-2">{beer.name}</p>
@@ -66,14 +66,18 @@ const BeerFlipCard = ({ beer }: { beer: (typeof beersData)[number] }) => {
                 </span>
               )}
             </div>
+            <p className="mt-4 text-sm leading-relaxed text-[#f5f0e8]">
+              {beer.description}
+            </p>
+            {beer.pair ? (
+              <p className="mt-3 text-xs uppercase tracking-[0.16em] text-[#cbbca1]">
+                Pairs well with {beer.pair}
+              </p>
+            ) : null}
           </div>
-          <a
-            href="/beers"
-            onClick={(event) => event.stopPropagation()}
-            className="inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-semibold border border-[#a98f63] text-[#a98f63] hover:bg-[#a98f63] hover:text-[#24090d] transition-colors"
-          >
-            View Details
-          </a>
+          <p className="mt-4 text-[11px] uppercase tracking-[0.24em] text-[#cbbca1] md:hidden">
+            Tap to flip back
+          </p>
         </div>
       </div>
     </div>

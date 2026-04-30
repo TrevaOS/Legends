@@ -292,7 +292,7 @@ button {
   margin: 0 auto;
 }
 
-.age-gate-field span {
+.age-gate-field > span {
   color: #f4e8d5;
   font-weight: 700;
   font-size: 0.98rem;
@@ -355,10 +355,12 @@ button {
 
 .age-gate-date-value {
   color: #161012;
+  opacity: 1;
 }
 
 .age-gate-date-placeholder {
   color: #3f2d35;
+  opacity: 1;
 }
 
 .age-gate-date-icon {
