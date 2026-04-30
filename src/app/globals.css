@@ -292,6 +292,10 @@ button {
   margin: 0 auto;
 }
 
+.age-gate-calendar-wrap {
+  position: relative;
+}
+
 .age-gate-field > span {
   color: #f4e8d5;
   font-weight: 700;
@@ -321,6 +325,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   min-height: 72px;
   padding: 0 18px 0 22px;
   border: 1px solid rgba(169, 143, 99, 0.42);
@@ -378,21 +383,148 @@ button {
   z-index: 1;
 }
 
-.age-gate-date-input {
+.age-gate-calendar-popover {
   position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  color: #fff8f0;
-  -webkit-text-fill-color: #fff8f0;
+  top: calc(100% + 14px);
+  left: 50%;
+  z-index: 10;
+  width: min(100vw - 48px, 360px);
+  transform: translateX(-50%);
 }
 
-.age-gate-date-input::-webkit-calendar-picker-indicator {
-  position: absolute;
-  inset: 0;
+.age-gate-calendar-selected {
+  margin: 0 auto 10px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #fff;
+  color: #262224;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+}
+
+.age-gate-calendar-card {
+  border-radius: 18px;
+  background: #fff;
+  color: #212121;
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+.age-gate-calendar-controls {
+  display: flex;
+  gap: 12px;
+  padding: 16px 16px 12px;
+}
+
+.age-gate-calendar-select {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: #f4f4f4;
+  color: #222;
+}
+
+.age-gate-calendar-select--year {
+  flex: 0 0 110px;
+}
+
+.age-gate-calendar-select select {
   width: 100%;
-  height: 100%;
+  border: 0;
+  background: transparent;
+  color: #222;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  outline: none;
+  appearance: none;
+}
+
+.age-gate-calendar-select svg {
+  color: #666;
+  flex-shrink: 0;
+}
+
+.age-gate-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 0 16px;
+}
+
+.age-gate-calendar-weekdays span {
+  padding: 4px 0;
+  text-align: center;
+  color: #7c7c7c;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.age-gate-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 8px 16px 14px;
+}
+
+.age-gate-calendar-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #1d1d1d;
+  font-size: 0.84rem;
+  font-weight: 700;
   cursor: pointer;
+}
+
+.age-gate-calendar-day.is-muted {
+  color: #b0b0b0;
+}
+
+.age-gate-calendar-day.is-selected {
+  background: #27b3e5;
+  color: #fff;
+}
+
+.age-gate-calendar-day:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.age-gate-calendar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 16px;
+}
+
+.age-gate-calendar-cancel,
+.age-gate-calendar-confirm {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.age-gate-calendar-cancel {
+  color: #8a8a8a;
+}
+
+.age-gate-calendar-confirm {
+  color: #27b3e5;
 }
 
 .age-gate-field input:focus {
@@ -405,6 +537,7 @@ button {
 }
 
 .age-gate-submit {
+  display: block;
   width: 100%;
   max-width: 520px;
   min-height: 64px;
@@ -469,6 +602,10 @@ button {
   .age-gate-date-trigger,
   .age-gate-submit {
     min-height: 60px;
+  }
+
+  .age-gate-calendar-popover {
+    width: min(100vw - 56px, 360px);
   }
 
   .age-gate-date-value,
