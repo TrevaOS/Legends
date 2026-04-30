@@ -325,11 +325,11 @@ button {
   padding: 0 18px 0 22px;
   border: 1px solid rgba(169, 143, 99, 0.42);
   border-radius: 20px;
-  background: linear-gradient(180deg, #f7f0e8 0%, #efe3d4 100%);
-  color: #26111c;
+  background: linear-gradient(180deg, #151011 0%, #26141a 100%);
+  color: #fff8f0;
   box-shadow:
     0 12px 34px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   cursor: pointer;
   outline: none;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -354,12 +354,13 @@ button {
 }
 
 .age-gate-date-value {
-  color: #161012;
+  color: #fff8f0;
   opacity: 1;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
 }
 
 .age-gate-date-placeholder {
-  color: #3f2d35;
+  color: rgba(255, 248, 240, 0.68);
   opacity: 1;
 }
 
@@ -382,8 +383,8 @@ button {
   inset: 0;
   opacity: 0;
   cursor: pointer;
-  color: #161012;
-  -webkit-text-fill-color: #161012;
+  color: #fff8f0;
+  -webkit-text-fill-color: #fff8f0;
 }
 
 .age-gate-date-input::-webkit-calendar-picker-indicator {

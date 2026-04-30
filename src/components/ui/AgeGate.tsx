@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { CalendarDays } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { brandAssets } from "@/lib/branding";
@@ -153,14 +152,10 @@ export function AgeGate({ children }: AgeGateProps) {
         <div className="age-gate-panel ornamental-border stone-overlay">
           <div className="age-gate-brand">
             <div className="age-gate-logo-wrap">
-              <Image
+              <img
                 src={brandAssets.mainLogo}
                 alt="Legends logo"
                 className="age-gate-logo"
-                width={280}
-                height={120}
-                priority
-                unoptimized
               />
             </div>
             <p className="age-gate-kicker">LEGENDS</p>
