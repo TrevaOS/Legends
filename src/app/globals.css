@@ -34,6 +34,11 @@ body {
   background: radial-gradient(circle at top, #2c0015 0%, #110f0f 45%, #0f0e0e 100%);
 }
 
+input,
+button {
+  font: inherit;
+}
+
 .royal-heading { font-family: var(--font-playfair), serif; letter-spacing: 0.03em; }
 .ornamental-border { border: 1px solid rgba(169, 143, 99, 0.45); box-shadow: inset 0 0 0 1px rgba(169, 143, 99, 0.22); }
 .stone-overlay { position: relative; }
@@ -181,5 +186,198 @@ body {
   .menu-book-footer {
     right: 1.25rem;
     bottom: 1rem;
+  }
+}
+
+.age-gate-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top, rgba(169, 143, 99, 0.18), transparent 26%),
+    linear-gradient(180deg, #24010f 0%, #13080a 48%, #0d0908 100%);
+}
+
+.age-gate-panel {
+  position: relative;
+  width: min(100%, 720px);
+  padding: 40px 36px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(131, 4, 59, 0.96) 0%, rgba(62, 0, 28, 0.98) 100%);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(169, 143, 99, 0.18);
+}
+
+.age-gate-brand,
+.age-gate-form,
+.age-gate-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.age-gate-brand {
+  text-align: center;
+}
+
+.age-gate-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 86px;
+  height: 86px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 240, 232, 0.22);
+  background: rgba(15, 14, 14, 0.26);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.05);
+}
+
+.age-gate-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+.age-gate-kicker {
+  margin: 0 0 10px;
+  color: #d6c3a2;
+  font-size: 0.78rem;
+  letter-spacing: 0.38em;
+}
+
+.age-gate-title {
+  margin: 0;
+  color: #fff8f0;
+  font-size: clamp(2.4rem, 4vw, 4.3rem);
+  line-height: 0.98;
+}
+
+.age-gate-copy {
+  max-width: 520px;
+  margin: 18px auto 0;
+  color: rgba(255, 248, 240, 0.92);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.age-gate-form {
+  margin-top: 34px;
+}
+
+.age-gate-label {
+  margin: 0 0 18px;
+  text-align: center;
+  color: #fff8f0;
+  font-size: 1.05rem;
+}
+
+.age-gate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.age-gate-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.age-gate-field span {
+  color: #f4e8d5;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.age-gate-field input {
+  width: 100%;
+  min-height: 68px;
+  padding: 16px 18px;
+  border: 1px solid rgba(169, 143, 99, 0.45);
+  border-radius: 18px;
+  color: #2d1420;
+  background: #fff8f0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  outline: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.age-gate-field input:focus {
+  box-shadow: 0 0 0 3px rgba(212, 181, 121, 0.28);
+  transform: translateY(-1px);
+}
+
+.age-gate-field input::placeholder {
+  color: #8d7f72;
+}
+
+.age-gate-submit {
+  width: 100%;
+  min-height: 68px;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 999px;
+  color: #2a1200;
+  background: linear-gradient(135deg, #d8bf91 0%, #f4e8d5 100%);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.age-gate-message {
+  margin: 14px 0 0;
+  text-align: center;
+  color: #ff8d8d;
+  font-weight: 700;
+}
+
+.age-gate-footer {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.age-gate-responsibility {
+  margin: 0;
+  color: #fff8f0;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.age-gate-disclaimer {
+  margin: 10px 0 0;
+  color: rgba(255, 248, 240, 0.78);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .age-gate-shell {
+    padding: 16px;
+  }
+
+  .age-gate-panel {
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .age-gate-copy {
+    font-size: 0.98rem;
+  }
+
+  .age-gate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .age-gate-field input,
+  .age-gate-submit {
+    min-height: 62px;
   }
 }
