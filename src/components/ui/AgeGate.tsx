@@ -91,7 +91,10 @@ function getDaysInMonth(year: number, month: number) {
 function buildCalendarDays(year: number, month: number) {
   const firstDay = new Date(year, month, 1).getDay();
   const currentMonthDays = getDaysInMonth(year, month);
-  const previousMonthDays = getDaysInMonth(year, month === 0 ? year - 1 : year, month === 0 ? 11 : month - 1);
+  const previousMonthDays = getDaysInMonth(
+    month === 0 ? year - 1 : year,
+    month === 0 ? 11 : month - 1
+  );
   const days: Array<{ day: number; monthOffset: -1 | 0 | 1 }> = [];
 
   for (let index = firstDay - 1; index >= 0; index -= 1) {
