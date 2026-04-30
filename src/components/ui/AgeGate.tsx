@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { CalendarDays } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { brandAssets } from "@/lib/branding";
 
 const STORAGE_KEY = "legends-age-gate-approved-at";
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
-const AGE_GATE_LOGO = "/assets/logos/Legends_Logo_Variations_page-0001.png";
 
 type AgeGateProps = {
   children: React.ReactNode;
@@ -154,12 +154,13 @@ export function AgeGate({ children }: AgeGateProps) {
           <div className="age-gate-brand">
             <div className="age-gate-logo-wrap">
               <Image
-                src={AGE_GATE_LOGO}
+                src={brandAssets.mainLogo}
                 alt="Legends logo"
                 className="age-gate-logo"
-                width={180}
-                height={180}
+                width={280}
+                height={120}
                 priority
+                unoptimized
               />
             </div>
             <p className="age-gate-kicker">LEGENDS</p>
