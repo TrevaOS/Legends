@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useSyncExternalStore } from "react";
-import { brandAssets } from "@/lib/branding";
+import { CalendarDays } from "lucide-react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "legends-age-gate-approved-at";
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+const AGE_GATE_LOGO = "/assets/logos/Legends_Logo_Variations_page-0001.png";
 
 type AgeGateProps = {
   children: React.ReactNode;
@@ -51,10 +52,25 @@ function isTwentyOneOrOlder(month: number, day: number, year: number) {
   return birthDate <= legalDate;
 }
 
+function formatBirthDate(value: string) {
+  if (!value) {
+    return "DD-MM-YYYY";
+  }
+
+  const [year, month, day] = value.split("-");
+
+  if (!year || !month || !day) {
+    return "DD-MM-YYYY";
+  }
+
+  return `${day}-${month}-${year}`;
+}
+
 export function AgeGate({ children }: AgeGateProps) {
   const [birthDate, setBirthDate] = useState("");
   const [message, setMessage] = useState("");
   const [approvedAtOverride, setApprovedAtOverride] = useState<string | null>(null);
+  const dateInputRef = useRef<HTMLInputElement>(null);
 
   const storedApproval = useSyncExternalStore(
     () => () => {},
@@ -126,6 +142,11 @@ export function AgeGate({ children }: AgeGateProps) {
     return <>{children}</>;
   }
 
+  const openPicker = () => {
+    dateInputRef.current?.showPicker?.();
+    dateInputRef.current?.focus();
+  };
+
   return (
     <>
       <div className="age-gate-shell">
@@ -133,11 +154,12 @@ export function AgeGate({ children }: AgeGateProps) {
           <div className="age-gate-brand">
             <div className="age-gate-logo-wrap">
               <Image
-                src={brandAssets.mainLogo}
+                src={AGE_GATE_LOGO}
                 alt="Legends logo"
                 className="age-gate-logo"
-                width={64}
-                height={64}
+                width={180}
+                height={180}
+                priority
               />
             </div>
             <p className="age-gate-kicker">LEGENDS</p>
@@ -153,12 +175,35 @@ export function AgeGate({ children }: AgeGateProps) {
 
             <label className="age-gate-field age-gate-field--single">
               <span>Date of Birth</span>
-              <input
-                type="date"
-                autoComplete="bday"
-                value={birthDate}
-                onChange={(event) => setBirthDate(event.target.value)}
-              />
+              <div
+                className="age-gate-date-trigger"
+                onClick={openPicker}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openPicker();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label="Choose date of birth"
+              >
+                <span className={birthDate ? "age-gate-date-value" : "age-gate-date-placeholder"}>
+                  {formatBirthDate(birthDate)}
+                </span>
+                <span className="age-gate-date-icon" aria-hidden="true">
+                  <CalendarDays size={22} strokeWidth={2.1} />
+                </span>
+                <input
+                  ref={dateInputRef}
+                  className="age-gate-date-input"
+                  type="date"
+                  autoComplete="bday"
+                  value={birthDate}
+                  onChange={(event) => setBirthDate(event.target.value)}
+                  max={new Date().toISOString().split("T")[0]}
+                />
+              </div>
             </label>
 
             <button className="age-gate-submit royal-shimmer" type="submit">

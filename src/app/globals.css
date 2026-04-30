@@ -195,8 +195,8 @@ button {
   z-index: 120;
   display: grid;
   place-items: center;
-  overflow-y: auto;
-  padding: 24px;
+  overflow: hidden;
+  padding: 20px;
   background:
     radial-gradient(circle at top, rgba(169, 143, 99, 0.18), transparent 26%),
     linear-gradient(180deg, #24010f 0%, #13080a 48%, #0d0908 100%);
@@ -204,9 +204,10 @@ button {
 
 .age-gate-panel {
   position: relative;
-  width: min(100%, 720px);
-  padding: 40px 36px;
-  border-radius: 28px;
+  width: min(100%, 860px);
+  max-height: calc(100vh - 40px);
+  padding: 28px 40px 30px;
+  border-radius: 30px;
   background:
     linear-gradient(180deg, rgba(131, 4, 59, 0.96) 0%, rgba(62, 0, 28, 0.98) 100%);
   box-shadow:
@@ -226,56 +227,51 @@ button {
 }
 
 .age-gate-logo-wrap {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 86px;
-  height: 86px;
-  margin-bottom: 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(245, 240, 232, 0.22);
-  background: rgba(15, 14, 14, 0.26);
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.05);
+  width: min(100%, 280px);
+  height: 92px;
+  margin: 0 auto 10px;
 }
 
 .age-gate-logo {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 999px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .age-gate-kicker {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: #d6c3a2;
-  font-size: 0.78rem;
-  letter-spacing: 0.38em;
+  font-size: 0.74rem;
+  letter-spacing: 0.48em;
 }
 
 .age-gate-title {
   margin: 0;
   color: #fff8f0;
-  font-size: clamp(2.4rem, 4vw, 4.3rem);
+  font-size: clamp(2.6rem, 4.1vw, 4.5rem);
   line-height: 0.98;
 }
 
 .age-gate-copy {
-  max-width: 520px;
-  margin: 18px auto 0;
+  max-width: 640px;
+  margin: 14px auto 0;
   color: rgba(255, 248, 240, 0.92);
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: 0.98rem;
+  line-height: 1.45;
 }
 
 .age-gate-form {
-  margin-top: 34px;
+  margin-top: 24px;
 }
 
 .age-gate-label {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   text-align: center;
   color: #fff8f0;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
 }
 
 .age-gate-grid {
@@ -291,14 +287,14 @@ button {
 }
 
 .age-gate-field--single {
-  max-width: 420px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
 .age-gate-field span {
   color: #f4e8d5;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.98rem;
 }
 
 .age-gate-field input {
@@ -319,6 +315,71 @@ button {
   text-align: left;
 }
 
+.age-gate-date-trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 0 18px 0 22px;
+  border: 1px solid rgba(169, 143, 99, 0.42);
+  border-radius: 20px;
+  background: linear-gradient(180deg, #f7f0e8 0%, #efe3d4 100%);
+  color: #26111c;
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.age-gate-date-trigger:focus-visible,
+.age-gate-date-trigger:hover {
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.2),
+    0 0 0 3px rgba(212, 181, 121, 0.22);
+  transform: translateY(-1px);
+}
+
+.age-gate-date-value,
+.age-gate-date-placeholder {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.age-gate-date-placeholder {
+  color: #4b2b3b;
+}
+
+.age-gate-date-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #3ab0de;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.age-gate-date-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.age-gate-date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
 .age-gate-field input:focus {
   box-shadow: 0 0 0 3px rgba(212, 181, 121, 0.28);
   transform: translateY(-1px);
@@ -330,8 +391,9 @@ button {
 
 .age-gate-submit {
   width: 100%;
-  min-height: 68px;
-  margin-top: 20px;
+  max-width: 520px;
+  min-height: 64px;
+  margin: 18px auto 0;
   border: 0;
   border-radius: 999px;
   color: #2a1200;
@@ -342,21 +404,22 @@ button {
 }
 
 .age-gate-message {
-  margin: 14px 0 0;
+  min-height: 24px;
+  margin: 10px 0 0;
   text-align: center;
   color: #ff8d8d;
   font-weight: 700;
 }
 
 .age-gate-footer {
-  margin-top: 28px;
+  margin-top: 18px;
   text-align: center;
 }
 
 .age-gate-responsibility {
   margin: 0;
   color: #fff8f0;
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-size: clamp(1.9rem, 2.7vw, 3rem);
 }
 
 .age-gate-disclaimer {
@@ -370,23 +433,31 @@ button {
 @media (max-width: 767px) {
   .age-gate-shell {
     padding: 16px;
+    overflow-y: auto;
   }
 
   .age-gate-panel {
-    padding: 28px 20px;
+    max-height: none;
+    padding: 24px 20px;
     border-radius: 24px;
   }
 
   .age-gate-copy {
-    font-size: 0.98rem;
+    font-size: 0.92rem;
   }
 
-  .age-gate-grid {
-    grid-template-columns: 1fr;
+  .age-gate-logo-wrap {
+    width: min(100%, 220px);
+    height: 76px;
   }
 
-  .age-gate-field input,
+  .age-gate-date-trigger,
   .age-gate-submit {
-    min-height: 62px;
+    min-height: 60px;
+  }
+
+  .age-gate-date-value,
+  .age-gate-date-placeholder {
+    font-size: 1rem;
   }
 }
