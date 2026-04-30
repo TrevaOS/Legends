@@ -290,6 +290,11 @@ button {
   gap: 8px;
 }
 
+.age-gate-field--single {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
 .age-gate-field span {
   color: #f4e8d5;
   font-weight: 700;
@@ -308,6 +313,10 @@ button {
   font-weight: 700;
   outline: none;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.age-gate-field--single input {
+  text-align: left;
 }
 
 .age-gate-field input:focus {

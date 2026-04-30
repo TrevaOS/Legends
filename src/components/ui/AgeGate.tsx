@@ -52,9 +52,7 @@ function isTwentyOneOrOlder(month: number, day: number, year: number) {
 }
 
 export function AgeGate({ children }: AgeGateProps) {
-  const [month, setMonth] = useState("");
-  const [day, setDay] = useState("");
-  const [year, setYear] = useState("");
+  const [birthDate, setBirthDate] = useState("");
   const [message, setMessage] = useState("");
   const [approvedAtOverride, setApprovedAtOverride] = useState<string | null>(null);
 
@@ -93,25 +91,28 @@ export function AgeGate({ children }: AgeGateProps) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const parsedMonth = Number(month);
-    const parsedDay = Number(day);
-    const parsedYear = Number(year);
-
-    if (
-      !Number.isInteger(parsedMonth) ||
-      !Number.isInteger(parsedDay) ||
-      !Number.isInteger(parsedYear)
-    ) {
+    if (!birthDate) {
       setMessage("Please enter your full date of birth.");
       return;
     }
 
-    if (!isValidDateParts(parsedMonth, parsedDay, parsedYear)) {
+    const [yearValue, monthValue, dayValue] = birthDate.split("-").map(Number);
+
+    if (
+      !Number.isInteger(monthValue) ||
+      !Number.isInteger(dayValue) ||
+      !Number.isInteger(yearValue)
+    ) {
       setMessage("Please enter a valid date of birth.");
       return;
     }
 
-    if (!isTwentyOneOrOlder(parsedMonth, parsedDay, parsedYear)) {
+    if (!isValidDateParts(monthValue, dayValue, yearValue)) {
+      setMessage("Please enter a valid date of birth.");
+      return;
+    }
+
+    if (!isTwentyOneOrOlder(monthValue, dayValue, yearValue)) {
       setMessage("Under age. You must be 21 or older to enter.");
       return;
     }
@@ -150,43 +151,15 @@ export function AgeGate({ children }: AgeGateProps) {
           <form className="age-gate-form" onSubmit={handleSubmit}>
             <p className="age-gate-label">Please enter your date of birth.</p>
 
-            <div className="age-gate-grid">
-              <label className="age-gate-field">
-                <span>Month</span>
-                <input
-                  inputMode="numeric"
-                  autoComplete="bday-month"
-                  maxLength={2}
-                  placeholder="MM"
-                  value={month}
-                  onChange={(event) => setMonth(event.target.value.replace(/\D/g, "").slice(0, 2))}
-                />
-              </label>
-
-              <label className="age-gate-field">
-                <span>Day</span>
-                <input
-                  inputMode="numeric"
-                  autoComplete="bday-day"
-                  maxLength={2}
-                  placeholder="DD"
-                  value={day}
-                  onChange={(event) => setDay(event.target.value.replace(/\D/g, "").slice(0, 2))}
-                />
-              </label>
-
-              <label className="age-gate-field">
-                <span>Year</span>
-                <input
-                  inputMode="numeric"
-                  autoComplete="bday-year"
-                  maxLength={4}
-                  placeholder="YYYY"
-                  value={year}
-                  onChange={(event) => setYear(event.target.value.replace(/\D/g, "").slice(0, 4))}
-                />
-              </label>
-            </div>
+            <label className="age-gate-field age-gate-field--single">
+              <span>Date of Birth</span>
+              <input
+                type="date"
+                autoComplete="bday"
+                value={birthDate}
+                onChange={(event) => setBirthDate(event.target.value)}
+              />
+            </label>
 
             <button className="age-gate-submit royal-shimmer" type="submit">
               Enter
@@ -201,9 +174,6 @@ export function AgeGate({ children }: AgeGateProps) {
 
           <div className="age-gate-footer">
             <p className="age-gate-responsibility royal-heading">Enjoy Responsibly</p>
-            <p className="age-gate-disclaimer">
-              Do not share this content with those under 21.
-            </p>
           </div>
         </div>
       </div>
