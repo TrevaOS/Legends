@@ -382,12 +382,26 @@ button {
 }
 
 .age-gate-calendar-popover {
-  position: absolute;
-  top: calc(100% + 14px);
-  left: 50%;
-  z-index: 10;
+  position: relative;
   width: min(100vw - 48px, 360px);
-  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.age-gate-calendar-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.age-gate-calendar-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(8, 4, 6, 0.58);
+  cursor: pointer;
 }
 
 .age-gate-calendar-selected {

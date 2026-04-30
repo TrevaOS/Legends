@@ -289,7 +289,7 @@ export function AgeGate({ children }: AgeGateProps) {
 
             <label className="age-gate-field age-gate-field--single">
               <span>Date of Birth</span>
-              <div className="age-gate-calendar-wrap" ref={calendarRef}>
+              <div className="age-gate-calendar-wrap">
                 <button
                   className="age-gate-date-trigger"
                   onClick={() => setCalendarOpen((current) => !current)}
@@ -310,95 +310,6 @@ export function AgeGate({ children }: AgeGateProps) {
                     <CalendarDays size={22} strokeWidth={2.1} />
                   </span>
                 </button>
-
-                {calendarOpen ? (
-                  <div className="age-gate-calendar-popover" role="dialog" aria-label="Date of birth calendar">
-                    <div className="age-gate-calendar-selected">{selectedLabel}</div>
-                    <div className="age-gate-calendar-card">
-                      <div className="age-gate-calendar-controls">
-                        <label className="age-gate-calendar-select">
-                          <select
-                            value={calendarMonth}
-                            onChange={(event) => setCalendarMonth(Number(event.target.value))}
-                          >
-                            {MONTH_NAMES.map((monthName, index) => (
-                              <option key={monthName} value={index}>
-                                {monthName}
-                              </option>
-                            ))}
-                          </select>
-                          <ChevronDown size={16} />
-                        </label>
-
-                        <label className="age-gate-calendar-select age-gate-calendar-select--year">
-                          <select
-                            value={calendarYear}
-                            onChange={(event) => setCalendarYear(Number(event.target.value))}
-                          >
-                            {yearOptions.map((yearOption) => (
-                              <option key={yearOption} value={yearOption}>
-                                {yearOption}
-                              </option>
-                            ))}
-                          </select>
-                          <ChevronDown size={16} />
-                        </label>
-                      </div>
-
-                      <div className="age-gate-calendar-weekdays">
-                        {WEEKDAY_NAMES.map((dayName) => (
-                          <span key={dayName}>{dayName}</span>
-                        ))}
-                      </div>
-
-                      <div className="age-gate-calendar-grid">
-                        {calendarDays.map(({ day, monthOffset }, index) => {
-                          const cellMonth = calendarMonth + monthOffset;
-                          const normalizedMonth = cellMonth < 0 ? 11 : cellMonth > 11 ? 0 : cellMonth;
-                          const normalizedYear =
-                            cellMonth < 0 ? calendarYear - 1 : cellMonth > 11 ? calendarYear + 1 : calendarYear;
-                          const isSelected = Boolean(
-                            selectedDayMatch &&
-                              selectedDayMatch.day === day &&
-                              selectedDayMatch.month === normalizedMonth &&
-                              selectedDayMatch.year === normalizedYear
-                          );
-                          const isMuted = monthOffset !== 0;
-                          const disabled = isFutureDate(normalizedYear, normalizedMonth, day);
-
-                          return (
-                            <button
-                              key={`${normalizedYear}-${normalizedMonth}-${day}-${index}`}
-                              className={`age-gate-calendar-day${isSelected ? " is-selected" : ""}${isMuted ? " is-muted" : ""}`}
-                              disabled={disabled}
-                              type="button"
-                              onClick={() => selectCalendarDay(day, monthOffset)}
-                            >
-                              {day}
-                            </button>
-                          );
-                        })}
-                      </div>
-
-                      <div className="age-gate-calendar-actions">
-                        <button
-                          className="age-gate-calendar-cancel"
-                          type="button"
-                          onClick={() => setCalendarOpen(false)}
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          className="age-gate-calendar-confirm"
-                          type="button"
-                          onClick={() => setCalendarOpen(false)}
-                        >
-                          Confirm
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
               </div>
             </label>
 
@@ -418,6 +329,102 @@ export function AgeGate({ children }: AgeGateProps) {
           </div>
         </div>
       </div>
+      {calendarOpen ? (
+        <div className="age-gate-calendar-modal" role="dialog" aria-label="Date of birth calendar">
+          <button
+            className="age-gate-calendar-backdrop"
+            type="button"
+            aria-label="Close calendar"
+            onClick={() => setCalendarOpen(false)}
+          />
+          <div className="age-gate-calendar-popover" ref={calendarRef}>
+            <div className="age-gate-calendar-selected">{selectedLabel}</div>
+            <div className="age-gate-calendar-card">
+              <div className="age-gate-calendar-controls">
+                <label className="age-gate-calendar-select">
+                  <select
+                    value={calendarMonth}
+                    onChange={(event) => setCalendarMonth(Number(event.target.value))}
+                  >
+                    {MONTH_NAMES.map((monthName, index) => (
+                      <option key={monthName} value={index}>
+                        {monthName}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown size={16} />
+                </label>
+
+                <label className="age-gate-calendar-select age-gate-calendar-select--year">
+                  <select
+                    value={calendarYear}
+                    onChange={(event) => setCalendarYear(Number(event.target.value))}
+                  >
+                    {yearOptions.map((yearOption) => (
+                      <option key={yearOption} value={yearOption}>
+                        {yearOption}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown size={16} />
+                </label>
+              </div>
+
+              <div className="age-gate-calendar-weekdays">
+                {WEEKDAY_NAMES.map((dayName) => (
+                  <span key={dayName}>{dayName}</span>
+                ))}
+              </div>
+
+              <div className="age-gate-calendar-grid">
+                {calendarDays.map(({ day, monthOffset }, index) => {
+                  const cellMonth = calendarMonth + monthOffset;
+                  const normalizedMonth = cellMonth < 0 ? 11 : cellMonth > 11 ? 0 : cellMonth;
+                  const normalizedYear =
+                    cellMonth < 0 ? calendarYear - 1 : cellMonth > 11 ? calendarYear + 1 : calendarYear;
+                  const isSelected = Boolean(
+                    selectedDayMatch &&
+                      selectedDayMatch.day === day &&
+                      selectedDayMatch.month === normalizedMonth &&
+                      selectedDayMatch.year === normalizedYear
+                  );
+                  const isMuted = monthOffset !== 0;
+                  const disabled = isFutureDate(normalizedYear, normalizedMonth, day);
+
+                  return (
+                    <button
+                      key={`${normalizedYear}-${normalizedMonth}-${day}-${index}`}
+                      className={`age-gate-calendar-day${isSelected ? " is-selected" : ""}${isMuted ? " is-muted" : ""}`}
+                      disabled={disabled}
+                      type="button"
+                      onClick={() => selectCalendarDay(day, monthOffset)}
+                    >
+                      {day}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="age-gate-calendar-actions">
+                <button
+                  className="age-gate-calendar-cancel"
+                  type="button"
+                  onClick={() => setCalendarOpen(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="age-gate-calendar-confirm"
+                  type="button"
+                  onClick={() => setCalendarOpen(false)}
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }
