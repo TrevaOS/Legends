@@ -25,8 +25,8 @@ export const Footer = () => {
               </div>
               <div className="text-[#cbbca1] space-y-4 text-sm">
                 <section>
-                  <h3 className="text-[#a98f63] font-semibold mb-2">1. Entry Requirements</h3>
-                  <p>Entry is not allowed wearing slippers. All guests must wear appropriate closed-toe footwear for safety and hygiene reasons.</p>
+                  <h3 className="text-[#a98f63] font-semibold mb-2">1. Entry</h3>
+                  <p>Entry is not allowed with slippers.</p>
                 </section>
                 <section>
                   <h3 className="text-[#a98f63] font-semibold mb-2">2. Outside Food & Beverages</h3>
@@ -41,8 +41,8 @@ export const Footer = () => {
                   <p>Reservations are first come, first served. We recommend booking in advance to ensure availability. Bookings are subject to our current capacity and reservation policies.</p>
                 </section>
                 <section>
-                  <h3 className="text-[#a98f63] font-semibold mb-2">5. Wait Times</h3>
-                  <p>During peak hours when our venue is at full capacity, guests may experience a minimum 30-minute wait time. We appreciate your patience as we maintain the quality of service and experience.</p>
+                  <h3 className="text-[#a98f63] font-semibold mb-2">5. Waiting Period</h3>
+                  <p>During peak hours when our venue is at full capacity, guests may experience a minimum 30-minute waiting period. We appreciate your patience as we maintain the quality of service and experience.</p>
                 </section>
                 <section>
                   <h3 className="text-[#a98f63] font-semibold mb-2">General Terms</h3>
