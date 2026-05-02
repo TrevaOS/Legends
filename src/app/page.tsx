@@ -17,6 +17,8 @@ export default function HomePage() {
           '⚠️ Entry not allowed with slippers',
           '⚠️ No outside food allowed',
           '🔞 No alcohol served to under 21.',
+          '📋 Reservations are first come, first served.',
+          '⏱️ Full house = Minimum 30 mins wait.',
         ]}
         bgColor="#a98f63"
         textColor="#110f0f"

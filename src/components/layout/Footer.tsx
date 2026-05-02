@@ -1,11 +1,72 @@
+'use client';
+
 import Link from "next/link";
+import { useState } from "react";
 import { brandAssets } from "@/lib/branding";
 import { venueDetails } from "@/lib/data";
 
 export const Footer = () => {
+  const [showTerms, setShowTerms] = useState(false);
+
   return (
-    <footer className="bg-[#0d0b0b] border-t border-[#a98f63]/30">
-      <div className="max-w-7xl mx-auto px-6 py-14 text-[#e8e0d0]">
+    <>
+      {showTerms && (
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+          <div className="bg-[#1d1b1b] rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto border border-[#a98f63]/30">
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-[#a98f63]">Terms & Conditions</h2>
+                <button
+                  onClick={() => setShowTerms(false)}
+                  className="text-[#cbbca1] hover:text-[#a98f63] transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="text-[#cbbca1] space-y-4 text-sm">
+                <section>
+                  <h3 className="text-[#a98f63] font-semibold mb-2">1. Entry Requirements</h3>
+                  <p>Entry is not allowed wearing slippers. All guests must wear appropriate closed-toe footwear for safety and hygiene reasons.</p>
+                </section>
+                <section>
+                  <h3 className="text-[#a98f63] font-semibold mb-2">2. Outside Food & Beverages</h3>
+                  <p>No outside food or beverages are permitted at the premises. All food and drinks must be purchased from our establishment.</p>
+                </section>
+                <section>
+                  <h3 className="text-[#a98f63] font-semibold mb-2">3. Age Policy</h3>
+                  <p>No alcohol is served to guests under 21 years of age. Valid ID may be required at the time of service. LEGENDS strictly adheres to all local and national age verification laws.</p>
+                </section>
+                <section>
+                  <h3 className="text-[#a98f63] font-semibold mb-2">4. Reservation Policy</h3>
+                  <p>Reservations are first come, first served. We recommend booking in advance to ensure availability. Bookings are subject to our current capacity and reservation policies.</p>
+                </section>
+                <section>
+                  <h3 className="text-[#a98f63] font-semibold mb-2">5. Wait Times</h3>
+                  <p>During peak hours when our venue is at full capacity, guests may experience a minimum 30-minute wait time. We appreciate your patience as we maintain the quality of service and experience.</p>
+                </section>
+                <section>
+                  <h3 className="text-[#a98f63] font-semibold mb-2">General Terms</h3>
+                  <ul className="space-y-2 list-disc list-inside">
+                    <li>Guests are expected to follow all venue rules and staff instructions.</li>
+                    <li>We reserve the right to refuse service to guests who are disruptive or intoxicated.</li>
+                    <li>All prices are inclusive of applicable taxes unless otherwise stated.</li>
+                    <li>LEGENDS reserves the right to modify menu items, hours of operation, and policies without prior notice.</li>
+                    <li>All events and bookings are subject to cancellation policies as provided at the time of reservation.</li>
+                  </ul>
+                </section>
+              </div>
+              <button
+                onClick={() => setShowTerms(false)}
+                className="mt-6 w-full bg-[#a98f63] text-[#110f0f] font-semibold py-2 rounded hover:bg-[#b8a084] transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      <footer className="bg-[#0d0b0b] border-t border-[#a98f63]/30">
+        <div className="max-w-7xl mx-auto px-6 py-14 text-[#e8e0d0]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
 
           {/* Brand */}
@@ -78,11 +139,19 @@ export const Footer = () => {
 
         </div>
 
-        <div className="mt-12 h-px bg-[#a98f63]/20" />
-        <p className="mt-6 text-center text-xs text-[#cbbca1]">
-          © 2026 LEGENDS. Kingdom of Brews. All rights reserved.
-        </p>
-      </div>
-    </footer>
+          <div className="mt-12 h-px bg-[#a98f63]/20" />
+          <div className="mt-6 flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-[#cbbca1]">
+            <p>© 2026 LEGENDS. Kingdom of Brews. All rights reserved.</p>
+            <span className="hidden md:inline">•</span>
+            <button
+              onClick={() => setShowTerms(true)}
+              className="text-[#a98f63] hover:text-[#b8a084] transition-colors underline"
+            >
+              Terms & Conditions
+            </button>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 };
