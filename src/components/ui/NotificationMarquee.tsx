@@ -26,20 +26,25 @@ export const NotificationMarquee = ({
     fast: 'marquee-fast',
   }[speed];
 
-  // Quadruple the notifications for seamless infinite loop
-  const loopedNotifications = [...notifications, ...notifications, ...notifications, ...notifications];
-
   return (
     <div className={`notification-marquee ${bgColor === '#a98f63' ? 'bg-[#a98f63]' : ''}`} style={{ backgroundColor: bgColor }}>
-      <div className={`marquee-container ${speedClass}`}>
-        {loopedNotifications.map((notification, idx) => (
-          <span
-            key={idx}
-            className="marquee-item"
-            style={{ color: textColor }}
+      <div className={`marquee-track ${speedClass}`}>
+        {[0, 1].map((copyIndex) => (
+          <div
+            key={copyIndex}
+            className="marquee-group"
+            aria-hidden={copyIndex === 1}
           >
-            {notification}
-          </span>
+            {notifications.map((notification, idx) => (
+              <span
+                key={`${copyIndex}-${idx}-${notification}`}
+                className="marquee-item"
+                style={{ color: textColor }}
+              >
+                {notification}
+              </span>
+            ))}
+          </div>
         ))}
       </div>
     </div>

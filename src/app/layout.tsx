@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
-import { AgeGate } from "@/components/ui/AgeGate";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -176,11 +175,9 @@ fbq('track', 'PageView');`,
             alt="facebook pixel"
           />
         </noscript>
-        <AgeGate>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </AgeGate>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
