@@ -5,13 +5,20 @@ import { useEffect, useState } from "react";
 
 export const LaunchPopup = () => {
   const [open, setOpen] = useState(false);
+  const sessionKey = "mothers-day-popup-seen";
 
   useEffect(() => {
+    const seenInSession = sessionStorage.getItem(sessionKey);
+    if (seenInSession) {
+      return;
+    }
+
     const timer = setTimeout(() => setOpen(true), 250);
     return () => clearTimeout(timer);
   }, []);
 
   const dismiss = () => {
+    sessionStorage.setItem(sessionKey, "1");
     setOpen(false);
   };
 
