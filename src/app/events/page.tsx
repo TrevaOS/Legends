@@ -21,11 +21,11 @@ export default function EventsPage() {
       <h1 className="royal-heading text-5xl mt-2 md:text-6xl">Celebrate With Us</h1>
 
       <div className="mt-10 grid lg:grid-cols-2 gap-8 items-start">
-        <div className="relative rounded-2xl overflow-hidden border border-[#a98f63]/40 bg-[#18070e] max-w-md mx-auto lg:max-w-none">
+        <div className="relative rounded-2xl overflow-hidden border border-[#a98f63]/40 bg-[#18070e] w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] mx-auto">
           <img
             src="/assets/images/events/Mothers Day.jpeg"
             alt="LEGENDS Mother's Day event creative"
-            className="h-auto w-full object-cover"
+            className="h-auto w-full object-contain"
           />
         </div>
 

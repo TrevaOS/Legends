@@ -22,7 +22,7 @@ export const LaunchPopup = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[90] bg-black/75 grid place-items-center p-4"
+          className="fixed inset-0 z-[90] bg-black/75 grid place-items-center p-3 md:p-4"
           onClick={dismiss}
         >
           <motion.div
@@ -30,7 +30,7 @@ export const LaunchPopup = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.88, y: 32 }}
             transition={{ type: "spring", damping: 22, stiffness: 260 }}
-            className="relative w-full max-w-2xl overflow-hidden rounded-2xl"
+            className="relative w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] overflow-hidden rounded-2xl border border-[#a98f63]/40 bg-[#12070d]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -46,7 +46,7 @@ export const LaunchPopup = () => {
             <img
               src="/assets/images/events/Mothers Day.jpeg"
               alt="LEGENDS Mother's Day event"
-              className="w-full h-auto"
+              className="w-full h-auto max-h-[82vh] object-contain"
             />
           </motion.div>
         </motion.div>
