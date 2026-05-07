@@ -22,14 +22,20 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      const nextScrolled = window.scrollY > 24;
+
+      setScrolled((current) => (current === nextScrolled ? current : nextScrolled));
+    };
+
+    onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all ${scrolled ? "py-2 border-b border-[#a98f63]/45 shadow-[0_8px_30px_rgba(169,143,99,0.14)]" : "py-4"} bg-[#1a0010]/80 backdrop-blur-xl`}>
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <header className={`sticky top-0 z-50 border-b bg-[#1a0010]/80 backdrop-blur-xl transition-[border-color,background-color,box-shadow] duration-300 ${scrolled ? "border-[#a98f63]/45 shadow-[0_8px_30px_rgba(169,143,99,0.14)]" : "border-transparent shadow-none"}`}>
+      <nav className="max-w-7xl mx-auto px-6 min-h-[88px] flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#a98f63]/40 bg-[#2a0d18] shadow-[0_0_20px_rgba(169,143,99,0.18)]">
             <img
@@ -51,7 +57,7 @@ export const Navbar = () => {
       </nav>
       <AnimatePresence>
         {open ? (
-          <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.25 }} className="md:hidden fixed top-16 right-0 h-[calc(100vh-4rem)] w-72 bg-[#110f0f]/95 border-l border-[#a98f63]/35 p-6">
+          <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.25 }} className="md:hidden fixed top-[88px] right-0 h-[calc(100vh-88px)] w-72 bg-[#110f0f]/95 border-l border-[#a98f63]/35 p-6">
             <div className="flex flex-col gap-5">
               <div className="flex items-center gap-3 border-b border-[#a98f63]/20 pb-5">
                 <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#a98f63]/40">

@@ -7,15 +7,11 @@ export const LaunchPopup = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const dismissed = sessionStorage.getItem("launch-popup-dismissed");
-    if (!dismissed) {
-      const timer = setTimeout(() => setOpen(true), 1500);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => setOpen(true), 250);
+    return () => clearTimeout(timer);
   }, []);
 
   const dismiss = () => {
-    sessionStorage.setItem("launch-popup-dismissed", "1");
     setOpen(false);
   };
 
@@ -48,8 +44,8 @@ export const LaunchPopup = () => {
               </svg>
             </button>
             <img
-              src="/assets/images/img.png"
-              alt="LEGENDS Grand Opening"
+              src="/assets/images/events/Mothers Day.jpeg"
+              alt="LEGENDS Mother's Day event"
               className="w-full h-auto"
             />
           </motion.div>

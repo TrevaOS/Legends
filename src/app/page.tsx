@@ -6,14 +6,18 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { InstagramSection } from "@/components/home/InstagramSection";
 import { MenuHighlights } from "@/components/home/MenuHighlights";
 import { Testimonials } from "@/components/home/Testimonials";
+import { EventsTeaser } from "@/components/home/EventsTeaser";
+import { LaunchPopup } from "@/components/ui/LaunchPopup";
 import { NotificationMarquee } from "@/components/ui/NotificationMarquee";
 
 export default function HomePage() {
   return (
     <>
+      <LaunchPopup />
       <HeroSection />
       <NotificationMarquee
         notifications={[
+          "21+ only for alcohol service",
           '⚠️ Entry not allowed with slippers',
           '⚠️ No outside food allowed',
           '📋 Reservations are first come, first served.',
@@ -26,6 +30,7 @@ export default function HomePage() {
       <AboutPreview />
       <FeaturedBeers />
       <MenuHighlights />
+      <EventsTeaser />
       <GalleryPreview />
       <InstagramSection />
       <Testimonials />
