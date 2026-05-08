@@ -189,25 +189,32 @@ export default function CorporateBookingPage() {
               <label className="block text-sm text-[#a98f63] uppercase tracking-[0.2em] mb-2">
                 Preferred Date & Time *
               </label>
-              <input
-                type="datetime-local"
-                name="event_date"
-                value={formData.event_date}
-                onChange={handleChange}
-                required
-                min={new Date().toISOString().slice(0, 16)}
-                className="w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 text-[#f5f0e8] focus:outline-none focus:border-[#a98f63] transition-colors"
-                style={{
-                  colorScheme: 'dark',
-                }}
-              />
+              <div className="relative">
+                {!formData.event_date && (
+                  <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#f5f0e8]">
+                    dd-mm-yyyy hh:mm
+                  </span>
+                )}
+                <input
+                  type="datetime-local"
+                  name="event_date"
+                  value={formData.event_date}
+                  onChange={handleChange}
+                  required
+                  min={new Date().toISOString().slice(0, 16)}
+                  className={`corporate-datetime-input w-full bg-[#13080a] border border-[#a98f63]/40 rounded-lg px-4 py-3 focus:outline-none focus:border-[#a98f63] transition-colors ${
+                    formData.event_date ? "text-[#f5f0e8]" : "text-transparent"
+                  }`}
+                  style={{
+                    colorScheme: "dark",
+                  }}
+                />
+              </div>
               <style>{`
-                input[type="datetime-local"] {
-                  color: #f5f0e8;
-                }
-                input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-                  filter: invert(1) sepia(1) saturate(5) hue-rotate(0deg) brightness(1.8);
+                input.corporate-datetime-input::-webkit-calendar-picker-indicator {
+                  filter: brightness(0) invert(1);
                   cursor: pointer;
+                  opacity: 1;
                   margin-right: 8px;
                 }
               `}</style>
