@@ -6,7 +6,6 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { InstagramSection } from "@/components/home/InstagramSection";
 import { MenuHighlights } from "@/components/home/MenuHighlights";
 import { Testimonials } from "@/components/home/Testimonials";
-import { EventsTeaser } from "@/components/home/EventsTeaser";
 import { NotificationMarquee } from "@/components/ui/NotificationMarquee";
 
 export default function HomePage() {
@@ -28,7 +27,6 @@ export default function HomePage() {
       <AboutPreview />
       <FeaturedBeers />
       <MenuHighlights />
-      <EventsTeaser />
       <GalleryPreview />
       <InstagramSection />
       <Testimonials />
