@@ -1,9 +1,23 @@
 "use client";
 
+import type { Metadata } from "next";
 import { AnimatePresence, motion } from "framer-motion";
 import { Expand } from "lucide-react";
 import { useMemo, useState } from "react";
 import { galleryItems } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Gallery | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  description:
+    "View the ambiance and food at LEGENDS Microbrewery. Explore our premium brewery, dining spaces, and culinary creations in Bengaluru.",
+  keywords:
+    "brewery gallery, microbrewery photos, restaurant ambiance, bengaluru restaurant gallery, craft beer venue",
+  openGraph: {
+    title: "Gallery | LEGENDS Microbrewery",
+    description: "Explore the ambiance and cuisine at LEGENDS Microbrewery.",
+    url: "https://legendsbrewery.in/gallery",
+  },
+};
 
 const mixedLayout = [
   "md:col-span-2 md:row-span-2",
