@@ -23,12 +23,13 @@ export const metadata: Metadata = {
   keywords:
     "microbrewery bangalore, craft beer bengaluru, brewery near me, legends microbrewery, varthur brewery, craft beer restaurant bangalore",
   authors: [{ name: "LEGENDS Microbrewery" }],
+  applicationName: "LEGENDS Microbrewery",
   openGraph: {
     title: "LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
     description:
       "Experience craft beers brewed with meticulous care at LEGENDS Microbrewery. Reservation Booking available.",
     url: "https://legendsbrewery.in",
-    siteName: "LEGENDS Microbrewery",
+    siteName: "LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
     images: [
       {
         url: "https://legendsbrewery.in/og-image.jpg",
