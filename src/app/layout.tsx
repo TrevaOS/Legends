@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description:
       "Experience craft beers brewed with meticulous care at LEGENDS Microbrewery. Reservation Booking available.",
     url: "https://legendsbrewery.in",
-    siteName: "LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+    siteName: "LEGENDS Microbrewery",
     images: [
       {
         url: "https://legendsbrewery.in/og-image.jpg",
