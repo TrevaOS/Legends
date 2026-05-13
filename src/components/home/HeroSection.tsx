@@ -51,7 +51,7 @@ export const HeroSection = () => {
           className="mb-6 flex items-center gap-3"
         >
           <div className="h-14 w-14 overflow-hidden rounded-full border border-[#a98f63]/40 bg-[#210811]">
-            <img src={brandAssets.mainLogo} alt="LEGENDS" className="h-full w-full object-cover" />
+            <img src={brandAssets.mainLogo} alt="LEGENDS Microbrewery" className="h-full w-full object-cover" />
           </div>
           <div>
             <p className="text-[10px] uppercase tracking-[0.45em] text-[#d8b583]">Bengaluru</p>

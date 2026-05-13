@@ -40,12 +40,12 @@ export const Navbar = () => {
           <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#a98f63]/40 bg-[#2a0d18] shadow-[0_0_20px_rgba(169,143,99,0.18)]">
             <img
               src={brandAssets.mainLogo}
-              alt="Legends main logo"
+              alt="LEGENDS Microbrewery logo"
               className="h-full w-full object-cover"
             />
           </div>
           <div className="leading-none">
-            <p className="royal-heading text-lg text-[#f5f0e8]">LEGENDS</p>
+            <p className="royal-heading text-sm text-[#f5f0e8]">LEGENDS<br/>Microbrewery</p>
             <p className="text-[10px] uppercase tracking-[0.35em] text-[#a98f63]">Kingdom of Brews</p>
           </div>
         </Link>
@@ -63,12 +63,12 @@ export const Navbar = () => {
                 <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[#a98f63]/40">
                   <img
                     src={brandAssets.mainLogo}
-                    alt="Legends main logo"
+                    alt="LEGENDS Microbrewery logo"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div>
-                  <p className="royal-heading text-lg text-[#f5f0e8]">LEGENDS</p>
+                  <p className="royal-heading text-sm text-[#f5f0e8]">LEGENDS<br/>Microbrewery</p>
                   <p className="text-[10px] uppercase tracking-[0.35em] text-[#a98f63]">Kingdom of Brews</p>
                 </div>
               </div>

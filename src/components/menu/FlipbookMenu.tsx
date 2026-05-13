@@ -114,9 +114,9 @@ export const FlipbookMenu = () => {
               {page.kind === "cover" && (
                 <div className="relative flex flex-col justify-between p-8 md:p-12" style={{ minHeight: 520 }}>
                   <div>
-                    <img src={brandAssets.mainLogo} alt="LEGENDS" className="h-16 w-16 rounded-full border border-[#e3caa8] object-cover mb-6" />
+                    <img src={brandAssets.mainLogo} alt="LEGENDS Microbrewery" className="h-16 w-16 rounded-full border border-[#e3caa8] object-cover mb-6" />
                     <p className="text-xs uppercase tracking-[0.5em] text-[#9d5a3d]">Kingdom of Brews</p>
-                    <h2 className="royal-heading mt-4 text-6xl text-[#5d1e2a] leading-tight">LEGENDS</h2>
+                    <h2 className="royal-heading mt-4 text-5xl text-[#5d1e2a] leading-tight">LEGENDS<br/>Microbrewery</h2>
                     <p className="mt-4 text-sm leading-7 text-[#7a4a3a] max-w-sm">
                       Craft beers, signature dishes, royal flavours. All in one place.
                     </p>

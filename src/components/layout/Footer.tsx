@@ -74,11 +74,11 @@ export const Footer = () => {
             <div className="h-20 w-20 overflow-hidden rounded-full border border-[#a98f63]/40 bg-[#1d0b14]">
               <img
                 src={brandAssets.mainLogo}
-                alt="Legends"
+                alt="LEGENDS Microbrewery"
                 className="h-full w-full object-cover"
               />
             </div>
-            <p className="royal-heading mt-4 text-xl text-[#a98f63]">LEGENDS</p>
+            <p className="royal-heading mt-4 text-lg text-[#a98f63]">LEGENDS<br/>Microbrewery</p>
             <p className="text-sm text-[#cbbca1]">Kingdom of Brews</p>
           </div>
 
@@ -141,7 +141,7 @@ export const Footer = () => {
 
           <div className="mt-12 h-px bg-[#a98f63]/20" />
           <div className="mt-6 flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-[#cbbca1]">
-            <p>© 2026 LEGENDS. Kingdom of Brews. All rights reserved.</p>
+            <p>© 2026 LEGENDS Microbrewery. Kingdom of Brews. All rights reserved.</p>
             <span className="hidden md:inline">•</span>
             <button
               onClick={() => setShowTerms(true)}
