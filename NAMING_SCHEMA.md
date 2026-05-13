@@ -252,7 +252,17 @@ Tagline: Kingdom of Brews
 
 ## 🔍 SEO Keywords & Descriptions
 
-### Primary Keywords
+### ⚠️ SEO Data Moved to Separate Document
+All SEO information including keywords, descriptions, and OpenGraph tags has been moved to the dedicated **[SEO_REFERENCE.md](SEO_REFERENCE.md)** document for better organization.
+
+### Quick SEO Summary
+- ✅ **10 pages** with complete SEO optimization
+- ✅ **45+ unique keywords** across all pages
+- ✅ **Meta descriptions** for every page
+- ✅ **OpenGraph tags** for social sharing
+- ✅ **Local SEO** optimized for Bengaluru
+
+### Primary Keywords (Sample)
 ```
 - microbrewery bangalore
 - craft beer bengaluru
@@ -262,25 +272,8 @@ Tagline: Kingdom of Brews
 - craft beer restaurant bangalore
 ```
 
-### Meta Descriptions
-
-**Home Page:**
-```
-Welcome to LEGENDS Microbrewery, Bengaluru. Premium craft beers, gourmet food, 
-and royal ambiance. Open 12 PM - 1 AM daily at Balagere Road, Varthur.
-```
-
-**About Page:**
-```
-Discover the story behind LEGENDS Microbrewery. Crafted with passion, built on 
-tradition, and rooted in excellence in Bengaluru.
-```
-
-**Events Page:**
-```
-Join us at LEGENDS Microbrewery for our Grand Opening and special events. 
-Experience craft beer, gourmet food, and unforgettable moments.
-```
+### 👉 Full SEO Details Available In: [SEO_REFERENCE.md](SEO_REFERENCE.md)
+For complete keyword lists, descriptions, and OpenGraph tags for all pages, see the dedicated SEO reference document.
 
 ---
 
