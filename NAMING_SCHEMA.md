@@ -61,12 +61,13 @@ twitter: {
 | **Home** | `src/app/page.tsx` | LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
 | **About** | `src/app/about/page.tsx` | About LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
 | **Events** | `src/app/events/page.tsx` | Events \| LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
-| **Beers** | `src/app/beers/page.tsx` | (uses default layout title) |
-| **Menu** | `src/app/menu/page.tsx` | (uses default layout title) |
-| **Gallery** | `src/app/gallery/page.tsx` | (uses default layout title) |
-| **Contact** | `src/app/contact/page.tsx` | (uses default layout title) |
-| **Reservations** | `src/app/reservations/page.tsx` | (uses default layout title) |
-| **Corporate** | `src/app/corporate-booking/page.tsx` | (uses default layout title) |
+| **Beers** | `src/app/beers/page.tsx` | Our Beers \| LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
+| **Menu** | `src/app/menu/page.tsx` | Menu \| LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
+| **Gallery** | `src/app/gallery/page.tsx` | Gallery \| LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
+| **Contact** | `src/app/contact/page.tsx` | Contact Us \| LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
+| **Reservations** | `src/app/reservations/page.tsx` | Book a Table \| LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
+| **Corporate** | `src/app/corporate-booking/page.tsx` | Corporate Booking \| LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
+| **Offers** | `src/app/offers/page.tsx` | Offers \| LEGENDS Microbrewery \| Kingdom of Brews - Bengaluru |
 
 ---
 
@@ -112,9 +113,9 @@ favicon.ico
 apple-touch-icon.png
 ```
 
-**Files with issues (duplicates):**
-- `favicon-16x16.png` (should be `favicon-16.png`)
-- `favicon-32x32.png` (should be `favicon-32.png`)
+**Status:** ✅ All duplicate files removed
+- ✅ Removed `favicon-16x16.png` (using `favicon-16.png`)
+- ✅ Removed `favicon-32x32.png` (using `favicon-32.png`)
 
 ---
 
@@ -296,10 +297,10 @@ Experience craft beer, gourmet food, and unforgettable moments.
 - [x] Meta descriptions: All pages
 - [x] Social profiles: Instagram, Facebook
 
-### ⚠️ Items to Review
-- [ ] Favicon duplicates (favicon-16x16.png, favicon-32x32.png) - consider removing
-- [ ] Add metadata to remaining pages (beers, menu, gallery, contact)
-- [ ] Update menu document branding if needed
+### ✅ All Items Completed (May 13, 2026)
+- [x] Favicon duplicates removed (favicon-16x16.png, favicon-32x32.png)
+- [x] Add metadata to remaining pages (beers, menu, gallery, contact, reservations, corporate, offers)
+- [x] Verify menu document branding (LEGENDS FINAL FOOD MENU 3.pdf - already correct)
 
 ### ✅ Latest Updates (May 13, 2026)
 - [x] Navbar: Updated to show "LEGENDS Microbrewery"
@@ -309,6 +310,19 @@ Experience craft beer, gourmet food, and unforgettable moments.
 - [x] HeroSection: Brand display shows "LEGENDS Microbrewery"
 - [x] All Alt Text: Updated to "LEGENDS Microbrewery"
 - [x] NAMING_SCHEMA.md: Updated with latest component info
+
+### ✅ Latest Improvements (May 13, 2026 - Second Update)
+- [x] Removed duplicate favicon files
+- [x] Added metadata to 7 additional pages:
+  - Beers: "Our Beers | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru"
+  - Menu: "Menu | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru"
+  - Gallery: "Gallery | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru"
+  - Contact: "Contact Us | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru"
+  - Reservations: "Book a Table | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru"
+  - Corporate Booking: "Corporate Booking | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru"
+  - Offers: "Offers | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru"
+- [x] All pages now have SEO metadata with keywords and descriptions
+- [x] Menu document branding verified as correct
 
 ---
 
