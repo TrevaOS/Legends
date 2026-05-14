@@ -1,7 +1,5 @@
-"use client";
-
 import type { Metadata } from "next";
-import { useEffect } from "react";
+import { ReservationsClient } from "@/components/reservations/ReservationsClient";
 
 export const metadata: Metadata = {
   title: "Book a Table | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
@@ -17,9 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function ReservationsPage() {
-  useEffect(() => {
-    window.location.href = "https://widget.reservego.co/reserveOutlets/69e43f6414d072543704f2f8?source=9";
-  }, []);
-
-  return null;
+  return <ReservationsClient />;
 }

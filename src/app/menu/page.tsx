@@ -1,5 +1,3 @@
-"use client";
-
 import type { Metadata } from "next";
 import { FlipbookMenu } from "@/components/menu/FlipbookMenu";
 import { StrategicMenuView } from "@/components/menu/StrategicMenuView";
