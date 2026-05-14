@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   keywords:
     "microbrewery bangalore, craft beer bengaluru, brewery near me, legends microbrewery, varthur brewery, craft beer restaurant bangalore",
   authors: [{ name: "LEGENDS Microbrewery" }],
-  applicationName: "LEGENDS Microbrewery",
+  applicationName: "LEGENDS Microbrewery | Kingdom of Brews",
   openGraph: {
     title: "LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
     description:
@@ -91,6 +91,22 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     ],
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "LEGENDS Microbrewery",
+    alternateName: "Kingdom of Brews",
+    url: "https://legendsbrewery.in/",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://legendsbrewery.in/search?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang="en" className={`${montserrat.variable} ${playfair.variable}`}>
       <head>
@@ -140,6 +156,10 @@ gtag('config', 'G-FMPTPCZMW9', {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <script
           dangerouslySetInnerHTML={{
