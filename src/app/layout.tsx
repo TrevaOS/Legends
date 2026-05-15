@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { LaunchPopup } from "@/components/ui/LaunchPopup";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -196,6 +197,7 @@ fbq('track', 'PageView');`,
             alt="facebook pixel"
           />
         </noscript>
+        <LaunchPopup />
         <Navbar />
         <main>{children}</main>
         <Footer />

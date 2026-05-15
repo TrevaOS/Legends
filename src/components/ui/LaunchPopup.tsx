@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export const LaunchPopup = () => {
   const [open, setOpen] = useState(false);
-  const sessionKey = "mothers-day-popup-seen";
+  const sessionKey = "bollytech-popup-seen";
 
   useEffect(() => {
     const seenInSession = sessionStorage.getItem(sessionKey);
@@ -16,6 +16,19 @@ export const LaunchPopup = () => {
     const timer = setTimeout(() => setOpen(true), 250);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!open) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   const dismiss = () => {
     sessionStorage.setItem(sessionKey, "1");
@@ -51,8 +64,8 @@ export const LaunchPopup = () => {
               </svg>
             </button>
             <img
-              src="/assets/images/events/Mothers Day.jpeg"
-              alt="LEGENDS Mother's Day event"
+              src="/assets/images/events/Bollytech.jpeg"
+              alt="LEGENDS Bollytech Ayush event poster"
               className="w-full h-auto max-h-[82vh] object-contain"
             />
           </motion.div>
