@@ -4,13 +4,13 @@ import { OrnamentalDivider } from "@/components/ui/OrnamentalDivider";
 import { featuredAmbience, galleryItems } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "About LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  title: "About LEGENDS Microbrewery - Bengaluru",
   description:
     "Discover the story behind LEGENDS Microbrewery. Crafted with passion, built on tradition, and rooted in excellence in Bengaluru.",
   keywords:
     "about legends brewery, craft beer story, microbrewery bangalore history, kingdom of brews",
   openGraph: {
-    title: "About LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+    title: "About LEGENDS Microbrewery - Bengaluru",
     description: "Learn about our passion for craft beer and hospitality.",
     url: "https://legendsbrewery.in/about",
   },

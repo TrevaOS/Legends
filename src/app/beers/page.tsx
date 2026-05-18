@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BeersClient } from "@/components/beers/BeersClient";
 
 export const metadata: Metadata = {
-  title: "Our Beers | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  title: "Our Beers | LEGENDS Microbrewery - Bengaluru",
   description:
     "Explore our premium craft beers at LEGENDS Microbrewery. Brewed with meticulous care, each beer tells a story of quality and innovation.",
   keywords:

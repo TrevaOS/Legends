@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GalleryClient } from "@/components/gallery/GalleryClient";
 
 export const metadata: Metadata = {
-  title: "Gallery | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  title: "Gallery | LEGENDS Microbrewery - Bengaluru",
   description:
     "View the ambiance and food at LEGENDS Microbrewery. Explore our premium brewery, dining spaces, and culinary creations in Bengaluru.",
   keywords:

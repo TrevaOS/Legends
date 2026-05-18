@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CorporateBookingClient } from "@/components/corporate-booking/CorporateBookingClient";
 
 export const metadata: Metadata = {
-  title: "Corporate Booking | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  title: "Corporate Booking | LEGENDS Microbrewery - Bengaluru",
   description:
     "Book LEGENDS Microbrewery for corporate events. Premium venue for team building, conferences, and corporate celebrations in Bengaluru.",
   keywords:

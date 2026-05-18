@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { OffersClient } from "@/components/offers/OffersClient";
 
 export const metadata: Metadata = {
-  title: "Offers | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  title: "Offers | LEGENDS Microbrewery - Bengaluru",
   description:
     "Exclusive offers and deals at LEGENDS Microbrewery. Happy hour, special promotions, and royal rewards for our valued guests.",
   keywords:

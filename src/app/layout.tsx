@@ -17,15 +17,15 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  title: "LEGENDS Microbrewery - Bengaluru",
   description:
     "Welcome to LEGENDS Microbrewery, Bengaluru. Premium craft beers, gourmet food, and royal ambiance. Open 12 PM - 1 AM daily at Balagere Road, Varthur.",
   keywords:
     "microbrewery bangalore, craft beer bengaluru, brewery near me, legends microbrewery, varthur brewery, craft beer restaurant bangalore",
   authors: [{ name: "LEGENDS Microbrewery" }],
-  applicationName: "LEGENDS Microbrewery | Kingdom of Brews",
+  applicationName: "LEGENDS Microbrewery",
   openGraph: {
-    title: "LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+    title: "LEGENDS Microbrewery - Bengaluru",
     description:
       "Experience craft beers brewed with meticulous care at LEGENDS Microbrewery. Reservation Booking available.",
     url: "https://legendsbrewery.in",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         url: "https://legendsbrewery.in/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "LEGENDS Microbrewery - Kingdom of Brews",
+        alt: "LEGENDS Microbrewery",
       },
     ],
     locale: "en_IN",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+    title: "LEGENDS Microbrewery - Bengaluru",
     description:
       "Craft beers, gourmet food, and royal ambiance at LEGENDS Microbrewery.",
     images: ["https://legendsbrewery.in/og-image.jpg"],
@@ -120,6 +120,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {/* Manifest for PWA */}
         <link rel="manifest" href="/site.webmanifest" />
+        <meta property="og:site_name" content="LEGENDS Microbrewery" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

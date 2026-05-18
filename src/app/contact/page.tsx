@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactClient } from "@/components/contact/ContactClient";
 
 export const metadata: Metadata = {
-  title: "Contact Us | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  title: "Contact Us | LEGENDS Microbrewery - Bengaluru",
   description:
     "Get in touch with LEGENDS Microbrewery. Contact us for reservations, events, or inquiries. Located in Varthur, Bengaluru.",
   keywords:

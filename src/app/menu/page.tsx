@@ -3,7 +3,7 @@ import { FlipbookMenu } from "@/components/menu/FlipbookMenu";
 import { StrategicMenuView } from "@/components/menu/StrategicMenuView";
 
 export const metadata: Metadata = {
-  title: "Menu | LEGENDS Microbrewery | Kingdom of Brews - Bengaluru",
+  title: "Menu | LEGENDS Microbrewery - Bengaluru",
   description:
     "Browse the menu of LEGENDS Microbrewery. Craft beers paired with gourmet food, signature dishes, and culinary experiences in Bengaluru.",
   keywords:
