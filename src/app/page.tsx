@@ -6,11 +6,13 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { InstagramSection } from "@/components/home/InstagramSection";
 import { MenuHighlights } from "@/components/home/MenuHighlights";
 import { Testimonials } from "@/components/home/Testimonials";
+import { LaunchPopup } from "@/components/ui/LaunchPopup";
 import { NotificationMarquee } from "@/components/ui/NotificationMarquee";
 
 export default function HomePage() {
   return (
     <>
+      <LaunchPopup />
       <HeroSection />
       <NotificationMarquee
         notifications={[
