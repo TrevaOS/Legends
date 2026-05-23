@@ -1,18 +1,8 @@
-import type { Metadata } from "next";
 import { venueDetails } from "@/lib/data";
 
-export const metadata: Metadata = {
-  title: "Events | LEGENDS Microbrewery - Bengaluru",
-  description:
-    "Join us at LEGENDS Microbrewery for our Grand Opening and special events. Experience craft beer, gourmet food, and unforgettable moments.",
-  keywords:
-    "brewery events bangalore, grand opening party, craft beer events bengaluru, microbrewery bangalore events",
-  openGraph: {
-    title: "Events | LEGENDS Microbrewery - Bengaluru",
-    description: "Join us for our Grand Opening and special events.",
-    url: "https://legendsbrewery.in/events",
-  },
-};
+import { pageMetadata } from "@/lib/seo/metadata";
+
+export const metadata = pageMetadata.events;
 
 export default function EventsPage() {
   return (

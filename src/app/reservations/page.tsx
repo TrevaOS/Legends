@@ -1,18 +1,8 @@
-import type { Metadata } from "next";
 import { ReservationsClient } from "@/components/reservations/ReservationsClient";
 
-export const metadata: Metadata = {
-  title: "Book a Table | LEGENDS Microbrewery - Bengaluru",
-  description:
-    "Reserve your table at LEGENDS Microbrewery. Book online for a premium dining experience with craft beers and gourmet food in Bengaluru.",
-  keywords:
-    "book table bengaluru, reserve restaurant, microbrewery reservation, legends booking",
-  openGraph: {
-    title: "Book a Table | LEGENDS Microbrewery",
-    description: "Reserve your table at LEGENDS Microbrewery.",
-    url: "https://legendsbrewery.in/reservations",
-  },
-};
+import { pageMetadata } from "@/lib/seo/metadata";
+
+export const metadata = pageMetadata.reservations;
 
 export default function ReservationsPage() {
   return <ReservationsClient />;

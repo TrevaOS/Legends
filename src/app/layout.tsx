@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { siteMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -16,47 +16,7 @@ const playfair = Playfair_Display({
   weight: ["400", "700", "900"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://legendsbrewery.in"),
-  title: "LEGENDS Microbrewery - Bengaluru",
-  description:
-    "Welcome to LEGENDS Microbrewery, Bengaluru. Premium craft beers, gourmet food, and royal ambiance. Open 12 PM - 1 AM daily at Balagere Road, Varthur.",
-  keywords:
-    "microbrewery bangalore, craft beer bengaluru, brewery near me, legends microbrewery, varthur brewery, craft beer restaurant bangalore",
-  authors: [{ name: "LEGENDS Microbrewery" }],
-  applicationName: "LEGENDS Microbrewery",
-  openGraph: {
-    title: "LEGENDS Microbrewery - Bengaluru",
-    description:
-      "Experience craft beers brewed with meticulous care at LEGENDS Microbrewery. Reservation Booking available.",
-    url: "https://legendsbrewery.in",
-    siteName: "LEGENDS Microbrewery",
-    images: [
-      {
-        url: "https://legendsbrewery.in/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "LEGENDS Microbrewery",
-      },
-    ],
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "LEGENDS Microbrewery - Bengaluru",
-    description:
-      "Craft beers, gourmet food, and royal ambiance at LEGENDS Microbrewery.",
-    images: ["https://legendsbrewery.in/og-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    "max-image-preview": "large",
-    "max-snippet": -1,
-    "max-video-preview": -1,
-  },
-};
+export const metadata = siteMetadata;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const structuredData = {
@@ -114,17 +74,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${montserrat.variable} ${playfair.variable}`}>
       <head>
-        {/* Favicon - Multiple sizes for all devices */}
-        <link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
-        <link rel="icon" type="image/png" href="/favicon-64.png" sizes="64x64" />
-        <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        {/* Apple Touch Icon */}
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        {/* Manifest for PWA */}
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta property="og:site_name" content="LEGENDS Microbrewery" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -157,7 +106,6 @@ gtag('config', 'G-FMPTPCZMW9', {
         />
         {/* End Google Analytics 4 */}
 
-        <link rel="canonical" href="https://legendsbrewery.in/" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

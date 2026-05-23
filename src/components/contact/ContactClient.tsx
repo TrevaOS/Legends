@@ -73,7 +73,7 @@ export function ContactClient() {
           ) : (
             <div className="text-center py-8">
               <p className="royal-heading text-2xl text-[#a98f63]">Message Received</p>
-              <p className="mt-3 text-[#cbbca1]">Thank you for reaching out. We'll get back to you soon.</p>
+              <p className="mt-3 text-[#cbbca1]">Thank you for reaching out. We&apos;ll get back to you soon.</p>
             </div>
           )}
         </form>
