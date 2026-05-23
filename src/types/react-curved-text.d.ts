@@ -11,10 +11,10 @@ declare module 'react-curved-text' {
     startOffset: number;
     reversed: boolean;
     text: string;
-    textProps?: React.SVGProps<SVGTextElement>;
-    tspanProps?: React.SVGProps<SVGTSpanElement>;
-    ellipseProps?: React.SVGProps<SVGEllipseElement>;
-    svgProps?: React.SVGProps<SVGSVGElement>;
+    textProps?: React.SVGProps<SVGTextElement> | null;
+    tspanProps?: React.SVGProps<SVGTSpanElement> | null;
+    ellipseProps?: React.SVGProps<SVGEllipseElement> | null;
+    svgProps?: React.SVGProps<SVGSVGElement> | null;
   }
 
   const ReactCurvedText: React.FC<ReactCurvedTextProps>;
