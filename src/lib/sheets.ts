@@ -1,5 +1,5 @@
 export const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/d/AKfycby64nKTazKbXp75sRf9r3WG05wSMX1HFmECBvlk4gKLTQS8IjXNicdcZnCfScL5hm9NUQ/usercontent";
+  "https://script.google.com/macros/s/AKfycby296AC4FEn41tHypwCD4kkZqpNUIEvrdzpADiLH0K7yoM6UG08VtcOdyfemqjntl9DLQ/exec";
 
 type SheetPayload = Record<string, string | number>;
 
