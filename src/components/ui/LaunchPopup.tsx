@@ -64,7 +64,7 @@ export const LaunchPopup = () => {
               </svg>
             </button>
             <img
-              src="/assets/images/events/15 off.png"
+              src="/assets/images/events/RCB.png"
               alt="LEGENDS 15 percent off offer"
               className="w-full h-auto max-h-[78vh] sm:max-h-[80vh] object-contain"
             />
