@@ -1,6 +1,7 @@
 import { Montserrat, Playfair_Display } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { BookNowButton } from "@/components/BookNowButton";
 import { siteMetadata } from "@/lib/seo/metadata";
 import "./globals.css";
 
@@ -156,6 +157,7 @@ fbq('track', 'PageView');`,
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <BookNowButton />
       </body>
     </html>
   );
