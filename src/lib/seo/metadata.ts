@@ -3,13 +3,11 @@ import type { Metadata } from "next";
 const SITE_URL = "https://legendsbrewery.in";
 const SITE_NAME = "LEGENDS Microbrewery";
 const BRAND_TITLE = "LEGENDS Microbrewery - Bengaluru";
-const OG_IMAGE_URL = `${SITE_URL}/og-image.jpg`;
 
 const sharedTwitter: NonNullable<Metadata["twitter"]> = {
   card: "summary_large_image",
   title: BRAND_TITLE,
   description: "Craft beers, gourmet food, and royal ambiance at LEGENDS Microbrewery.",
-  images: [OG_IMAGE_URL],
 };
 
 const sharedRobots: NonNullable<Metadata["robots"]> = {
@@ -42,14 +40,6 @@ function buildRouteMetadata(config: RouteSeoConfig): Metadata {
       description: config.ogDescription,
       url: pageUrl,
       siteName: SITE_NAME,
-      images: [
-        {
-          url: OG_IMAGE_URL,
-          width: 1200,
-          height: 630,
-          alt: SITE_NAME,
-        },
-      ],
       locale: "en_IN",
       type: "website",
     },
@@ -91,14 +81,6 @@ export const siteMetadata: Metadata = {
       "Experience craft beers brewed with meticulous care at LEGENDS Microbrewery. Reservation Booking available.",
     url: SITE_URL,
     siteName: SITE_NAME,
-    images: [
-      {
-        url: OG_IMAGE_URL,
-        width: 1200,
-        height: 630,
-        alt: SITE_NAME,
-      },
-    ],
     locale: "en_IN",
     type: "website",
   },
