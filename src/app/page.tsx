@@ -1,4 +1,5 @@
 import { AboutPreview } from "@/components/home/AboutPreview";
+import { AwardsSection } from "@/components/home/AwardsSection";
 import { ContactLocation } from "@/components/home/ContactLocation";
 import { FeaturedBeers } from "@/components/home/FeaturedBeers";
 import { GalleryPreview } from "@/components/home/GalleryPreview";
@@ -32,6 +33,7 @@ export default function HomePage() {
       <GalleryPreview />
       <InstagramSection />
       <Testimonials />
+      <AwardsSection />
       <ContactLocation />
     </>
   );

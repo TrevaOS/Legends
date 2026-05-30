@@ -8,11 +8,13 @@ export const LaunchPopup = () => {
   const sessionKey = "book-popup-seen";
 
   useEffect(() => {
+    // POPUP DISABLED — re-enable by restoring the setTimeout below
+    return;
+    // eslint-disable-next-line no-unreachable
     const seenInSession = sessionStorage.getItem(sessionKey);
     if (seenInSession) {
       return;
     }
-
     const timer = setTimeout(() => setOpen(true), 250);
     return () => clearTimeout(timer);
   }, []);
