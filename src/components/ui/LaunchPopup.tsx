@@ -52,12 +52,15 @@ export const LaunchPopup = () => {
             </button>
 
             {/* Event poster — full image, no cropping */}
-            <img
-              src="/assets/images/events/image.png"
-              alt="IPL 2026 Finals Live Screening at Legends Microbrewery"
-              className="block w-full h-auto"
-              style={{ maxHeight: "90vh", objectFit: "contain" }}
-            />
+            <picture>
+              <source srcSet="/assets/images/events/image.webp" type="image/webp" />
+              <img
+                src="/assets/images/events/image.png"
+                alt="IPL 2026 Finals Live Screening at Legends Microbrewery"
+                className="block w-full h-auto"
+                style={{ maxHeight: "90vh", objectFit: "contain" }}
+              />
+            </picture>
           </motion.div>
         </motion.div>
       )}

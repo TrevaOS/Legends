@@ -28,7 +28,7 @@ type GalleryItem = {
 
 import { beerTaps } from "./beerImages";
 
-const driveImage = (id: string, width = 1600) =>
+const driveImage = (id: string, width = 800) =>
   `https://lh3.googleusercontent.com/d/${id}=w${width}`;
 
 const foodImages = {
@@ -41,7 +41,7 @@ const foodImages = {
 } as const;
 
 const ambienceImages = {
-  hero: driveImage("1IRSZGndXXtLvg60VHs9roIMAMGByJ35G", 2200),
+  hero: driveImage("1IRSZGndXXtLvg60VHs9roIMAMGByJ35G", 1200),
   spaceOne: driveImage("1IRin2j-mC6zgUzmQjBOzDKmJLM3lffyW"),
   spaceTwo: driveImage("188dVjGBY2CzBOxEUj43ys4WvRMKzC9CV"),
   spaceThree: driveImage("12CkEGcHOdny2lN6zxeTI3GYK0sJ0-ehm"),

@@ -25,12 +25,12 @@ export const beerImages: Record<string, string> = {
 };
 
 export const beerTaps: Record<string, string> = {
-  Bull: "/assets/images/Beer Tap/Legends_Beer_tap_Bull_page-0001-removebg-preview.png",
-  Deer: "/assets/images/Beer Tap/Legends_Beer_tap_Deer_page-0001-removebg-preview.png",
-  Eagle: "/assets/images/Beer Tap/Legends_Beer_tap_Eagle_page-0001-removebg-preview.png",
-  Elephant: "/assets/images/Beer Tap/Legends_Beer_tap_Elephant_page-0001-removebg-preview.png",
-  Fox: "/assets/images/Beer Tap/Legends_Beer_tap_Fox_page-0001-removebg-preview.png",
-  Horse: "/assets/images/Beer Tap/Legends_Beer_tap_Horse_page-0001-removebg-preview.png",
-  Lion: "/assets/images/Beer Tap/Legends_Beer_tap_Lion_page-0001-removebg-preview.png",
-  Owl: "/assets/images/Beer Tap/Legends_Beer_tap_Owl_page-0001-removebg-preview.png",
+  Bull: "/assets/images/Beer Tap/Legends_Beer_tap_Bull_page-0001-removebg-preview.webp",
+  Deer: "/assets/images/Beer Tap/Legends_Beer_tap_Deer_page-0001-removebg-preview.webp",
+  Eagle: "/assets/images/Beer Tap/Legends_Beer_tap_Eagle_page-0001-removebg-preview.webp",
+  Elephant: "/assets/images/Beer Tap/Legends_Beer_tap_Elephant_page-0001-removebg-preview.webp",
+  Fox: "/assets/images/Beer Tap/Legends_Beer_tap_Fox_page-0001-removebg-preview.webp",
+  Horse: "/assets/images/Beer Tap/Legends_Beer_tap_Horse_page-0001-removebg-preview.webp",
+  Lion: "/assets/images/Beer Tap/Legends_Beer_tap_Lion_page-0001-removebg-preview.webp",
+  Owl: "/assets/images/Beer Tap/Legends_Beer_tap_Owl_page-0001-removebg-preview.webp",
 } as const;
