@@ -11,7 +11,6 @@ import { beerImages } from "@/lib/beerImages";
 import "@/styles/brewski.css";
 
 const AWARD_IMAGE = "/assets/images/Awards/WhatsApp Image 2026-05-30 at 12.20.59 AM.webp";
-const AWARD_IMAGE_FALLBACK = "/assets/images/Awards/WhatsApp Image 2026-05-30 at 12.20.59 AM.jpeg";
 
 const BeerFlipCard = ({ beer, onFlip }: { beer: (typeof beersData)[number]; onFlip: () => void }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -114,15 +113,12 @@ const AwardPopup = ({ open, onClose }: { open: boolean; onClose: () => void }) =
               </svg>
             </button>
 
-            <picture>
-              <source srcSet={AWARD_IMAGE} type="image/webp" />
-              <img
-                src={AWARD_IMAGE_FALLBACK}
-                alt="Most Innovative Beer on Tap Award"
-                className="block w-full h-auto"
-                style={{ maxHeight: "82vh", objectFit: "contain" }}
-              />
-            </picture>
+            <img
+              src={AWARD_IMAGE}
+              alt="Most Innovative Beer on Tap Award"
+              className="block w-full h-auto"
+              style={{ maxHeight: "82vh", objectFit: "contain" }}
+            />
 
             <div className="px-5 py-4 text-center bg-gradient-to-b from-[#1c0d10] to-[#0d0508] border-t border-[#a98f63]/20">
               <p className="text-[#a98f63] text-[10px] uppercase tracking-[0.4em]">Zen Empire · Japanese Lager</p>

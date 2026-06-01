@@ -75,7 +75,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${montserrat.variable} ${playfair.variable}`}>
       <head>
-        <link rel="preload" as="image" href="/assets/images/events/image.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/assets/logos/Legends Logo.webp" type="image/webp" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

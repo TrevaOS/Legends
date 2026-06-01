@@ -12,7 +12,7 @@ const links = [
   ["Beers", "/beers"],
   ["Menu", "/menu"],
   ["Events", "/events"],
-  ["Awards", "/#awards"],
+  ["Awards", "/awards"],
   ["Corporate", "/corporate-booking"],
   ["Gallery", "/gallery"],
   ["Contact", "/contact"],
