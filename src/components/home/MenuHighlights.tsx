@@ -6,32 +6,9 @@ import { menuData } from "@/lib/data";
 
 const FlipCard = ({ item }: { item: typeof menuData[number] }) => {
   return (
-    <div
-      className="group h-80 cursor-pointer [perspective:1000px]"
-    >
-      <div
-        className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
-      >
-      {/* Front */}
-      <div className="absolute inset-0 rounded-xl overflow-hidden [backface-visibility:hidden]">
-        <img src={item.image} alt={item.name} className="h-full w-full object-cover" loading="lazy" />
-      </div>
-
-      {/* Back */}
-      <div className="absolute inset-0 rounded-xl bg-[#1a0010] border border-[#a98f63]/40 p-5 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)]">
-        <div>
-          <p className="text-xs text-[#a98f63] uppercase tracking-[0.1em]">{item.category}</p>
-          <p className="royal-heading text-xl text-[#f5f0e8] mt-2">{item.name}</p>
-          <div className="h-px bg-[#a98f63]/40 my-3" />
-          <p className="text-sm text-[#e8e0d0] leading-relaxed">{item.description}</p>
-          <p className="text-xs text-[#cbbca1] mt-3">
-            <span className="text-[#a98f63]">Ingredients:</span> {item.ingredients}
-          </p>
-        </div>
-        <p className="royal-heading text-lg text-[#a98f63]">LEGENDS Signature</p>
-      </div>
+    <div className="h-80 rounded-xl overflow-hidden">
+      <img src={item.image} alt={item.name} className="h-full w-full object-cover" loading="lazy" />
     </div>
-  </div>
   );
 };
 
