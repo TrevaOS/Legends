@@ -92,7 +92,19 @@ export const LaunchPopup = () => {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.45, ease: "easeInOut" }}
-                  style={{ position: "absolute", inset: 0 }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.x < -50) {
+                      setDirection(1);
+                      setCurrent((c) => (c + 1) % SLIDES.length);
+                    } else if (info.offset.x > 50) {
+                      setDirection(-1);
+                      setCurrent((c) => (c - 1 + SLIDES.length) % SLIDES.length);
+                    }
+                  }}
+                  style={{ position: "absolute", inset: 0, cursor: "grab" }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
