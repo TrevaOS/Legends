@@ -22,6 +22,9 @@ export const beerImages: Record<string, string> = {
 
   "Imperial Fields":
     "https://plus.unsplash.com/premium_photo-1733342403779-a850e80de8f2?q=80&w=1104&auto=format&fit=crop",
+
+  "Mango Beer":
+    "/assets/beer/VVR_9796.jpg",
 };
 
 export const beerTaps: Record<string, string> = {
@@ -33,4 +36,5 @@ export const beerTaps: Record<string, string> = {
   Horse: "/assets/images/Beer Tap/Legends_Beer_tap_Horse_page-0001-removebg-preview.webp",
   Lion: "/assets/images/Beer Tap/Legends_Beer_tap_Lion_page-0001-removebg-preview.webp",
   Owl: "/assets/images/Beer Tap/Legends_Beer_tap_Owl_page-0001-removebg-preview.webp",
+  Mango: "/assets/images/Beer Tap/Untitled design (27).png",
 } as const;
