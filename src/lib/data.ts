@@ -209,7 +209,7 @@ export const beersData: BeerItem[] = [
     style: "Fruit Beer",
     description:
       "A seasonal tropical delight bursting with fresh mango flavor. Smooth, refreshing, and perfectly balanced with subtle sweetness and natural fruit notes.",
-    image: "/assets/beer/VVR_9796.jpg",
+    image: "/assets/beer/VVR_9796.png",
     tapLogo: beerTaps.Mango,
   },
 ] as const;

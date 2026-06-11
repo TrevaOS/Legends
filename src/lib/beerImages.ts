@@ -24,7 +24,7 @@ export const beerImages: Record<string, string> = {
     "https://plus.unsplash.com/premium_photo-1733342403779-a850e80de8f2?q=80&w=1104&auto=format&fit=crop",
 
   "Mango Beer":
-    "/assets/beer/VVR_9796.jpg",
+    "/assets/beer/VVR_9796.png",
 };
 
 export const beerTaps: Record<string, string> = {
